@@ -9,6 +9,19 @@
 \usepackage{booktabs} % Allows the use of \toprule, \midrule and \bottomrule in tables
 \usepackage{fontawesome}
 \usepackage{multicol}
+\usepackage[
+	backend=biber, 
+	style=alphabetic, 
+	natbib=true, 
+	backref=True,
+	hyperref=true,
+	url=false,
+	isbn=false,
+	maxcitenames=1,
+	maxbibnames=100,
+	giveninits=true,
+]{biblatex}
+\preto\fullcite{\AtNextCite{\defcounter{maxnames}{99}}}
 %----------------------------------------------------------------------------------------
 %	TITLE PAGE
 %----------------------------------------------------------------------------------------
@@ -25,6 +38,9 @@
     NeuroSpin and Cosmostat, CEA Saclay
 }
 \date{18th February 2022} % Date, can be changed to a custom date
+
+\addbibresource{ThesisBib.bib}
+\addbibresource{websites.bib}
 
 
 \setbeamerfont{subsection in toc}{size=\small}
@@ -59,6 +75,7 @@
     %  \href{run:sons/extract.mp3}{\beamerbutton{écouter}} (https://texnique.fr/osqa/questions/2988/du-son-dans-beamer)
     % https://www.francetvinfo.fr/sante/malgre-l-augmentation-des-besoins-medicaux-le-deficit-en-france-d-appareils-irm-se-fait-de-plus-en-plus-sentir_220301.html
     \href{run:Sounds/mri_sounds.mp3}{\faPlayCircle}
+    % XXX: add credit to image
 \end{frame}
 }
 
@@ -75,6 +92,7 @@
     \end{itemize}
     % give typical duration (compare to CT)
     % give associated problems
+    % XXX: add citation for duration
 \end{frame}
 
 \begin{frame}{Our objective: accelerate MRI scans}
@@ -89,6 +107,11 @@
 \begin{frame}{Importance of MRI - 1}
     % how many MRI scans / scanners
     % how likely is it that you will get an MRI in your life
+    \begin{figure}
+        \centering
+        \includegraphics[width=\textwidth]{Figures/intro_figures/num_mri_scans.png}
+        \caption{\label{fig:num-mri-scans} \textbf{Number of MRI scans per year per 1000 population}: figure courtesy of \citet{OECDMRI}.}
+    \end{figure}
 \end{frame}
 
 % There is a reason for that: MRI can help diagnose many different conditions
@@ -346,5 +369,9 @@
     % Trajectory learning
 \end{frame}
 %----------------------------------------------------------------------------------------
+
+\begin{frame}[allowframebreaks]{References}
+    \printbibliography
+\end{frame}
 
 \end{document}
