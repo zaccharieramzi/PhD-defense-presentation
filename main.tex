@@ -4,6 +4,12 @@
 \documentclass[aspectratio=169,xcolor=dvipsnames]{beamer}
 \usetheme{SimplePlus}
 
+\usepackage{amsmath,amssymb,amsfonts,amsthm}
+\usepackage{bbm}
+\usepackage{mathtools}
+\usepackage{xspace}
+\usepackage{dsfont}
+\usepackage{pifont}
 \usepackage{hyperref}
 \usepackage{graphicx} % Allows including images
 \usepackage{booktabs} % Allows the use of \toprule, \midrule and \bottomrule in tables
@@ -22,6 +28,7 @@
 	giveninits=true,
 ]{biblatex}
 \preto\fullcite{\AtNextCite{\defcounter{maxnames}{99}}}
+\include{./bold_alphabet}
 %----------------------------------------------------------------------------------------
 %	TITLE PAGE
 %----------------------------------------------------------------------------------------
@@ -118,6 +125,11 @@
 % There is a reason for that: MRI can help diagnose many different conditions
 \begin{frame}{Importance of MRI - 2}
     % list of conditions
+    \begin{figure}
+        \centering
+        \includegraphics[height=0.6\textheight]{Figures/intro_figures/What_can_we_diagnose_with_MRI.pdf}
+        \caption{\label{fig:diagnose-mri} \textbf{What can we diagnose with MRI?} This illustration provides a non-exhaustive list of all the diagnoses that can be carried out with MRI. All the information was compiled from the works of \citet{reimer2010clinical,runge2019essentials}.}
+    \end{figure}
 \end{frame}
 
 \subsection{Physics of MRI}
@@ -125,6 +137,11 @@
 \begin{frame}{Physics of MRI - 1}
     % at its core MRI relies on the MR phenomenon
     % in short: a spin is aligned with the magnetic field, when an RF pulse is sent, it tips the spin in the orthogonal plane before the spin realigns with the magnetic field sending another RF pulse
+    \begin{figure}
+        \centering
+        \includegraphics[width=0.1\textwidth]{Figures/intro_figures/Precession_in_magnetic_field.pdf}
+        \caption{\label{fig:precession}\textbf{Illustration of the precession of a spin in a magnetic field:} the green arrow represents the $\Bb_0$ magnetic field, while the black arrow represents the magnetic moment of the particle. Illustration courtesy of \citet{wiki}.}
+    \end{figure}
     % video of e-MRI
 \end{frame}
 
