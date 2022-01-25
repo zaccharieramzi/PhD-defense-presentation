@@ -1,0 +1,6 @@
+p = 11/1000
+life_expectancy = 82.58
+chances_you_do_not_get_an_mri_in_a_year = 1 - p
+chances_you_do_not_get_an_mri_in_an_expected_life = chances_you_do_not_get_an_mri_in_a_year**life_expectancy
+chances_you_get_an_mri_in_your_life = 1 - chances_you_do_not_get_an_mri_in_an_expected_life
+print(chances_you_get_an_mri_in_your_life)
