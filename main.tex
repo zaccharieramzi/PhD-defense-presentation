@@ -7,7 +7,8 @@
 \usepackage{hyperref}
 \usepackage{graphicx} % Allows including images
 \usepackage{booktabs} % Allows the use of \toprule, \midrule and \bottomrule in tables
-
+\usepackage{fontawesome}
+\usepackage{multicol}
 %----------------------------------------------------------------------------------------
 %	TITLE PAGE
 %----------------------------------------------------------------------------------------
@@ -24,6 +25,10 @@
     NeuroSpin and Cosmostat, CEA Saclay
 }
 \date{18th February 2022} % Date, can be changed to a custom date
+
+
+\setbeamerfont{subsection in toc}{size=\small}
+\setbeamerfont{section in toc}{size=\large}
 
 
 %----------------------------------------------------------------------------------------
@@ -46,22 +51,37 @@
 % Clinical applicability
 % Going further !
 % CCL
-
-\begin{frame}
+{
+\usebackgroundtemplate{\includegraphics[width=\paperwidth]{Figures/inside_mri.png}}
+\begin{frame}[plain]
     % I would like to have the picture of inside the MRI
     % and pass the sound of an MRI scan
+    %  \href{run:sons/extract.mp3}{\beamerbutton{écouter}} (https://texnique.fr/osqa/questions/2988/du-son-dans-beamer)
+    % https://www.francetvinfo.fr/sante/malgre-l-augmentation-des-besoins-medicaux-le-deficit-en-france-d-appareils-irm-se-fait-de-plus-en-plus-sentir_220301.html
+    \href{run:Sounds/mri_sounds.mp3}{\faPlayCircle}
 \end{frame}
+}
 
 % link between the 2: this is the sound you hear when undergoing an MRI
 % now imagine that you will on average hear this during x minutes
 % MRI scanners being slow not only generate discomfort but have other impacts on their efficiency...
 \begin{frame}{MRI is slow}
+    Typical MRI~(Magnetic Resonance Imaging) scan duration: 15 minutes (up to 90 minutes).
+    Hence:
+    \begin{itemize}
+        \item discomfort \& accessibility issues;
+        \item reduced patient throughput;
+        \item increased motion.
+    \end{itemize}
     % give typical duration (compare to CT)
     % give associated problems
 \end{frame}
 
 \begin{frame}{Our objective: accelerate MRI scans}
     % give TOC
+    \begin{multicols}{2}
+    \tableofcontents
+    \end{multicols}
 \end{frame}
 
 \section{Introduction to MRI}
@@ -111,7 +131,6 @@
     % GRAPPA + SENSE examples
 \end{frame}
 
-\section{Compressed Sensing}
 \begin{frame}{Limits of Parallel Imaging}
     % Max AF
 \end{frame}
@@ -180,6 +199,8 @@
 \begin{frame}{Building the network}
     % give classical functions
 \end{frame}
+
+\addtocontents{toc}{\newpage}
 
 \section{Deep Learning for MRI}
 \subsection{Simple models}
