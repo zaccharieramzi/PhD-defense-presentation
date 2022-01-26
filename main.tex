@@ -156,6 +156,7 @@
         \caption{\label{fig:precession}\textbf{Illustration of the precession of a spin in a magnetic field:} the green arrow represents the $\Bb_0$ magnetic field, while the black arrow represents the magnetic moment of the particle. Illustration courtesy of \citet{wiki}.}
     \end{figure}
     }
+    % XXX: add vspace somewhere to avoid the jump effect
     \only<2>{
     \begin{figure}
         \centering
@@ -216,6 +217,38 @@
 \begin{frame}{Where is there room for acceleration?}
     % Explain the concept of redundancy
     % first example: partial Fourier => give limits
+    \textbf{Redundancy}, otherwise called \textbf{sparsity, symmetry, structure or a priori information}, is the core concept that will help us accelerate MRI.\\
+    
+    \begin{overprint}
+        \onslide<2>
+        \hfill \break
+    Here is an illustrative example:
+    \begin{figure}
+        \centering
+        \includegraphics[height=0.4\textheight]{Figures/intro_figures/astronaut_masked.pdf}
+        \caption{\label{fig:astronaut-masked}\textbf{The inpainting problem.} Even without access to all the pixel values directly, we can infer them, because the information in the image is redundant.
+        }
+    \end{figure}
+    
+    \onslide<3>
+    \hfill \break
+    Here is an illustrative example:
+    \begin{figure}
+        \centering
+        \includegraphics[height=0.4\textheight]{Figures/intro_figures/astronaut.pdf}
+        \caption{\label{fig:astronaut}\textbf{The inpainting problem.} Even without access to all the pixel values directly, we can infer them, because the information in the image is redundant.
+        }
+    \end{figure}
+    
+    \onslide<4>
+        \hfill \break
+        Is there a similar thing in MRI?
+
+        Yes! The anatomical image is real-valued so its Fourier transform is symmetrical. % XXX verify term for symmetry
+        Using this redundancy to sample less points in the k-space (i.e. using the relaxation fewer times) is a technique called \textbf{Partial Fourier}.
+    
+    \end{overprint}
+    
 \end{frame}
 
 \begin{frame}{Parallel imaging}
