@@ -301,6 +301,7 @@
 \begin{frame}{Limits of Parallel Imaging}
     % Max AF
     % XXX: wait for AV's response
+    % ow: https://www.siemens-healthineers.com/magnetic-resonance-imaging/options-and-upgrades/clinical-applications/syngo-grappa says 2,3
 \end{frame}
 
 \section{Compressed Sensing}
@@ -407,33 +408,69 @@
     No; we need to relax it using the basis pursuit:
     \begin{equation}
         \label{eq:basis-pursuit}
-        \min_{\xb \in \mathbb{C}^n} \|\xb\|_1 \quad \text{subject to} \quad \tikzmarknode{calA}{\underline{\mathcal{A}}} \xb = \ybb
+        \min_{\xb \in \mathbb{C}^n} \|\xb\|_1 \quad \text{subject to} \quad \Ab \xb = \yb
+    \end{equation}
+
+    \pause
+    For this problem to have the same solutions as the non-relaxed one, we need coherence-based constraints on the measurement operator $\Ab$.
+
+\end{frame}
+
+\begin{frame}{The canonical MRI reconstruction problem}
+    We introduce the notion of a sparsity basis $\psib$ and the fact that the measurements can be noisy to obtain the canonical MRI reconstruction problem:
+    \begin{equation}
+        \min_{\xb \in \mathbb{C}^n} \overbrace{\|\tikzmarknode{calA}{\underline{\mathcal{A}}} \xb - \yb \|_2^2}^{\text{\sf \footnotesize Data consistency}}  + \overbrace{ \tikzmarknode{lambda}{\underline{\lambda}} \|\psib \xb\|_1}^{\text{\sf \footnotesize Regularization term } }
     \end{equation}
     \vspace{\baselineskip}
     \begin{tikzpicture}[overlay,remember picture,>=stealth,nodes={align=left,inner ysep=1pt},<-]
         % For "calA"
-        \path (calA.south) ++ (0,-2em) node[anchor=south west,color=black!87] (exp_calA){
+        \path (calA.south) ++ (0,-2.5em) node[anchor=south east,color=black!87] (exp_calA){
             $= \left(\Ib_L\otimes {\mathcal{F}}_{\Omega}\right)\Sbb$
         };
-        \draw [color=black!87](calA.south) |- ([xshift=-0.3ex,color=black]exp_calA.south east);
+        \draw [color=black!87](calA.south) |- ([xshift=-0.3ex,color=black]exp_calA.south west);
+        % For "lambda"
+        \path (lambda.south) ++ (0, -2.5em) node[anchor=south west,color=black!87] (exp_lambda){
+            Regularization hyperparameter
+        };
+        \draw [color=black!87](lambda.south) |- ([xshift=-0.3ex,color=black]exp_lambda.south east);
     \end{tikzpicture}
-    \pause
-    For this problem to have the same solutions as the non-relaxed one, we need coherence-based constraints on the measurement operator $\mathcal{A}$.
-
+    
 \end{frame}
 
 \begin{frame}{ISTA}
-
+     The Iterative Shrinkage-Thresholding Algorithm~(ISTA) can be used to solve the canonical MRI reconstruction problem:
+     \begin{equation*}
+        \label{eq:ista-step}
+        \begin{split}
+            \xb_{n+1} &= \xb_n - \epsilon_n \mathcal{A}^H\left(\mathcal{A} \xb_n - \ybb\right)\\
+            \xb_{n+1} &= \tikzmarknode{prox}{\operatorname{prox}}_{\epsilon_n \tikzmarknode{reg}{\mathcal{R}}}\left(\xb_{n+1}\right)
+        \end{split}
+    \end{equation*}
+    \begin{tikzpicture}[overlay,remember picture,>=stealth,nodes={align=left,inner ysep=1pt},<-]
+        % For "prox"
+        \path (prox.south) ++ (0,-2.5em) node[anchor=south east,color=black!87] (exp_prox){
+            Proximity operator
+        };
+        \draw [color=black!87](prox.south) |- ([xshift=-0.3ex,color=black]exp_prox.south west);
+        % For "reg
+        \path (reg.south) ++ (0, -2.5em) node[anchor=south west,color=black!87] (exp_reg){
+            \footnotesize $= \|\psib \cdot\|_1$
+        };
+        \draw [color=black!87](reg.south) |- ([xshift=-0.3ex,color=black]exp_reg.south east);
+    \end{tikzpicture}
 \end{frame}
 
-\begin{frame}{Dictionary Learning}
+% \begin{frame}{Dictionary Learning}
 
-\end{frame}
+% \end{frame}
 
 
 \begin{frame}{Limitations of classical recovery algorithms}
     % give max AF
     % also give a sense of the limitations in compute and in prior learning
+    Additional acceleration factor on top of PI: 1.5. % from https://www.philips.fr/healthcare/ressources/landing/the-next-mr-wave/compressed-sense
+    \pause
+    
 \end{frame}
 
 \section{Deep Learning}
