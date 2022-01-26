@@ -29,6 +29,7 @@
 ]{biblatex}
 \preto\fullcite{\AtNextCite{\defcounter{maxnames}{99}}}
 \include{./bold_alphabet}
+\include{./abrmath}
 %----------------------------------------------------------------------------------------
 %	TITLE PAGE
 %----------------------------------------------------------------------------------------
@@ -137,11 +138,27 @@
 \begin{frame}{Physics of MRI - 1}
     % at its core MRI relies on the MR phenomenon
     % in short: a spin is aligned with the magnetic field, when an RF pulse is sent, it tips the spin in the orthogonal plane before the spin realigns with the magnetic field sending another RF pulse
+    \only<1>{
     \begin{figure}
         \centering
-        \includegraphics[width=0.1\textwidth]{Figures/intro_figures/Precession_in_magnetic_field.pdf}
+        \includegraphics[width=0.14\textwidth]{Figures/intro_figures/Precession_in_magnetic_field.pdf}
         \caption{\label{fig:precession}\textbf{Illustration of the precession of a spin in a magnetic field:} the green arrow represents the $\Bb_0$ magnetic field, while the black arrow represents the magnetic moment of the particle. Illustration courtesy of \citet{wiki}.}
     \end{figure}
+    }
+    \only<2>{
+    \begin{figure}
+        \centering
+        \includegraphics[width=0.5\textwidth]{Figures/intro_figures/Excitation.pdf}
+        \caption{\label{fig:excitation}\textbf{Illustration of the excitation phenomenon:} the blue arrow represents an incoming RF~(Radio Frequency) pulse. Illustration courtesy of \citet{wiki}.}
+    \end{figure}
+    }
+    \only<3>{
+    \begin{figure}
+        \centering
+        \includegraphics[width=0.5\textwidth]{Figures/intro_figures/Relaxation.pdf}
+        \caption{\label{fig:relaxation}\textbf{Illustration of the relaxation phenomenon:} the blue arrow represents an outgoing FID~(Free Induction Decay) pulse. Illustration courtesy of \citet{wiki}.}
+    \end{figure}
+    }
     % video of e-MRI
 \end{frame}
 
@@ -149,6 +166,16 @@
     % Because all spins get excited, we get a global RF pulse that is the weighted sum of the contribution of all spins' relaxation RF pulses: global information
     % We can obtain "multiple global information", by changing a bit the magnetic field spatially using gradients
     % Signal equation
+    However, the FID carries global information.
+    \pause
+    
+    Using magnetic gradients enables changing a bit the magnetic field spatially, and therefore changing the global information depending on local factors.
+    \pause
+    
+    This allows us to receive a temporal signal of the form:
+    \begin{equation}
+        S_{tr}(t) \propto \omega_0  \int_{V_s} B_{tr} M_{tr}(t, \rb) e^{-\imath \gamma \rb \cdot \int_0^t \Gb(\tau)  \dif \tau} \dif \rb 
+    \end{equation}
 \end{frame}
 
 \begin{frame}{Physics of MRI - 3}
