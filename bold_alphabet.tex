@@ -1,6 +1,12 @@
 \def\XS{\xspace}
 \DeclareMathAlphabet{\mathb}{OML}{cmm}{b}{it}
 \def\sbm#1{\ensuremath{\mathb{#1}}}
+\def\sbmm#1{\ensuremath{\boldsymbol{#1}}}          % Style gras italique (necessite amsmath)           
+\def\sdm#1{\ensuremath{\mathrm{#1}}}               % Style droit en math
+\def\sbv#1{\ensuremath{\mathbf{#1}}}               % Style gras droit
+\def\scu#1{\ensuremath{\mathcal{#1\XS}}}           % Style cursif
+\def\scb#1{\ensuremath{\boldsymbol{\mathcal{#1}}}} % Style gras cursif
+\def\sbl#1{\ensuremath{\mathbbm{#1}}}              % Style blackboard (necessite bbm)
 
 %% Bold fonts
 \def\Ab{{\sbm{A}}\XS}  \def\ab{{\sbm{a}}\XS}
