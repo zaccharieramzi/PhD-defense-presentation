@@ -17,7 +17,7 @@
 \usepackage{multicol}
 \usepackage[
 	backend=biber, 
-	style=alphabetic, 
+	style=verbose, 
 	natbib=true, 
 	backref=True,
 	hyperref=true,
@@ -31,6 +31,8 @@
 \include{./bold_alphabet}
 \include{./abrmath}
 \include{./eq_annotate}
+\usepackage{tikz}
+\usetikzlibrary{tikzmark}
 %----------------------------------------------------------------------------------------
 %	TITLE PAGE
 %----------------------------------------------------------------------------------------
@@ -185,11 +187,20 @@
     \begin{equation}
         S_{tr}(t) \propto \omega_0  \int_{V_s} B_{tr} M_{tr}(t, \rb) e^{-\imath \gamma \rb \cdot \int_0^t \Gb(\tau)  \dif \tau} \dif \rb 
     \end{equation}
+    % XXX: add tikz figure using the advice of: https://github.com/synercys/annotated_latex_equations
 \end{frame}
 
 \begin{frame}{Physics of MRI - 3}
     % Signal equation => k-space
+    The k-space vector, $\kb(t) = \frac{\gamma}{2\pi} \int_0^t \Gb(\tau) \dif \tau$, defines how we traverse the Fourier space of the anatomical image.
+
     % We are sampling in the Fourier space of the anatomical image
+    \begin{figure}
+        \centering
+        \includegraphics[height=0.4\textheight]{Figures/intro_figures/kspace_to_image.pdf}
+        \caption{\label{fig:example-kspace}\textbf{Example of a k-space with its corresponding anatomical image}: The raw data is from the fastMRI dataset.\footnotemark The k-space is in log-scale and only the magnitude of the 2 images are represented. We selected only a single coil from the 16 coils available for illustrative purposes.}
+    \end{figure}
+    \footcitetext{Zbontar}
 \end{frame}
 
 \begin{frame}{Physics of MRI - 4}
