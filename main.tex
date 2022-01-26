@@ -270,7 +270,7 @@
         \hfill \break
         Is there a similar thing in MRI?
 
-        Yes! The anatomical image is real-valued so its Fourier transform has a conjugate symmetry.
+        Yes! The anatomical image is real-valued so its Fourier Transform~(FT) has a conjugate symmetry.
         Using this redundancy to sample less points in the k-space (i.e. using the relaxation fewer times) is a technique called \textbf{Partial Fourier}.
         
         But in practice it is still needed to sample 6/8 of the Fourier space (acceleration of 1.3).\footfullcite{emri}
@@ -376,10 +376,49 @@
 
 \begin{frame}{Application to MRI}
     MR images themselves cannot be represented as sparse vectors directly, we need a way to express them as such.
+    \citet{Lustig2007} did that by using the fact that MR images can be represented sparsely in a \textbf{wavelet} basis.
+
+    \hfill \break
+    The Inverse Problem becomes:
+    \begin{equation}
+        \tikzmarknode{FS}{\highlight{green}{$\left(\Ib_L\otimes {\mathcal{F}}_{\Omega}\right)\Sbb$}} \tikzmarknode{x}{\highlight{blue}{$\xb$}} = \tikzmarknode{y}{\highlight{yellow}{$\ybb$}}
+    \end{equation}
+    \begin{tikzpicture}[overlay,remember picture,>=stealth,nodes={align=left,inner ysep=1pt},<-]
+        % For "FS"
+        \path (FS.south) ++ (0,-4em) node[anchor=south east,color=green!47] (exp_FS){
+            \textbf{$\mathcal{F}_{\Omega}$ : FT on the $\Omega$ set;}\\
+            \textbf{$\Sbb=[\Sb_1^H,\ldots, \Sb_L^H]^\top$: the sensitivity maps}\\
+            \textbf{per coil}
+        };
+        \draw [color=green!87](FS.south) |- ([xshift=-0.3ex,color=green]exp_FS.south west);
+        % For "x"
+        \path (x.south) ++ (0, -2em) node[anchor=south west,color=blue!67] (exp_x){\textbf{2D or 3D MR image}};
+        \draw [color=blue!87](x.south) |- ([xshift=-0.3ex,color=blue]exp_x.south east);
+        % For "y"
+        \path (y.north) ++ (0, 1em) node[anchor=south west,color=yellow!67] (exp_y){$\ybb=[\yb_1^H, \ldots, \yb_L^H]^\top$,\\ \textbf{k-space measurements} \\ \textbf{for each coil}};
+        \draw [color=yellow!87](y.north) |- ([xshift=-0.3ex,color=yellow]exp_y.south east);
+    \end{tikzpicture}
 \end{frame}
 
 \subsection{Recovery Algorithms}
 \begin{frame}{Relaxation}
+    Now we have an optimization problem to solve, but can we?
+    \pause
+    No; we need to relax it using the basis pursuit:
+    \begin{equation}
+        \label{eq:basis-pursuit}
+        \min_{\xb \in \mathbb{C}^n} \|\xb\|_1 \quad \text{subject to} \quad \tikzmarknode{calA}{\underline{\mathcal{A}}} \xb = \ybb
+    \end{equation}
+    \vspace{\baselineskip}
+    \begin{tikzpicture}[overlay,remember picture,>=stealth,nodes={align=left,inner ysep=1pt},<-]
+        % For "calA"
+        \path (calA.south) ++ (0,-2em) node[anchor=south west,color=black!87] (exp_calA){
+            $= \left(\Ib_L\otimes {\mathcal{F}}_{\Omega}\right)\Sbb$
+        };
+        \draw [color=black!87](calA.south) |- ([xshift=-0.3ex,color=black]exp_calA.south east);
+    \end{tikzpicture}
+    \pause
+    For this problem to have the same solutions as the non-relaxed one, we need coherence-based constraints on the measurement operator $\mathcal{A}$.
 
 \end{frame}
 
