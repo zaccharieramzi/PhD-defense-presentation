@@ -244,8 +244,10 @@
         \hfill \break
         Is there a similar thing in MRI?
 
-        Yes! The anatomical image is real-valued so its Fourier transform is symmetrical. % XXX verify term for symmetry
+        Yes! The anatomical image is real-valued so its Fourier transform has a conjugate symmetry.
         Using this redundancy to sample less points in the k-space (i.e. using the relaxation fewer times) is a technique called \textbf{Partial Fourier}.
+        
+        But in practice it is still needed to sample 6/8 of the Fourier space (acceleration of 1.3).\footfullcite{emri}
     
     \end{overprint}
     
