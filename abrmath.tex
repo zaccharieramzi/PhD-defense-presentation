@@ -1,0 +1,183 @@
+% TEX 7(ascii) bits
+%
+% ABRMATH.tex           LaTeX document
+% Author: PC          Date  : Juillet 1996
+% Raccourcis d'expressions tres usitees en math
+% Derniere modif importante le 12-08-2000 pour ma th�e
+
+\def\prox#1{\mathrm{prox}_{#1}}
+\newcommand{\vertiii}[1]{{\left\vert\kern-0.25ex\left\vert\kern-0.25ex\left\vert #1 
+		\right\vert\kern-0.25ex\right\vert\kern-0.25ex\right\vert}}
+
+%-- Accolades, parenth�es, etc --------------------------------------
+        
+\def\pth#1{\left(#1\right)}                \def\stdpth#1{(#1)}
+\def\acc#1{\left\{#1\right\}}              \def\stdacc#1{\{#1\}}
+\def\cro#1{\left[#1\right]}                \def\stdcro#1{[#1]}
+\def\bars#1{\left|#1\right|}               \def\stdbars#1{|#1|}
+\def\norm#1{\left\|#1\right\|}             \def\stdnorm#1{\|#1\|}
+\def\scal#1{\left\langle#1\right\rangle}   \def\stdscal#1{\langle#1\rangle}
+ 
+\def\bigpth#1{\bigl(#1\bigr)}              \def\biggpth#1{\biggl(#1\biggr)}
+\def\bigacc#1{\bigl\{#1\bigr\}}            \def\biggacc#1{\biggl\{#1\biggr\}}
+\def\bigcro#1{\bigl[#1\bigr]}              \def\biggcro#1{\biggl[#1\biggr]}
+\def\bigbars#1{\bigl|#1\bigr|}             \def\biggbars#1{\biggl|#1\biggr|}
+\def\bignorm#1{\bigl\|#1\bigr\|}           \def\biggnorm#1{\biggl\|#1\biggr\|}
+\def\bigscal#1{\bigl\langle#1\bigr\rangle} \def\biggscal#1{\biggl\langle#1\biggr\rangle}
+
+\def\Bigpth#1{\Bigl(#1\Bigr)}              \def\Biggpth#1{\Biggl(#1\Biggr)}
+\def\Bigacc#1{\Bigl\{#1\Bigr\}}            \def\Biggacc#1{\Biggl\{#1\Biggr\}}
+\def\Bigcro#1{\Bigl[#1\Bigr]}              \def\Biggcro#1{\Biggl[#1\Biggr]}
+\def\Bigbars#1{\Bigl|#1\Bigr|}             \def\Biggbars#1{\Biggl|#1\Biggr|}
+\def\Bignorm#1{\Bigl\|#1\Bigr\|}           \def\Biggnorm#1{\Biggl\|#1\Biggr\|}
+\def\Bigscal#1{\Bigl\langle#1\Bigr\rangle} \def\Biggscal#1{\Biggl\langle#1\Biggr\rangle}
+
+
+% Quelques fonctions classiques + Arguments entre [] ----------------
+%
+% Laisser les \mathrm entre {}, sinon � d�onne dans le style "ieeetran". 
+%
+\def\diag{{\mathrm{diag}}}		\def\Diag#1{{\mathrm{diag}}\bigcro{#1}}	\def\Diagold#1{{\mathrm{diag}}\cro{#1}}
+\def\tr{{\mathrm{tr}}\,}		\def\Tr#1{{\mathrm{tr}}\bigcro{#1}}			\def\Trold#1{{\mathrm{tr}}\cro{#1}}
+\def\rg{{\mathrm{rg}}\,}		\def\Rg#1{{\mathrm{rg}}\bigcro{#1}}			\def\Rgold#1{{\mathrm{rg}}\cro{#1}}
+\def\esp{{\mathrm{E}}\,}		\def\Esp#1{{\mathrm{E}}\bigcro{#1}}					\def\Espud#1#2{{\mathrm{E}}_{#1}\bigcro{#2}}			\def\Espold#1{{\mathrm{E}}\cro{#1}} 
+\def\var{{\mathrm{var}}\,}		\def\Var#1{{\mathrm{var}}\bigcro{#1}}		\def\Varold#1{{\mathrm{var}}\cro{#1}}
+\def\cov{{\mathrm{Cov}}\,}		\def\Cov#1{{\mathrm{Cov}}\bigcro{#1}}		\def\Covold#1{{\mathrm{Cov}}\cro{#1}}
+\def\Cos#1{\cos\bigcro{#1}}	\def\Cosold#1{\cos\cro{#1}}
+\def\Sin#1{\sin\cro{#1}}		\def\Sinold#1{\sin\cro{#1}}
+\def\Exp#1{\exp\bigcro{#1}}	\def\Expold#1{\exp\cro{#1}}
+\def\Log#1{\log\bigcro{#1}}	\def\Logold#1{\log\cro{#1}}
+\def\Ln#1{\ln\cro{#1}}			\def\Det#1{\det\bigcro{#1}}					\def\Detold#1{\det\cro{#1}}
+
+\def\cond{\textrm{Cond}\,}		\def\Cond#1{\cond\bigpth{#1}}
+
+\def\sinc{{\mathrm{sinc}}\,}	\def\Sinc#1{{\mathrm{sinc}}\bigcro{#1}}	\def\Sincold#1{{\mathrm{sinc}}\cro{#1}}
+\def\rang{{\mathrm{rang}}\,}	\def\Rang#1{\rang\bigcro{#1}}					\def\Rangold#1{\rang\cro{#1}}
+\def\ker{\textrm{Ker}\,}		\def\Ker#1{\ker\bigcro{#1}}					\def\Kerold#1{\ker\cro{#1}}
+\def\img{\textrm{Im}\,}			\def\Img#1{\img\bigcro{#1}}					\def\Imgold#1{\img\cro{#1}}
+\def\vect{{\mathrm{Vect}}\,}	\def\Vect#1{\vect\bigcro{#1}}					\def\Vectold#1{\vect\cro{#1}}
+\def\sgn{{\mathrm{sgn}}}		\def\Sgn#1{\sgn\bigcro{#1}}					\def\Sgnold#1{\sgn\cro{#1}}
+
+% Signe proba
+\def\Pr{\mathop{\textrm{Pr}}}
+
+% Variante pour \Re:
+\def\reel{{\mathrm{Re}}} 		\def\Reel#1{{\mathrm{Re}}\cro{#1}}
+\def\card{{\mathrm{Card}}}		\def\Card#1{{\mathrm{Card}}\cro{#1}}
+
+\def\sh{{\mathrm{sh}}}                % sin hyperbolique en FR
+\def\ch{{\mathrm{ch}}}                % cos hyperbolique en FR
+\def\th{{\mathrm{th}}}                % th hyperbolique en FR
+\def\coth{{\mathrm{coth}}}            % cot hyperbolique en FR
+\def\div{{\mathrm{div}}}              % divergence
+\def\rotv{\overrightarrow{\mathop{{\mathrm{rot}}}}}    % rotationnel avec fleche
+\def\gradv{\overrightarrow{\mathop{{\mathrm{grad}}}}}  % gradient avec fleche
+\def\coeffbin#1#2{\pth{\setlength{\arraycolsep}{.1em}\barr{c}#1\\#2\earr}}
+% Remarque : \exist \binom{}{}
+
+%-- Textes (if, si,...) droit en math ---------------------------
+
+\def\IF{\text{if\:}}            % \def\SI{\text{si\:}}
+\def\If{\text{If\:}}             \def\Si{\text{Si\:}}
+\def\AND{\text{and\:}}           \def\ET{\text{et\:}}
+\def\OR{\text{or\:}}             \def\OU{\text{ou\:}}
+\def\THEN{\text{then\:}}         \def\ALORS{\text{alors\:}}
+                                 \def\DOU{\text{d'o\`u\:}}
+\def\WHERE{\text{where\:}}       \def\Ou{\text{o\`u\:}}
+\def\WHEN{\text{when\:}}         \def\QUAND{\text{quand\:}}
+\def\FOR{\text{for\:}}           \def\POUR{\text{pour\:}}
+\def\FORALL{\text{for all\:}}    \def\POURTOUT{\text{pour tout\:}}
+\def\ST{\text{s.t.\:}}           \def\SC{\text{s.c.\:}}
+\def\SUBJTO{\text{subject to\:}} \def\SOUSC{\text{sous contraintes\:}}
+\def\OTHERWISE{\text{otherwise}} \def\SINON{\text{sinon}}
+\def\WITH{\text{with\:}}         \def\AVEC{\text{avec\:}}
+\def\IN{\text{in\:}}             \def\DANS{\text{dans\:}}
+
+%-- Triture param�res tableaux... -----------------------------
+
+\def\arrayp{\renewcommand{\arraystretch}{.7}\setlength{\arraycolsep}{2pt}}
+\def\tabp{\renewcommand{\arraystretch}{.7}\setlength{\tabcolsep}{2pt}}
+
+%-- Environnement encadr\'e ------------------------------------
+% Ces d\'efinitons introduisent un nouvel environnement appele "fminipage". Il 
+% permet d'encadrer une partie de texte.
+
+\newsavebox{\fminibox}
+\newlength{\fminilength}
+\newenvironment{fminipage}[1][\linewidth]
+  {\setlength{\fminilength}{#1}%-2\fboxsep-2\fboxrule}%
+   \begin{lrbox}{\fminibox}\begin{minipage}{\fminilength}}
+  {\end{minipage}\end{lrbox}\noindent\fbox{\usebox{\fminibox}}}
+
+%-- Divers : "^{-1}", "dag", "," ... %---------------------------
+
+\def\M{^{-1}} 
+\def\T{^\tD} 
+\def\+{^\dagger}
+\def\I{\,|\,}           % "sachant" bien espac\'e pour les formules
+\def\J{\mathop{\,;\,}}  % "point virgule" bien espac\'e pour les formules.
+\def\w{,\thinspace}
+\def\W{,\thickspace}
+\def\ldotsv{,\,\ldots,\,}
+\def\V{,}               % Virgule pour les nombres decimaux
+%\def\V{.}              % Point pour les anglo-saxons
+\def\e#1{.10^{#1}}      % Notation scientifique a la francaise
+%\def\e#1{\rm{e}^{#1}}  % Notation scientifique anglo-saxonne
+
+\def\egdef{\stackrel{\Delta}{=}}
+\def\nequiv{\not\kern-.05em\equiv}
+\def\egal{\kern-.5em=\kern-.5em}        % Moins d'espace autour de "="
+\def\propt{\kern-.2em\propto\kern-.2em} % Idem
+\def\dans{\in\!}                        % Trop d'espace apres "appartient a"
+\def\pourtt{\forall\,}                  % Pas assez d'espace
+\def\wh#1{\widehat{#1}}                 % Sombrero !
+\def\wt#1{\widetilde{#1}} 
+
+%\def\arg{\mathop{\mathrm{arg}}}
+\def\argmax{\mathop{\mathrm{arg\,max}}} % Mieux que \def\argmax{\arg\max}
+\def\argmin{\mathop{\mathrm{arg\,min}}} % car l'indice est reparti
+\def\EL{\mathrm{EL}}
+\def\Vect{\mathop{\text{Vect}}}
+
+\def\froc#1#2{{#1/#2}}                  % Frac en toc
+\def\fric#1#2{\frac1{#2}#1}
+\def\fracds#1#2{\frac{\displaystyle#1}{\displaystyle#2}}
+\def\diff#1#2{{\frac{\mathop{}\!\mathrm{d}#1}{\mathop{}\!\mathrm{d}#2}}}
+\def\doff#1#2{{\froc{\mathop{}\!\mathrm{d}#1}{\mathop{}\!\mathrm{d}#2}}}
+\def\dif{\mathop{}\!\mathrm{d}}
+
+\def\dd{\,d}                            % doit etre en italique en anglais
+%\def\dd{\,\dD}                         % doit etre droit en francais
+\def\derpar#1#2{{\frac{\partial #1}{\partial #2}}}
+\def\derpor#1#2{{\froc{\partial #1}{\partial #2}}}
+\def\parsec#1#2#3{{\frac{\partial^2 #1}{\partial #2\,\partial #3}}}
+\def\parsecd#1#2{{\frac{\partial^2 #1}{{\partial #2}^2}}}
+\def\porsec#1#2#3{{\froc{\partial^2 #1}{\partial #2\,\partial #3}}}
+\def\porsecd#1#2{{\froc{\partial^2 #1}{{\partial #2}^2}}}
+\def\derpark#1#2#3{{\frac{\partial^{#3} #1}{\partial #2^{#3}}}}
+
+\def\intdouble{\int\kern-0.3em\int}
+\def\inttriple{\int\kern-0.3em\int\kern-0.3em\int}
+\def\prods{\mathop{\text{\footnotesize$\displaystyle\prod$}}}
+
+% Pour mettre un \No{} au-dessus d'une lettre (\TM, 02/97) (package{amsmath.sty})
+\def\rond#1{\overset{\kern-0.33em~_\circ}{#1}}
+\def\rondit[#1]#2{\overset{\kern#1~_\circ}{#2}}
+
+% Pour mettre un texte dans un rond : (utilise pstricks ; \JI, 08/97)
+\def\incirc#1{\pscirclebox[framesep=1pt]{\scriptsize#1}}
+\def\incircp#1{\pscirclebox[framesep=1pt]{\tiny#1}}
+\def\outcirc#1{\raisebox{-3pt}{\huge$\times$}\hspace*{-.45cm}\text{\incirc{#1}}}
+
+
+%%%%%%%% def Fourier %%%%%%%%%%%%%%%%%%%
+\def\sss{\scriptscriptstyle}
+\def\idft{\textsc{idft}}
+\def\tfd{{\sc tfd}\XS}
+\def\fft{{\sf fft}\xspace}
+\def\ifft{{\sf ifft}\xspace}
+\def\fric#1#2{#1\text{{\Large /}}#2} % Frac en toc 	  
+\def\Wfou{W_{\sss NP}\XS}
+\def\FFou{W_{\sss PP}\+\XS}
+\def\FFoud{W_{\sss PP}\XS}
+\def\WcFou{\Wc_{\sss N}\XS}
