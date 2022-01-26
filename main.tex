@@ -255,7 +255,21 @@
 
 \begin{frame}{Parallel imaging}
     % "forging" the redundancy
+    We can build more redundancy in the measuring system by using \textbf{more antennas (called coils)} to measure the magnetic signal.
+    
+    This technique is called \textbf{Parallel Imaging~(PI)}. 
+    A reconstruction algorithm is now needed to handle the multi-coil undersampled data.
+        \textbf{SENSE}\footfullcite{Pruessmann1999SENSE:MRI} and \textbf{GRAPPA}\footfullcite{Griswold2002GeneralizedGRAPPA} are such algorithms.    
     % GRAPPA + SENSE examples
+\end{frame}
+
+\begin{frame}{The example of GRAPPA}
+    \begin{figure}
+        \centering
+        \includegraphics[height=0.6\textheight]{Figures/intro_figures/GRAPPA.jpeg}
+        \caption{\label{fig:GRAPPA}\textbf{GRAPPA illustration.} Image courtesy of \citet{deshmane2012parallel}.
+        }
+    \end{figure} 
 \end{frame}
 
 \begin{frame}{Limits of Parallel Imaging}
