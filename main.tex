@@ -60,6 +60,15 @@
 [shadow=true]
 
 
+% debug
+% \makeatletter
+% \begingroup
+% \edef\get@@version{\def\noexpand\get@version##1\detokenize{TeX Live}##220##3##4##5)##6\noexpand\@nil}
+% \get@@version{\gdef\TeXLiveVersion{20#3#4}}
+% \expandafter\get@version\pdftexbanner\@nil
+% \endgroup
+% \makeatother
+
 %----------------------------------------------------------------------------------------
 %	PRESENTATION SLIDES
 %----------------------------------------------------------------------------------------
@@ -96,6 +105,8 @@
 % now imagine that you will on average hear this during x minutes
 % MRI scanners being slow not only generate discomfort but have other impacts on their efficiency...
 \begin{frame}{MRI is slow}
+    % for debug
+    % This has been run with \TeX~Live~\TeXLiveVersion.
     Typical MRI~(Magnetic Resonance Imaging) scan duration: 15 minutes (up to 90 minutes).
     Hence:
     \begin{itemize}
