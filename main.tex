@@ -56,6 +56,8 @@
 
 \setbeamerfont{subsection in toc}{size=\small}
 \setbeamerfont{section in toc}{size=\large}
+\setbeamertemplate{blocks}[rounded]%
+[shadow=true]
 
 
 %----------------------------------------------------------------------------------------
@@ -277,21 +279,64 @@
 \end{frame}
 
 \section{Compressed Sensing}
-\begin{frame}{Structure and redundancy}
+\begin{frame}{Another look at redundancy: the prior point of view}
     % give a sense of what structure is and how it relates to redundancy
+    Redundancy is not always strict: we may only have a strong correlation between 2 structures of the image.
+    \begin{figure}
+        \centering
+        \includegraphics[height=0.5\textheight]{Figures/cs_figures/smiley_prior.pdf}
+        \caption{\label{fig:redundancy-smiley}\textbf{A smiley example to a priori knowledge:} Even if we do not have access to the whole image, we still know which images are more \emph{likely} to correspond to it.
+        }
+    \end{figure}
 \end{frame}
 
 \subsection{Linear Inverse Problems}
 \begin{frame}{Linear Inverse Problems}
     % introduce linear inverse problems
+    To leverage this type of redundancy, we introduce the concept of \textbf{Linear Inverse Problems}:
+    \begin{equation}
+        \Ab \xb = \yb
+    \end{equation}
+    \pause
+    Problems arise when $\ker{\Ab} \neq \{0\}$, i.e. when there are multiple solutions to this equation.
+
+    \pause
+    \hfill \break
+    In order to select one of these solutions, we need to use a priori knowledge.
+\end{frame}
+
+\begin{frame}{Sparsity and Inverse Problems}
+    % explain the concept of sparsity and its link to recovery guarantees
+    \begin{definition}[Sparsity]
+        A vector $\xb \in \mathbb{C}^n$ is called $s$-sparse if it contains at most $s$ non-zero entries.
+    \end{definition}
+
+    \begin{lemma}[Optimization reformulation of sparse vector recovery~\citep{Foucart2013SparseSystems}]
+        For a given sparsity $s$, and $s$-sparse vector $\xb$:
+    \begin{enumerate}[(a)]
+        \item The vector $\xb$ is the unique $s$-sparse solution of $\Ab \xb = \yb$, that is $\{\zb \in \mathbb{C}^n : \Ab \zb = \Ab \xb, \|z\|_0 \leq s\} = \{\xb\}$
+        \item The vector $\xb$ can be reconstructed as the unique solution of:
+        \begin{equation}
+            \label{eq:cs-problem-l0-min}
+            \min_{\zb \in \mathbb{C}^n} \|\zb\|_0 \quad \text{subject to} \quad \Ab \zb = \yb
+        \end{equation}
+    \end{enumerate}
+    \end{lemma}
 \end{frame}
 
 \begin{frame}{Recovery guarantees}
-    % explain the concept of sparsity and its link to recovery guarantees
+    \begin{theorem}[{{\citep[Theorem~2.13]{Foucart2013SparseSystems}}}]
+        The following properties are equivalent:
+\begin{enumerate}[(a)]
+    \item Every $s$-sparse vector $\xb \in \mathbb{C}^n$ is the unique $s$-sparse solution of $\Ab \zb = \Ab \xb$, that is, if $\Ab \xb = \Ab \zb$ and both $\xb$ and $\zb$ are $s$-sparse, then $\xb = \zb$.
+    \item The null space $\ker(\Ab)$ does not contain any $2s$-sparse vector other than the zero.
+    \item Every set of $2s$ columns of $\Ab$ is linearly independent.
+\end{enumerate}
+    \end{theorem}
 \end{frame}
 
 \begin{frame}{Application to MRI}
-
+    
 \end{frame}
 
 \subsection{Recovery Algorithms}
