@@ -329,31 +329,43 @@
     \begin{equation*}
         \tikzmarknode{A}{\highlight{green}{$\Ab$}} \tikzmarknode{x}{\highlight{blue}{$\xb$}} = \tikzmarknode{y}{\highlight{yellow}{$\yb$}}
     \end{equation*}
-    \vspace{2\baselineskip}
+    \vspace{2.5\baselineskip}
     \begin{tikzpicture}[overlay,remember picture,>=stealth,nodes={align=left,inner ysep=1pt},<-]
         % For "A"
-        \onslide<4->{
+        \onslide<6>{
+        \path (A.south) ++ (0,-2em) node[anchor=south east,color=green!47] (exp_A){\includegraphics[width=0.05\textwidth]{Figures/intro_figures/smiley_prior_forw_op.pdf}};
+        \draw [color=green!87](A.south) |- ([xshift=-0.3ex,color=green]exp_A.south west);
+        }
+        \onslide<7->{
         \path (A.south) ++ (0,-2em) node[anchor=south east,color=green!47] (exp_A){\textbf{Measurement operator}};
         \draw [color=green!87](A.south) |- ([xshift=-0.3ex,color=green]exp_A.south west);
         }
         % For "x"
-        \onslide<2->{
-        \path (x.south) ++ (0, -3.5em) node[anchor=south east,color=blue!67] (exp_x){\textbf{Signal to reconstruct}};
+        \onslide<2>{
+            \path (x.south) ++ (0, -4.5em) node[anchor=south east,color=blue!67] (exp_x){\includegraphics[width=0.05\textwidth]{Figures/intro_figures/smiley_prior_x.pdf}};
+        \draw [color=blue!87](x.south) |- ([xshift=-0.3ex,color=blue]exp_x.south west);
+        }
+        \onslide<3->{
+        \path (x.south) ++ (0, -4.5em) node[anchor=south east,color=blue!67] (exp_x){\textbf{Signal to reconstruct}};
         \draw [color=blue!87](x.south) |- ([xshift=-0.3ex,color=blue]exp_x.south west);
         }
         % For "y"
-        \onslide<3->{
+        \onslide<4>{
+            \path (y.south) ++ (0, -1em) node[anchor=north west,color=yellow!67] (exp_y){\includegraphics[width=0.05\textwidth]{Figures/intro_figures/smiley_prior_y.pdf}};
+            \draw [color=yellow!87](y.south) |- ([xshift=-0.3ex,color=yellow]exp_y.south east);
+        }
+        \onslide<5->{
         \path (y.south) ++ (0, -1em) node[anchor=north west,color=yellow!67] (exp_y){\textbf{Measurements}};
         \draw [color=yellow!87](y.south) |- ([xshift=-0.3ex,color=yellow]exp_y.south east);
         }
     \end{tikzpicture}
-    % XXX: add tikz figure using the advice of: https://github.com/synercys/annotated_latex_equations
+    
 
-    \onslide<5->{
+    \onslide<8->{
     Problems arise when $\ker{\Ab} \neq \{0\}$, i.e. when there are multiple solutions to this equation.
     }
 
-    \onslide<6->{
+    \onslide<9->{
     \hfill \break
     In order to select one of these solutions, we need to use a priori knowledge.
     }
@@ -400,7 +412,7 @@
     \end{equation*}
     \begin{tikzpicture}[overlay,remember picture,>=stealth,nodes={align=left,inner ysep=1pt},<-]
         % For "FS"
-        \onslide<4->{
+        \onslide<4>{
         \path (FS.south) ++ (0,-4em) node[anchor=south east,color=green!47] (exp_FS){
             \textbf{$\mathcal{F}_{\Omega}$ : FT on the $\Omega$ set;}\\
             \textbf{$\Sbb=[\Sb_1^H,\ldots, \Sb_L^H]^\top$: the sensitivity maps}\\
@@ -408,14 +420,28 @@
         };
         \draw [color=green!87](FS.south) |- ([xshift=-0.3ex,color=green]exp_FS.south west);
         }
+        \onslide<5>{
+        \path (FS.south) ++ (0,-4em) node[anchor=south east,color=green!47] (exp_FS){
+            \includegraphics[width=0.1\textwidth]{Figures/intro_figures/mri.jpg}
+        };
+        \draw [color=green!87](FS.south) |- ([xshift=-0.3ex,color=green]exp_FS.south west);
+        }
         % For "x"
-        \onslide<2->{
+        \onslide<2-4>{
         \path (x.south) ++ (0, -2em) node[anchor=south west,color=blue!67] (exp_x){\textbf{2D or 3D MR image}};
         \draw [color=blue!87](x.south) |- ([xshift=-0.3ex,color=blue]exp_x.south east);
         }
+        \onslide<5->{
+        \path (x.south) ++ (0, -4em) node[anchor=south west,color=blue!67] (exp_x){\includegraphics[width=0.1\textwidth]{Figures/intro_figures/brain_mri.png}};
+        \draw [color=blue!87](x.south) |- ([xshift=-0.3ex,color=blue]exp_x.south east);
+        }
         % For "y"
-        \onslide<3->{
+        \onslide<3-4>{
         \path (y.north) ++ (0, 1em) node[anchor=south west,color=yellow!67] (exp_y){$\ybb=[\yb_1^H, \ldots, \yb_L^H]^\top$,\\ \textbf{k-space measurements} \\ \textbf{for each coil}};
+        \draw [color=yellow!87](y.north) |- ([xshift=-0.3ex,color=yellow]exp_y.south east);
+        }
+        \onslide<5->{
+        \path (y.north) ++ (0, 1em) node[anchor=south west,color=yellow!67] (exp_y){\includegraphics[width=0.07\textwidth]{Figures/intro_figures/kspace_mri.png}};
         \draw [color=yellow!87](y.north) |- ([xshift=-0.3ex,color=yellow]exp_y.south east);
         }
     \end{tikzpicture}
