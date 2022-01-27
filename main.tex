@@ -204,17 +204,22 @@
         \vspace{\baselineskip}
         \tikzmarknode{S}{\highlight{blue}{$S_{tr}(t)$}} \propto \omega_0  \int_{V_s} B_{tr} \tikzmarknode{M}{\highlight{green}{$M_{tr}(t, \rb)$}} e^{-\imath \gamma \rb \cdot \int_0^t \tikzmarknode{G}{\highlight{red}{$\Gb(\tau)$}}  \dif \tau} \dif \rb 
     \end{equation*}
-    % XXX: use onslide in tikzpicture
     \begin{tikzpicture}[overlay,remember picture,>=stealth,nodes={align=left,inner ysep=1pt},<-]
         % For "S"
+        \onslide<2->{
         \path (S.south) ++ (0,-2em) node[anchor=south east,color=blue!67] (exp_S){\textbf{Recorded MR signal}};
         \draw [color=blue!87](S.south) |- ([xshift=-0.3ex,color=blue]exp_S.south west);
+        }
         % For "M"
+        \onslide<3->{
         \path (M.south) ++ (0, -6em) node[anchor=south east,color=green!47] (exp_M){\textbf{Magnetic field in each location $\rb$,}\\ \textbf{proportional to the spin density $\rhob(\rb)$}};
         \draw [color=green!87](M.south) |- ([xshift=-0.3ex,color=green]exp_M.south west);
+        }
         % For "G"
+        \onslide<4->{
         \path (G.south) ++ (0, -2em) node[anchor=north west,color=red!47] (exp_G){\textbf{Temporal gradients,}\\\textbf{controlled by the operator}};
         \draw [color=red!87](G.south) |- ([xshift=-0.3ex,color=red]exp_G.south east);
+        }
     \end{tikzpicture}
 \end{frame}
 
@@ -325,17 +330,22 @@
         \tikzmarknode{A}{\highlight{green}{$\Ab$}} \tikzmarknode{x}{\highlight{blue}{$\xb$}} = \tikzmarknode{y}{\highlight{yellow}{$\yb$}}
     \end{equation*}
     \vspace{2\baselineskip}
-    % XXX: use onslide in tikzpicture
     \begin{tikzpicture}[overlay,remember picture,>=stealth,nodes={align=left,inner ysep=1pt},<-]
         % For "A"
+        \onslide<4->{
         \path (A.south) ++ (0,-2em) node[anchor=south east,color=green!47] (exp_A){\textbf{Measurement operator}};
         \draw [color=green!87](A.south) |- ([xshift=-0.3ex,color=green]exp_A.south west);
+        }
         % For "x"
+        \onslide<2->{
         \path (x.south) ++ (0, -3.5em) node[anchor=south east,color=blue!67] (exp_x){\textbf{Signal to reconstruct}};
         \draw [color=blue!87](x.south) |- ([xshift=-0.3ex,color=blue]exp_x.south west);
+        }
         % For "y"
+        \onslide<3->{
         \path (y.south) ++ (0, -1em) node[anchor=north west,color=yellow!67] (exp_y){\textbf{Measurements}};
         \draw [color=yellow!87](y.south) |- ([xshift=-0.3ex,color=yellow]exp_y.south east);
+        }
     \end{tikzpicture}
     % XXX: add tikz figure using the advice of: https://github.com/synercys/annotated_latex_equations
 
