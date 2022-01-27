@@ -598,8 +598,8 @@
     To solve the previous equation we will use two main tools:
     
     \begin{enumerate}
-        \item \alt<2>{Stochastic Gradient Descent~(SGD)}{\highlight{blue}{Stochastic Gradient Descent~(SGD)}}
-        \item<2> \highlight{blue}{Chain rule}
+        \item \alt<2>{Stochastic Gradient Descent~(SGD)}{\highlight{blue}{Stochastic Gradient Descent~(SGD)}};
+        \item<2> \highlight{blue}{Chain rule}.
     \end{enumerate}
 
     
@@ -615,10 +615,32 @@
     % Great that I can do that, but does it take ?
     % Data, compute + memory, framework
     % accept that it's "black-box"
+    What does it take to use DL in a problem?
+    \begin{itemize}[<+->]
+        \item data;
+        \item compute \& memory;
+        \item development framework;
+        \item accepting that it's "black-box".
+    \end{itemize}
 \end{frame}
 
-\begin{frame}{Building the network}
-    % give classical functions
+% \begin{frame}{Building the network}
+%     % give classical functions
+% \end{frame}
+
+\begin{frame}{Introduction Recap}
+    \begin{block}{Recap}
+        MRI is slow because of relaxation.
+        
+        \pause
+        If we want to do fewer relaxations, we need to exploit some redundancy in MR images.
+        
+        \pause
+        But this redundancy is not easy to express with handcrafted linear functions.
+        
+        \pause
+        This is why we want to use Deep Learning which enables the calibration of complicated function.
+    \end{block}
 \end{frame}
 
 \addtocontents{toc}{\newpage}
