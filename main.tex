@@ -549,7 +549,7 @@
     \vspace{\baselineskip}
 
     \begin{equation*}
-        \argmin_{\thetab \in \Theta} \tikzmarknode{sum}{\highlight{purple}{$\sum\limits_{(\xb_i, \yb_i) \in \mathcal{D}}$}} \tikzmarknode{loss}{\highlight{green}{$\mathcal{L}$}}(\tikzmarknode{nn}{\highlight{brown}{$f_{\thetab}$}} (\tikzmarknode{input}{\highlight{blue}{$\xb_i$}}), \tikzmarknode{label}{\highlight{red}{$\yb_i$}}, \thetab)
+        \argmin_{\tikzmarknode{params}{\highlight{orange}{$\thetab \in \Theta$}}} \tikzmarknode{sum}{\highlight{purple}{$\sum\limits_{(\xb_i, \yb_i) \in \mathcal{D}}$}} \tikzmarknode{loss}{\highlight{green}{$\mathcal{L}$}}(\tikzmarknode{nn}{\highlight{brown}{$f_{\thetab}$}} (\tikzmarknode{input}{\highlight{blue}{$\xb_i$}}), \tikzmarknode{label}{\highlight{red}{$\yb_i$}}, \thetab)
     \end{equation*}
     \begin{tikzpicture}[overlay,remember picture,>=stealth,nodes={align=left,inner ysep=1pt},<-]
         % For "input"
@@ -583,6 +583,12 @@
         \draw [color=purple!87](sum.south) |- ([xshift=-0.3ex,color=purple]exp_sum.south west);
         }
         
+        % For "params"
+        \onslide<7->{
+        \path (params.west) ++ (-2em, 0) node[anchor=east,color=orange!87] (exp_params){
+            Parameters};
+        \draw [color=orange!87](params.west) -- ([xshift=-0.3ex,color=orange]exp_params.east) -- ([xshift=-0.3ex,color=orange]exp_params.south east) -- ([xshift=-0.3ex,color=orange]exp_params.south west);
+        }
         
     \end{tikzpicture}
 \end{frame}
