@@ -504,15 +504,43 @@
 
 \begin{frame}{Formalism - 1}
     % supervised learning objective function
-    % XXX: have the sum in text be like in eq
     The classical framework for DL is supervised learning:
+    \vspace{\baselineskip}
+
     \begin{equation*}
-        \label{eq:dl-objective}
-        \argmin_{\thetab \in \Theta} \tikzmarknode{sum}{\highlight{purple}{$\sum_{(\xb_i, \yb_i) \in \mathcal{D}}$}} \tikzmarknode{loss}{\highlight{green}{$\mathcal{L}$}}(\tikzmarknode{nn}{\highlight{brown}{$f_{\thetab}$}} (\tikzmarknode{input}{\highlight{blue}{$\xb_i$}}), \tikzmarknode{label}{\highlight{red}{$\yb_i$}}, \thetab)
+        \argmin_{\thetab \in \Theta} \tikzmarknode{sum}{\highlight{purple}{$\sum\limits_{(\xb_i, \yb_i) \in \mathcal{D}}$}} \tikzmarknode{loss}{\highlight{green}{$\mathcal{L}$}}(\tikzmarknode{nn}{\highlight{brown}{$f_{\thetab}$}} (\tikzmarknode{input}{\highlight{blue}{$\xb_i$}}), \tikzmarknode{label}{\highlight{red}{$\yb_i$}}, \thetab)
     \end{equation*}
-    % XXX: use onslide in tikzpicture
     \begin{tikzpicture}[overlay,remember picture,>=stealth,nodes={align=left,inner ysep=1pt},<-]
-        % For "prox"
+        % For "input"
+        \onslide<2->{
+        \path (input.north) ++ (0,1.5em) node[anchor=south west,color=blue!87] (exp_input){
+            input};
+        \draw [color=blue!87](input.north) |- ([xshift=-0.3ex,color=blue]exp_input.south east);
+        }
+        % For "label"
+        \onslide<3->{
+        \path (label.south) ++ (0, -2.5em) node[anchor=south west,color=red!87] (exp_label){
+            label};
+        \draw [color=red!87](label.south) |- ([xshift=-0.3ex,color=red]exp_label.south east);
+        }
+        % For "nn"
+        \onslide<4->{
+        \path (nn.south) ++ (0, -4.5em) node[anchor=south east,color=brown!87] (exp_nn){
+            neural network};
+        \draw [color=brown!87](nn.south) |- ([xshift=-0.3ex,color=brown]exp_nn.south west);
+        }
+        % For "loss"
+        \onslide<5->{
+        \path (loss.north) ++ (0, 1.5em) node[anchor=south west,color=green!47] (exp_loss){
+            loss};
+        \draw [color=green!47](loss.north) |- ([xshift=-0.3ex,color=green]exp_loss.south east);
+        }
+        % For "sum"
+        \onslide<6->{
+        \path (sum.south) ++ (0, -2em) node[anchor=south east,color=purple!87] (exp_sum){
+            Estimator of the expected value};
+        \draw [color=purple!87](sum.south) |- ([xshift=-0.3ex,color=purple]exp_sum.south west);
+        }
         
         
     \end{tikzpicture}
