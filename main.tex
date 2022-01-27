@@ -396,21 +396,26 @@
     \begin{equation*}
         \tikzmarknode{FS}{\highlight{green}{$\left(\Ib_L\otimes {\mathcal{F}}_{\Omega}\right)\Sbb$}} \tikzmarknode{x}{\highlight{blue}{$\xb$}} = \tikzmarknode{y}{\highlight{yellow}{$\ybb$}}
     \end{equation*}
-    % XXX: use onslide in tikzpicture
     \begin{tikzpicture}[overlay,remember picture,>=stealth,nodes={align=left,inner ysep=1pt},<-]
         % For "FS"
+        \onslide<4->{
         \path (FS.south) ++ (0,-4em) node[anchor=south east,color=green!47] (exp_FS){
             \textbf{$\mathcal{F}_{\Omega}$ : FT on the $\Omega$ set;}\\
             \textbf{$\Sbb=[\Sb_1^H,\ldots, \Sb_L^H]^\top$: the sensitivity maps}\\
             \textbf{per coil}
         };
+        }
         \draw [color=green!87](FS.south) |- ([xshift=-0.3ex,color=green]exp_FS.south west);
         % For "x"
+        \onslide<2->{
         \path (x.south) ++ (0, -2em) node[anchor=south west,color=blue!67] (exp_x){\textbf{2D or 3D MR image}};
         \draw [color=blue!87](x.south) |- ([xshift=-0.3ex,color=blue]exp_x.south east);
+        }
         % For "y"
+        \onslide<3->{
         \path (y.north) ++ (0, 1em) node[anchor=south west,color=yellow!67] (exp_y){$\ybb=[\yb_1^H, \ldots, \yb_L^H]^\top$,\\ \textbf{k-space measurements} \\ \textbf{for each coil}};
         \draw [color=yellow!87](y.north) |- ([xshift=-0.3ex,color=yellow]exp_y.south east);
+        }
     \end{tikzpicture}
 \end{frame}
 
@@ -435,7 +440,6 @@
         \min_{\xb \in \mathbb{C}^n} \overbrace{\|\tikzmarknode{calA}{\underline{\mathcal{A}}} \xb - \yb \|_2^2}^{\text{\sf \footnotesize Data consistency}}  + \overbrace{ \tikzmarknode{lambda}{\underline{\lambda}} \|\psib \xb\|_1}^{\text{\sf \footnotesize Regularization term } }
     \end{equation*}
     \vspace{\baselineskip}
-    % XXX: use onslide in tikzpicture
     \begin{tikzpicture}[overlay,remember picture,>=stealth,nodes={align=left,inner ysep=1pt},<-]
         % For "calA"
         \path (calA.south) ++ (0,-2.5em) node[anchor=south east,color=black!87] (exp_calA){
@@ -460,7 +464,6 @@
             \xb_{n+1} &= \tikzmarknode{prox}{\operatorname{prox}}_{\epsilon_n \tikzmarknode{reg}{\mathcal{R}}}\left(\xb_{n+1}\right)
         \end{split}
     \end{equation*}
-    % XXX: use onslide in tikzpicture
     \begin{tikzpicture}[overlay,remember picture,>=stealth,nodes={align=left,inner ysep=1pt},<-]
         % For "prox"
         \path (prox.south) ++ (0,-2.5em) node[anchor=south east,color=black!87] (exp_prox){
