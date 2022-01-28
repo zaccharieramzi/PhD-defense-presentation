@@ -645,11 +645,29 @@
 
 \addtocontents{toc}{\newpage}
 
-\section{Deep Learning for MRI}
+\section{Deep Learning for MRI reconstruction}
 \subsection{Simple models}
 \begin{frame}{Model agnostic learning}
     % reframing the problem as supervised learning
     % no knowledge of the physics imposed in the model
+    The first use of DL for MRI reconstruction is to actually throw away most of what we just saw:\footfullcite{Zhu2018}
+    \begin{equation*}
+        f_{\thetab}(\tikzmarknode{kspace}{\highlight{yellow}{$\ybb$}}) = \tikzmarknode{image}{\highlight{blue}{$\xb$}}
+    \end{equation*}
+    \begin{tikzpicture}[overlay,remember picture,>=stealth,nodes={align=left,inner ysep=1pt},<-]
+        % For "kspace"
+        \onslide<2->{
+        \path (kspace.south) ++ (0,-2em) node[anchor=south east,color=yellow!87] (exp_kspace){
+            \textbf{kspace}};
+        \draw [color=yellow!87](kspace.south) |- ([xshift=-0.3ex,color=yellow]exp_kspace.south west);
+        }
+        % For "image"
+        \onslide<3->{
+        \path (image.south) ++ (0, -2em) node[anchor=south west,color=blue!87] (exp_image){
+            \textbf{image}};
+        \draw [color=blue!87](image.south) |- ([xshift=-0.3ex,color=blue]exp_image.south east);
+    }
+    \end{tikzpicture}
 \end{frame}
 
 \begin{frame}{Single domain learning}
