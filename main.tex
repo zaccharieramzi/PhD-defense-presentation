@@ -672,6 +672,28 @@
 
 \begin{frame}{Single domain learning}
     % Use the backward operator as a basis for the restoration model
+    We actually have access to the backward operator $\mathcal{A}^H$, the inverse FT composed with the sensitivity maps.
+
+    Let's use that to build a more informed model:
+    \begin{equation*}
+        \alt<1>{\mathcal{A}^H}{}f_{\thetab}(\tikzmarknode{aliased_image}{\alt<2>{\mathcal{A}^H}{}\highlight{yellow}{$\ybb$}}) = \highlight{blue}{$\xb$}
+    \end{equation*}
+
+    \begin{tikzpicture}
+        % For "aliased_image"
+        \onslide<4->{
+        \path (aliased_image.south) ++ (0, -2em) node[anchor=south west,color=yellow!87] (exp_aliased_image){
+            \textbf{aliased_image}};
+        \draw [color=yellow!87](aliased_image.south) |- ([xshift=-0.3ex,color=yellow]exp_aliased_image.south east);
+        }
+        % For "image"
+        \onslide<5->{
+        \path (image.south) ++ (0, -2em) node[anchor=south west,color=blue!87] (exp_image){
+            \textbf{image}};
+        \draw [color=blue!87](image.south) |- ([xshift=-0.3ex,color=blue]exp_image.south east);
+        }
+    \end{tikzpicture}
+    
 \end{frame}
 
 \subsection{Unrolled models}
