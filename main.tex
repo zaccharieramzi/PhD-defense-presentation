@@ -809,6 +809,30 @@
 \subsection{New unrolled models}
 \begin{frame}{XPDNet}
     % talk about XPDNet archi
+    \begin{center}
+        \begin{tikzpicture}[font=\Large, node distance=1.5em,>=stealth]
+            % nodes
+            \only<2->{
+                \node (first_unit) [fit=(dc_1)(prox_1), rounded rectangle, draw=black!87, fill=black!17, inner sep=0.7em, ] {};
+                \node (t_first_unit) [below right] at ($(first_unit.north west)+(-0.9em,0.25em)$) {\tiny Iteration Unit~(IU)};
+                \node (second_unit) [fit=(dc_2)(prox_2), rounded rectangle, draw=black!87, fill=black!17, inner sep=0.5em, ] {};
+            }
+            \node (input) {$\xb_0$};
+            \node (dc_1) [rounded rectangle, right=of input, draw=yellow!87, fill=yellow!17] {DC};
+            \node (prox_1) [rounded rectangle, right=of dc_1, draw=blue!87, fill=blue!17] {$f_{\thetab_1}$};
+            \node (dots) [right=of prox_1] {$\ldots$};
+            \node (dc_2) [rounded rectangle, right=of dots, draw=yellow!87, fill=yellow!17] {DC};
+            \node (prox_2) [rounded rectangle, right=of dc_2, draw=blue!87, fill=blue!17] {$f_{\thetab_N}$};
+            \node (output) [right=of prox_2] {$\xb_{N}$};
+            % arrows linking all nodes
+            \draw [->] (input) -- (dc_1);
+            \draw [->] (dc_1) -- (prox_1);
+            \draw [->] (prox_1) -- (dots);
+            \draw [->] (dots) -- (dc_2);
+            \draw [->] (dc_2) -- (prox_2);
+            \draw [->] (prox_2) -- (output);
+        \end{tikzpicture}    
+    \end{center}
 \end{frame}
 
 \begin{frame}{fastMRI challenge}
