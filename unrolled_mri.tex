@@ -1,0 +1,207 @@
+\section{Deep Learning for MRI reconstruction}
+
+\subsection{Simple models}
+\begin{frame}{Model agnostic learning}
+    % reframing the problem as supervised learning
+    % no knowledge of the physics imposed in the model
+    The first use of DL for MRI reconstruction is to actually throw away most of what we just saw:\footfullcite{Zhu2018}
+    \begin{equation*}
+        f_{\thetab}(\tikzmarknode{kspace}{\highlight{yellow}{$\ybb$}}) = \tikzmarknode{image}{\highlight{blue}{$\xb$}}
+    \end{equation*}
+    \begin{tikzpicture}[overlay,remember picture,>=stealth,nodes={align=left,inner ysep=1pt},<-]
+        % For "kspace"
+        \onslide<2->{
+        \path (kspace.south) ++ (0,-2em) node[anchor=south east,color=yellow!87] (exp_kspace){
+            \textbf{kspace}};
+        \draw [color=yellow!87](kspace.south) |- ([xshift=-0.3ex,color=yellow]exp_kspace.south west);
+        }
+        % For "image"
+        \onslide<3->{
+        \path (image.south) ++ (0, -2em) node[anchor=south west,color=blue!87] (exp_image){
+            \textbf{image}};
+        \draw [color=blue!87](image.south) |- ([xshift=-0.3ex,color=blue]exp_image.south east);
+    }
+    \end{tikzpicture}
+\end{frame}
+
+\begin{frame}{Single domain learning}
+    % Use the backward operator as a basis for the restoration model
+    We actually have access to the backward operator $\mathcal{A}^H$, the inverse FT composed with the sensitivity maps.
+
+    Let's use that to build a more informed model:
+    \begin{equation*}
+        \alt<1>{\mathcal{A}^H}{}f_{\thetab}(
+            \tikzmarknode{aliased_image}{\alt<2->{\mathcal{A}^H}{}\highlight{yellow}{$\ybb$}}
+        ) = \highlight{blue}{$\xb$}
+    \end{equation*}
+
+    \begin{tikzpicture}[overlay,remember picture,>=stealth,nodes={align=left,inner ysep=1pt},<-]
+        % For "aliased_image"
+        \onslide<3>{
+        \path (aliased_image.south) ++ (0, -4em) node[anchor=south west,color=yellow!87] (exp_aliased_image){
+            \textbf{aliased image}};
+        \draw [color=yellow!87](aliased_image.south) |- ([xshift=-0.3ex,color=yellow]exp_aliased_image.south east);
+        }
+        \onslide<4->{
+        \path (aliased_image.south) ++ (0, -4em) node[anchor=south west,color=yellow!87] (exp_aliased_image){
+            \includegraphics[width=0.1\textwidth]{Figures/dl_mri_figures/zfilled_recon_af4.png}};
+        \draw [color=yellow!87](aliased_image.south) |- ([xshift=-0.3ex,color=yellow]exp_aliased_image.south east);
+        }
+    \end{tikzpicture}
+    
+\end{frame}
+
+\subsection{Unrolled models}
+\begin{frame}{Unrolled models - 1}
+    % recovery algorithm and corresponding computation graph
+    % show on second slice unrolled computation graph
+    We can mix the 2 single domain approaches, using the principled optimization algorithm unrolling method.\footfullcite{Gregor2010}
+    \alt<5->{}{Let's look at a graph representation of the ISTA algorithm:}
+    \begin{columns}[totalwidth=\textwidth]
+        \begin{column}[]{0.3\textwidth}
+            
+            \begin{equation*}
+                \begin{split}
+                    \xb_{n+1} &= \highlight{yellow}{$\xb_n - \epsilon_n \mathcal{A}^H\left(\mathcal{A} \xb_n - \ybb\right)$}\\
+                    \xb_{n+1} &= \alt<5->{\highlight{blue}{$f_{\thetab_n}\left(\xb_{n+1}\right)$}}{\highlight{blue}{$\operatorname{prox}_{\epsilon_n \mathcal{R}}\left(\xb_{n+1}\right)$}}
+                \end{split}
+            \end{equation*}
+            
+        \end{column}
+        \begin{column}[]{0.6\textwidth}
+            \only<2-3>{
+                \begin{tikzpicture}[font=\scriptsize, node distance=1em,>=stealth]
+                    % nodes
+                    \node (input) {$\xb_0$};
+                    \node (dc) [rounded rectangle, right=of input, draw=yellow!87, fill=yellow!17] {
+                    \alt<3>{Data Consistency step~(DC)}{$\cdot - \epsilon_n \mathcal{A}^H\left(\mathcal{A} \cdot - \ybb\right)$}
+                    };
+                    \node (prox) [rounded rectangle, right=of dc, draw=blue!87, fill=blue!17] {
+                        \alt<3>{Proximal step~(Prx)}{$\operatorname{prox}_{\epsilon_n \mathcal{R}}\left(\cdot\right)$}
+                    };
+                    % arrows linking all 4 nodes
+                    \draw [->] (input) -- (dc);
+                    \draw [->] (dc) -- (prox);
+                    % arrow linking the prox to the dc in a loop fashion
+                    \draw [->] (prox.east) -| ($(prox.east)+(0.5em, -2em)$) -| (dc.south);
+                \end{tikzpicture}
+            }
+            \only<4->{
+                \begin{tikzpicture}[font=\scriptsize, node distance=1em,>=stealth]
+                    \tikzset{
+                        position label/.style={
+                        below = 0.em,
+                        text height = 1.5ex,
+                        text depth = 1ex
+                        },
+                        brace/.style={
+                            decoration={brace, mirror},
+                            decorate
+                        }
+                    }
+                    % nodes
+                    \node (input) {$\xb_0$};
+                    \node (dc_1) [rounded rectangle, right=of input, draw=yellow!87, fill=yellow!17] {DC};
+                    \node (prox_1) [rounded rectangle, right=of dc_1, draw=blue!87, fill=blue!17] {\alt<5->{$f_{\thetab_1}$}{Prx}};
+                    \node (dots) [right=of prox_1] {$\ldots$};
+                    \node (dc_2) [rounded rectangle, right=of dots, draw=yellow!87, fill=yellow!17] {DC};
+                    \node (prox_2) [rounded rectangle, right=of dc_2, draw=blue!87, fill=blue!17] {\alt<5->{$f_{\thetab_N}$}{Prx}};
+                    \node (output) [right=of prox_2] {$\xb_{N}$};
+                    % arrows linking all nodes
+                    \draw [->] (input) -- (dc_1);
+                    \draw [->] (dc_1) -- (prox_1);
+                    \draw [->] (prox_1) -- (dots);
+                    \draw [->] (dots) -- (dc_2);
+                    \draw [->] (dc_2) -- (prox_2);
+                    \draw [->] (prox_2) -- (output);
+                    % brace
+                    \draw [brace, line width=0.25mm] ($(dc_1.south west)+(0,-0.25em)$) -- ($(prox_1.south east)+(0,-0.25em)$) node [position label, pos=0.5] {$\times N$};
+                \end{tikzpicture}
+            }
+        \end{column}
+    \end{columns}
+\end{frame}
+
+
+\begin{frame}{Unrolled models - 2}
+    % first benchmark: different unrolling strategies give different results
+    \begin{exampleblock}{Contribution}
+        \fullcite{Ramzi2020_benchmark_journal}
+    \end{exampleblock}
+    We can build different models depending on the optimization algorithm we unroll, the choice of $f_{\thetab}$ and the number of iterations.
+    \pause
+
+    \begin{overprint}
+        
+    
+    \onslide<2>
+        \begin{table}[h]
+            % \large
+            \centering
+            \caption{\textbf{Quantitative results for the fastMRI dataset.} The PSNR is computed over the 200 validation volumes.}
+            \label{tab:quanti-fastmri}
+            \vspace{-0.5em}
+            \begin{tabular}{l|c|c|c|c|c}
+            \textbf{Network} & \textbf{Zero-filled} & \textbf{KIKI-net} & \textbf{U-net} & \textbf{Cascade net} & \textbf{PD-net} \\ \hline
+            \textbf{PSNR} & 29.61 & 31.38 & 31.78 & 31.97 & \textbf{32.15}
+            \end{tabular}%
+            \end{table}
+    
+    \onslide<3>
+        \begin{itemize}
+            \item \faicon{github} Code available online: \texttt{github.com/zaccharieramzi/fastmri-reproducible-benchmark}
+            \item\begin{tabular}{@{}c@{}}\includegraphics[width=3ex]{Figures/hf_logo.jpeg}\end{tabular}Model weights available online: \texttt{huggingface.co/zaccharieramzi}
+        \end{itemize}
+    
+\end{overprint}
+    
+
+
+\end{frame}
+
+\subsection{New unrolled models}
+\begin{frame}{XPDNet}
+    % talk about XPDNet archi
+    \begin{center}
+        \begin{tikzpicture}[font=\Large, node distance=1.5em,>=stealth]
+            % nodes
+            \only<2->{
+                \node (first_unit) [fit=(dc_1)(prox_1), rounded rectangle, draw=black!87, fill=black!17, inner sep=0.7em, ] {};
+                \node (t_first_unit) [below right] at ($(first_unit.north west)+(-0.9em,0.25em)$) {\tiny Iteration Unit~(IU)};
+                \node (second_unit) [fit=(dc_2)(prox_2), rounded rectangle, draw=black!87, fill=black!17, inner sep=0.5em, ] {};
+            }
+            \node (input) {$\xb_0$};
+            \node (dc_1) [rounded rectangle, right=of input, draw=yellow!87, fill=yellow!17] {DC};
+            \node (prox_1) [rounded rectangle, right=of dc_1, draw=blue!87, fill=blue!17] {$f_{\thetab_1}$};
+            \node (dots) [right=of prox_1] {$\ldots$};
+            \node (dc_2) [rounded rectangle, right=of dots, draw=yellow!87, fill=yellow!17] {DC};
+            \node (prox_2) [rounded rectangle, right=of dc_2, draw=blue!87, fill=blue!17] {$f_{\thetab_N}$};
+            \node (output) [right=of prox_2] {$\xb_{N}$};
+            % arrows linking all nodes
+            \draw [->] (input) -- (dc_1);
+            \draw [->] (dc_1) -- (prox_1);
+            \draw [->] (prox_1) -- (dots);
+            \draw [->] (dots) -- (dc_2);
+            \draw [->] (dc_2) -- (prox_2);
+            \draw [->] (prox_2) -- (output);
+        \end{tikzpicture}    
+    \end{center}
+\end{frame}
+
+\begin{frame}{fastMRI challenge}
+    % mention fastMRI challenge results
+\end{frame}
+
+\begin{frame}{NC-PDNet - 1}
+    % explain NC-PDNet and density compensation
+\end{frame}
+
+\begin{frame}{NC-PDNet - 2}
+    % give results
+\end{frame}
+
+\begin{frame}{Recap}
+    % cool: we are starting to have good results, let's not forget the end goal
+    % use this in a scanner so that the MRI exam is faster
+    % how will this technique fare in the clinical setting ?
+\end{frame}
