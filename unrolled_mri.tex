@@ -142,7 +142,7 @@
             \label{tab:quanti-fastmri}
             \vspace{-0.5em}
             \begin{tabular}{l|c|c|c|c|c}
-            \textbf{Network} & \textbf{Zero-filled} & \textbf{KIKI-net} & \textbf{U-net} & \textbf{Cascade net} & \textbf{PD-net} \\ \hline
+            \textbf{Network} & \textbf{Zero-filled} & \textbf{KIKI-net} & \textbf{U-net} & \textbf{Cascade net} & \textbf{PD-net}\footfullcite{Adler2018} \\ \hline
             \textbf{PSNR} & 29.61 & 31.38 & 31.78 & 31.97 & \textbf{32.15}
             \end{tabular}%
             \end{table}
@@ -163,27 +163,89 @@
 \begin{frame}{XPDNet}
     % talk about XPDNet archi
     \begin{center}
-        \begin{tikzpicture}[font=\Large, node distance=1.5em,>=stealth]
-            % nodes
-            \only<2->{
-                \node (first_unit) [fit=(dc_1)(prox_1), rounded rectangle, draw=black!87, fill=black!17, inner sep=0.7em, ] {};
-                \node (t_first_unit) [below right] at ($(first_unit.north west)+(-0.9em,0.25em)$) {\tiny Iteration Unit~(IU)};
-                \node (second_unit) [fit=(dc_2)(prox_2), rounded rectangle, draw=black!87, fill=black!17, inner sep=0.5em, ] {};
-            }
+        \begin{tikzpicture}[
+            font=\Large, node distance=1.5em,>=stealth,
+            ionode/.style={rounded rectangle, draw=red!87, fill=red!17},
+            unitnode/.style={rounded rectangle, draw=black!87, fill=black!17},
+            opnode/.style={rounded rectangle, draw=green!87, fill=green!17},
+            kspace_node/.style={rounded rectangle, draw=yellow!87, fill=yellow!17},
+            image_node/.style={rounded rectangle, draw=blue!87, fill=blue!17},
+        ]
+            % Unrolled net simple
             \node (input) {$\xb_0$};
-            \node (dc_1) [rounded rectangle, right=of input, draw=yellow!87, fill=yellow!17] {DC};
-            \node (prox_1) [rounded rectangle, right=of dc_1, draw=blue!87, fill=blue!17] {$f_{\thetab_1}$};
-            \node (dots) [right=of prox_1] {$\ldots$};
-            \node (dc_2) [rounded rectangle, right=of dots, draw=yellow!87, fill=yellow!17] {DC};
-            \node (prox_2) [rounded rectangle, right=of dc_2, draw=blue!87, fill=blue!17] {$f_{\thetab_N}$};
-            \node (output) [right=of prox_2] {$\xb_{N}$};
-            % arrows linking all nodes
-            \draw [->] (input) -- (dc_1);
-            \draw [->] (dc_1) -- (prox_1);
-            \draw [->] (prox_1) -- (dots);
-            \draw [->] (dots) -- (dc_2);
-            \draw [->] (dc_2) -- (prox_2);
-            \draw [->] (prox_2) -- (output);
+            \only<1-2>{
+                % nodes
+                \only<2->{
+                    \node (first_unit) [fit=(dc_1)(prox_1), unitnode, inner sep=0.7em, ] {};
+                    \node (t_first_unit) [below right] at ($(first_unit.north west)+(-0.9em,0.25em)$) {\tiny Iteration Unit~(IU)};
+                    \node (second_unit) [fit=(dc_2)(prox_2), unitnode, inner sep=0.5em, ] {};
+                }
+                \node (input) {$\xb_0$};
+                \node (dc_1) [right=of input, kspace_node] {DC};
+                \node (prox_1) [right=of dc_1, image_node] {$f_{\thetab_1}$};
+                \node (dots) [right=of prox_1] {$\ldots$};
+                \node (dc_2) [right=of dots, kspace_node] {DC};
+                \node (prox_2) [right=of dc_2, image_node] {$f_{\thetab_N}$};
+                \node (output) [right=of prox_2] {$\xb_{N}$};
+                % arrows linking all nodes
+                \draw [->] (input) -- (dc_1);
+                \draw [->] (dc_1) -- (prox_1);
+                \draw [->] (prox_1) -- (dots);
+                \draw [->] (dots) -- (dc_2);
+                \draw [->] (dc_2) -- (prox_2);
+                \draw [->] (prox_2) -- (output);
+            }
+            % Unrolled net exploded
+            \only<3->{
+                % nodes
+                %% main track
+                \node (first_unit) [unitnode, right=of input] {IU};
+                \node (dots) [right=of first_unit] {$\ldots$};
+                \node (second_unit) [unitnode, right=of dots] {IU};
+                \node (output) [right=of second_unit] {$\xb_{N}$};
+                %% IU track
+                %% applies \mathcal{A} (in green), then removes \ybb (in yellow), then applies \epsilon_1 \mathcal{A}^H (in green)
+                %% then residual connection , then applies f_{\thetab_1} (in blue)
+                \node (forward_op) [opnode, below=4em of first_unit] {$\mathcal{A} \cdot$};
+                \node (input_forward) [left=3em of forward_op] {};
+                \node (dc) [kspace_node, above right=of forward_op] {$\cdot - \ybb$};
+                \node (backward_op) [opnode, right=of dc] {$\alt<4->{}{\epsilon_1} \mathcal{A}^H \cdot$};
+                \node (dc_input_comb) [rounded rectangle, draw, fill=white, below right=of backward_op] {$ \alt<4->{\operatorname{concat}}{-} $};
+                \node (prox) [image_node, right=of dc_input_comb] {$f_{\thetab_1}$};
+                \node (prox_exp) [below=2em of prox] {\alt<5->{MWCNN\footfullcite{Liu2018}}{CNN}};
+                \node (outpt_prox) [right=3em of prox] {};
+                \begin{scope}[on background layer]
+                    \node (encompassing_unit) [unitnode, fit=(forward_op)(dc)(backward_op)(dc_input_comb)(prox), inner sep=0.9em] {};
+                \end{scope}
+                \only<6->{
+                    % smaps nodes
+                    \node (smaps_refiner) [opnode, below left=of forward_op] {Smaps refiner\footfullcite{Sriram2020End-to-EndReconstruction}};
+                    \node (smaps) [left=of smaps_refiner] {$\Sbb$};
+                    \node (smaps_exp) [below=1em of smaps_refiner] {U-Net\footfullcite{ronneberger2015u}};
+                    % smaps arrows
+                    \draw [<-] (smaps_refiner) -- (smaps);
+                    \draw [->] (smaps_refiner) -| (forward_op);
+                    \draw [->] (smaps_refiner) -| (backward_op);
+                    \draw [line width=0.1em] (smaps_refiner.south) -- (smaps_exp.north);
+                }
+                % arrows linking all nodes
+                %% main track
+                \draw [->] (input) -- (first_unit);
+                \draw [->] (first_unit) -- (dots);
+                \draw [->] (dots) -- (second_unit);
+                \draw [->] (second_unit) -- (output);
+                %% IU track
+                \draw [->] (input_forward) -- (forward_op);
+                \draw [->] (forward_op) -| (dc);
+                \draw [->] (dc) -- (backward_op);
+                \draw [->] (backward_op) -| (dc_input_comb);
+                \draw [->] plot [smooth, tension=0.7] coordinates{(input_forward.east) ($(forward_op.south)+(0, -0.6em)$) (dc_input_comb.west)};
+                \draw [->] (dc_input_comb) -- (prox);
+                \draw [->] (prox) -- (outpt_prox);
+                \draw [line width=0.1em] (first_unit.south) -- (encompassing_unit.north west);
+                \draw [line width=0.1em] (prox.south) -- (prox_exp.north);
+            }
+            
         \end{tikzpicture}    
     \end{center}
 \end{frame}
