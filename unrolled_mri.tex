@@ -273,6 +273,25 @@
     \end{table}
 \end{frame}
 
+\begin{frame}{Robustness test}
+    % XXX: only if we decide not to have clinical applicability
+    How does the XPDNet fare in a prospective out-of-distribution setting:
+
+    different orientation, higher resolution, higher field strength, lower acceleration factor, presence of the cerebellum.\footnote{For anonymity reasons, the cerebellum is not present in the fastMRI dataset.}
+
+    \onslide<2->
+    \begin{figure}[h]
+        \begin{center}
+        \begin{tabular}{cc}
+        \textbf{GRAPPA} & \textbf{XPDNet} \\
+        \includegraphics[width=0.30\textwidth]{Figures/clinic_applic/gt_brain_7t_zoom.png}&
+        \includegraphics[width=0.30\textwidth]{Figures/clinic_applic/brain_nn_recon_zoom.png}
+        \end{tabular}
+        \caption{\textbf{XPDNet reconstruction on a brain prospectively accelerated.\footfullcite{Marrakchi-Kacem2016RobustChoices}} (zoom on the cerebellum) \label{fig:brain-7t}}
+        \end{center}
+    \end{figure}
+\end{frame}
+
 \begin{frame}{NC-PDNet - 1}
     % explain NC-PDNet and density compensation
 \end{frame}
