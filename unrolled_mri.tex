@@ -292,12 +292,91 @@
     \end{figure}
 \end{frame}
 
+\begin{frame}{Non-Cartesian acquisitions}
+    % Why do we need non-Cartesian acquisitions?
+
+\end{frame}
+
 \begin{frame}{NC-PDNet - 1}
     % explain NC-PDNet and density compensation
+    \begin{center}
+        \begin{tikzpicture}[
+            font=\Large, node distance=1.5em,>=stealth,
+            ionode/.style={rounded rectangle, draw=red!87, fill=red!17},
+            unitnode/.style={rounded rectangle, draw=black!87, fill=black!17},
+            opnode/.style={rounded rectangle, draw=green!87, fill=green!17},
+            kspace_node/.style={rounded rectangle, draw=yellow!87, fill=yellow!17},
+            image_node/.style={rounded rectangle, draw=blue!87, fill=blue!17},
+        ]
+            % Unrolled net simple
+            \node (input) {$\xb_0$};
+            % Unrolled net exploded
+            % nodes
+            %% main track
+            \node (first_unit) [unitnode, right=of input] {IU};
+            \node (dots) [right=of first_unit] {$\ldots$};
+            \node (second_unit) [unitnode, right=of dots] {IU};
+            \node (output) [right=of second_unit] {$\xb_{N}$};
+            %% IU track
+            %% applies \mathcal{A} (in green), then removes \ybb (in yellow), then applies \epsilon_1 \mathcal{A}^H (in green)
+            %% then residual connection , then applies f_{\thetab_1} (in blue)
+            \node (forward_op) [opnode, below=4em of first_unit] {$\mathcal{A} \cdot$};
+            \node (input_forward) [left=3em of forward_op] {};
+            \node (dc) [kspace_node, above right=of forward_op] {$\cdot - \ybb$};
+            \only<2->{
+                \node (dcp) [kspace_node, right=of dc] {$\cdot \times$ DCp};
+            }
+            \alt<2->{
+                \node (backward_op) [opnode, right=of dcp] {$\mathcal{A}^H \cdot$};
+            }{
+                \node (backward_op) [opnode, right=of dc] {$\mathcal{A}^H \cdot$};
+            }
+            \node (dc_input_comb) [rounded rectangle, draw, fill=white, below right=of backward_op] {$\operatorname{concat}$};
+            \node (prox) [image_node, right=of dc_input_comb] {$f_{\thetab_1}$};
+            \node (prox_exp) [below=2em of prox] {CNN};
+            \node (outpt_prox) [right=3em of prox] {};
+            \begin{scope}[on background layer]
+                \node (encompassing_unit) [unitnode, fit=(forward_op)(dc)(backward_op)(dc_input_comb)(prox), inner sep=0.9em] {};
+            \end{scope}
+            %% smaps nodes
+            \node (smaps_refiner) [opnode, below left=of forward_op] {Smaps refiner};
+            \node (smaps) [left=of smaps_refiner] {$\Sbb$};              
+            
+            % arrows linking all nodes
+            %% main track
+            \draw [->] (input) -- (first_unit);
+            \draw [->] (first_unit) -- (dots);
+            \draw [->] (dots) -- (second_unit);
+            \draw [->] (second_unit) -- (output);
+            %% IU track
+            \draw [->] (input_forward) -- (forward_op);
+            \draw [->] (forward_op) -| (dc);
+            \alt<2->{
+                \draw [->] (dc) -- (dcp);
+                \draw [->] (dcp) -- (backward_op);
+            }{
+                \draw [->] (dc) -- (backward_op);
+            }
+            \draw [->] (backward_op) -| (dc_input_comb);
+            \draw [->] plot [smooth, tension=0.7] coordinates{(input_forward.east) ($(forward_op.south)+(0, -0.6em)$) (dc_input_comb.west)};
+            \draw [->] (dc_input_comb) -- (prox);
+            \draw [->] (prox) -- (outpt_prox);
+            \draw [line width=0.1em] (first_unit.south) -- (encompassing_unit.north west);
+            \draw [line width=0.1em] (prox.south) -- (prox_exp.north);
+            % smaps arrows
+            \draw [<-] (smaps_refiner) -- (smaps);
+            \draw [->] (smaps_refiner) -| (forward_op);
+            \draw [->] (smaps_refiner) -| (backward_op);
+            
+        \end{tikzpicture}    
+    \end{center}
 \end{frame}
 
 \begin{frame}{NC-PDNet - 2}
     % give results
+    \begin{exampleblock}{Contribution}
+        \fullcite{Ramzi2021_ncpdnet_journal}
+    \end{exampleblock}
 \end{frame}
 
 \begin{frame}{Recap}
