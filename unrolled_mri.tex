@@ -397,8 +397,23 @@
     \end{figure}
 \end{frame}
 
-\begin{frame}{Recap}
+\begin{frame}{Unrolled models for MRI reconstruction}
     % cool: we are starting to have good results, let's not forget the end goal
     % use this in a scanner so that the MRI exam is faster
-    % how will this technique fare in the clinical setting ?
+    % how will this technique fare in the clinical setting ? <This would be in the case of using clinical applic chapther>
+    % <otherwise>: ok we get good results, but we have sacrificed a bit of power in 3D, and multi-coil is not possible as is
+    \begin{block}{Recap}
+        MRI is slow because of relaxation.
+        
+        \pause
+        If we want to do fewer relaxations, we need to exploit some redundancy in MR images.
+        
+        \pause
+        Deep Learning allows us to learn more complex structures in MR images than Compressed Sensing.
+        We showcased 2 instances of unrolled models which can perform really well in challenging acquisition settings.
+    \end{block}
+
+    \pause
+    But we needed to trade off some model capacity for memory, in order to train the models in the 3D single-coil case.
+    How will this fare going to 3D multi-coil?
 \end{frame}
