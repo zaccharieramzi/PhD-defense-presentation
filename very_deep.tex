@@ -26,10 +26,10 @@
 
 \begin{frame}{Can we go deeper?}
     % in the current state not: activations + constrained memory
-    The big problem at hand is that deeper models need more memory to train, and the memory we have is constrained.
+    The big problem at hand is that deeper models need more \textbf{memory} to train, and the memory we have is constrained.
     \pause
 
-    This memory requirement comes primarily from the activations of the model, not from the model weights.
+    This memory requirement comes primarily from the \textbf{activations} of the model, not from the model weights.
     \pause
 
     \begin{center}
@@ -84,7 +84,7 @@
 
 \begin{frame}{Deep Equilibrium networks - 1}
     % give equation and how to compute the gradient with IFT
-    \citet{Bai2019DeepModels} introduced Deep Equilibrium networks~(DEQs), a type of implicit model.
+    \citet{Bai2019DeepModels} introduced \textbf{Deep Equilibrium networks~(DEQs)}, a type of implicit model.
     The output of DEQs is defined implicitly as the solution to a fixed-point equation.
 
     \begin{equation*}
@@ -93,7 +93,7 @@
 
     \pause
 
-    In practice, we solve this equation with a quasi-Newton method.
+    In practice, we solve this equation with a \textbf{quasi-Newton method}.
 \end{frame}
 
 \begin{frame}{Deep Equilibrium networks - 2}
@@ -116,7 +116,7 @@ Let $\zb^\star \in  \mathbb{R}^d$ such that $g_{\thetab}(\zb^\star) = 0$ and $J_
 \subsection{SHINE}
 \begin{frame}{The limits of DEQs}
     % they are slow to train
-    DEQs achieve excellent results in NLP~(Natural Language Processing) and CV~(Computer Vision) problems, but they are slow to train.
+    DEQs achieve excellent results in NLP~(Natural Language Processing) and CV~(Computer Vision) tasks, but they are slow to train.
 
     \begin{figure}
         \centering
@@ -143,7 +143,7 @@ Let $\zb^\star \in  \mathbb{R}^d$ such that $g_{\thetab}(\zb^\star) = 0$ and $J_
         \fullcite{Ramzi2021_shine}
     \end{exampleblock}
     
-    We introduced SHINE: SHaring the INverse Estimate.
+    We introduced \textbf{SHINE: SHaring the INverse Estimate}.
 
     \begin{equation*}
         \tikzmarknode{qn_matrix}{\highlight{blue}{$\Bb^{-1}$}} \approx \tikzmarknode{true_jacobian}{\highlight{red}{$J_{g_{\thetab}}(\zb^\star)^{-1}$}}
@@ -206,19 +206,19 @@ Let $\zb^\star \in  \mathbb{R}^d$ such that $g_{\thetab}(\zb^\star) = 0$ and $J_
     \end{figure}
 \end{frame}
 
-\begin{frame}{SHINE}
-    \begin{block}{Recap}
-        MRI is slow because of relaxation.
+% \begin{frame}{SHINE}
+%     \begin{block}{Recap}
+%         MRI is slow because of \textbf{relaxation}.
         
-        \pause
-        If we want to do fewer relaxations, we need to exploit some redundancy in MR images.
+%         \pause
+%         If we want to do fewer relaxations, we need to exploit some \textbf{redundancy} in MR images.
         
-        \pause
-        Deep Learning allows us to learn more complex structures in MR images than Compressed Sensing.
+%         \pause
+%         \textbf{Deep Learning} allows us to learn more complex structures in MR images than Compressed Sensing.
         
-        \pause
-        But if we want to get the best performance, we need deep memory-hungry models.
-        DEQs are a solution to the memory requirements but are slow to train.
-        We introduced a method that could enable faster DEQ training.
-    \end{block}
-\end{frame}
+%         \pause
+%         But if we want to get the best performance, we need deep memory-hungry models.
+%         \textbf{DEQs} are a solution to the memory requirements but are slow to train.
+%         We introduced a method that could enable faster DEQ training.
+%     \end{block}
+% \end{frame}
