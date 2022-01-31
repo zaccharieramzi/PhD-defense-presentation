@@ -297,7 +297,14 @@
 
 \begin{frame}{Non-Cartesian acquisitions}
     % Why do we need non-Cartesian acquisitions?
+    We need non-Cartesian acquisitions to better cover the k-space.
+    \pause
 
+    The difficulty from a computational point of view is that we need to now use the \textbf{Nonuniform Fourier Transform (NDFT)}.
+    We resort to using its fast approximation, the NUFFT, which we implemented in TensorFlow, to enable gradient-based learning:
+    \begin{itemize}
+        \item \faicon{github} Code available online: \texttt{github.com/zaccharieramzi/tfkbnufft}
+    \end{itemize}
 \end{frame}
 
 \begin{frame}{NC-PDNet - 1}
@@ -328,7 +335,7 @@
             \node (forward_op) [opnode, below=4em of first_unit] {$\mathcal{A} \cdot$};
             \node (input_forward) [left=3em of forward_op] {};
             \node (dc) [kspace_node, above right=of forward_op] {$\cdot - \ybb$};
-            \node (dcp) [kspace_node, right=of dc, visible on=<2->] {$\cdot \times$ DCp};
+            \node (dcp) [kspace_node, right=of dc, visible on=<2->] {$\cdot \times$ DCp\footfullcite{Pipe1999SamplingSolution}};
             \node (backward_op) [opnode, right=of dcp] {$\mathcal{A}^H \cdot$};
             \node (dc_input_comb) [rounded rectangle, draw, fill=white, below right=of backward_op] {$\operatorname{concat}$};
             \node (prox) [image_node, right=of dc_input_comb] {$f_{\thetab_1}$};
