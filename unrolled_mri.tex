@@ -65,7 +65,7 @@
 \begin{frame}{Unrolled models - 1}
     % recovery algorithm and corresponding computation graph
     % show on second slice unrolled computation graph
-    We can mix the 2 single domain approaches, using the principled optimization algorithm unrolling method.\footfullcite{Gregor2010}
+    We can mix the 2 single domain approaches, using the principled \textbf{optimization algorithm unrolling} method.\footfullcite{Gregor2010}
     \alt<5->{}{Let's look at a graph representation of the ISTA algorithm:}
     \begin{columns}[totalwidth=\textwidth]
         \begin{column}[]{0.3\textwidth}
@@ -327,7 +327,7 @@
     % explain NC-PDNet and density compensation
     \begin{center}
         \begin{tikzpicture}[
-            font=\Large, node distance=1.5em,>=stealth,
+            font=\Large, node distance=1em,>=stealth,
             ionode/.style={rounded rectangle, draw=red!87, fill=red!17},
             unitnode/.style={rounded rectangle, draw=black!87, fill=black!17},
             opnode/.style={rounded rectangle, draw=green!87, fill=green!17},
@@ -361,7 +361,7 @@
                 \node (encompassing_unit) [unitnode, fit=(forward_op)(dc)(backward_op)(dc_input_comb)(prox), inner sep=0.9em] {};
             \end{scope}
             %% smaps nodes
-            \node (smaps_refiner) [opnode, below left=of forward_op] {Smaps refiner};
+            \node (smaps_refiner) [opnode, below left=1.5em of forward_op] {Smaps refiner};
             \node (smaps) [left=of smaps_refiner] {$\Sbb$};              
             %% highlight nodes
             \node<2> (highlight_dcp) [highlight_node, fit=(dcp)] {};
@@ -413,14 +413,14 @@
     % how will this technique fare in the clinical setting ? <This would be in the case of using clinical applic chapther>
     % <otherwise>: ok we get good results, but we have sacrificed a bit of power in 3D, and multi-coil is not possible as is
     \begin{block}{Recap}
-        MRI is slow because of relaxation.
+        MRI is slow because of \textbf{relaxation}.
         
         \pause
-        If we want to do fewer relaxations, we need to exploit some redundancy in MR images.
+        If we want to do fewer relaxations, we need to exploit some \textbf{redundancy} in MR images.
         
         \pause
-        Deep Learning allows us to learn more complex structures in MR images than Compressed Sensing.
-        We showcased 2 instances of unrolled models which can perform really well in challenging acquisition settings.
+        \textbf{Deep Learning} allows us to learn more complex structures in MR images than Compressed Sensing.
+        We showcased 2 instances of unrolled models, XPDNet and NC-PDNet, which can perform really well in challenging acquisition settings.
     \end{block}
 
     \pause
