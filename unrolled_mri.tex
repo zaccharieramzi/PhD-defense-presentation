@@ -208,28 +208,24 @@
                 \node (forward_op) [opnode, below=4em of first_unit] {$\mathcal{A} \cdot$};
                 \node (input_forward) [left=3em of forward_op] {};
                 \node (dc) [kspace_node, above right=of forward_op] {$\cdot - \ybb$};
-                \node (backward_op) [opnode, right=of dc] {$\alt<4->{}{\epsilon_1} \mathcal{A}^H \cdot$};
-                \node (dc_input_comb) [rounded rectangle, draw, fill=white, below right=of backward_op] {$ \alt<4->{\operatorname{concat}}{-} $};
-                \node (prox) [image_node, right=of dc_input_comb] {$f_{\thetab_1}$};
-                \node (prox_exp) [below=2em of prox] {\alt<5->{MWCNN\footfullcite{Liu2018}}{CNN}};
+                \node (backward_op) [opnode, right=of dc, visible on=<3>] {$\epsilon_1 \mathcal{A}^H \cdot$};
+                \node (simple_backward_op) [opnode, right=of dc, visible on=<4->] {$\mathcal{A}^H \cdot$};
+                \node (dc_res) [rounded rectangle, draw, fill=white, below right=of backward_op, visible on=<3>] {$-$};
+                \node (dc_concat) [rounded rectangle, draw, fill=white, below right=of backward_op, visible on=<4->] {$\operatorname{concat}$};
+                \node (prox) [image_node, right=of dc_concat] {$f_{\thetab_1}$};
+                \node (prox_exp_cnn) [below=2em of prox, visible on=<3-4>] {CNN};
+                \node (prox_exp_mwcnn) [below=2em of prox, visible on=<5->] {MWCNN\footfullcite{Liu2018}};
                 \node (outpt_prox) [right=3em of prox] {};
-                \only<6->{
-                    % smaps nodes
-                    \node (smaps_refiner) [opnode, below left=of forward_op] {Smaps refiner\footfullcite{Sriram2020End-to-EndReconstruction}};
-                    \node (smaps) [left=of smaps_refiner] {$\Sbb$};
-                    \node (smaps_exp) [below=0.4em of smaps_refiner] {U-Net\footfullcite{ronneberger2015u}};
-                    % smaps arrows
-                    \draw [<-] (smaps_refiner) -- (smaps);
-                    \draw [->] (smaps_refiner) -| (forward_op);
-                    \draw [->] (smaps_refiner) -| (backward_op);
-                    \draw [line width=0.1em] (smaps_refiner.south) -- (smaps_exp.north);
-                }
+                % smaps nodes
+                \node (smaps_refiner) [opnode, below left=of forward_op, visible on=<6->] {Smaps refiner\footfullcite{Sriram2020End-to-EndReconstruction}};
+                \node (smaps) [left=of smaps_refiner, visible on=<6->] {$\Sbb$};
+                \node (smaps_exp) [below=0.4em of smaps_refiner, visible on=<6->] {U-Net\footfullcite{ronneberger2015u}};
                 \begin{scope}[on background layer]
-                    \node (encompassing_unit) [unitnode, fit=(forward_op)(dc)(backward_op)(dc_input_comb)(prox), inner sep=0.9em] {};
+                    \node (encompassing_unit) [unitnode, fit=(forward_op)(dc)(simple_backward_op)(backward_op)(dc_concat)(dc_res)(prox), inner sep=0.9em] {};
                     %% highlighting nodes
-                    \node<4> (highlight_concat) [highlight_node, fit=(backward_op) (dc_input_comb)] {};
-                    \node<5> (highlight_mwcnn) [highlight_node, fit=(prox_exp)] {};
-                    \node<6> (highlight_smaps) [highlight_node, fit=(smaps_refiner) (smaps) (smaps_exp)] {};
+                    \node (highlight_concat) [highlight_node, fit=(backward_op) (dc_concat), visible on=<4>] {};
+                    \node (highlight_mwcnn) [highlight_node, fit=(prox_exp_mwcnn), visible on=<5>] {};
+                    \node (highlight_smaps) [highlight_node, fit=(smaps_refiner) (smaps) (smaps_exp), visible on=<6>] {};
                 \end{scope}
                 % arrows linking all nodes
                 %% main track
@@ -240,13 +236,23 @@
                 %% IU track
                 \draw [->] (input_forward) -- (forward_op);
                 \draw [->] (forward_op) -| (dc);
-                \draw [->] (dc) -- (backward_op);
-                \draw [->] (backward_op) -| (dc_input_comb);
-                \draw [->] plot [smooth, tension=0.7] coordinates{(input_forward.east) ($(forward_op.south)+(0, -0.6em)$) (dc_input_comb.west)};
-                \draw [->] (dc_input_comb) -- (prox);
+                \draw<3> [->] (dc) -- (backward_op);
+                \draw<4-> [->] (dc) -- (simple_backward_op);
+                \draw<3> [->] (backward_op) -| (dc_res);
+                \draw<4-> [->] (simple_backward_op) -| (dc_concat);
+                \draw<3> [->] plot [smooth, tension=0.7] coordinates{(input_forward.east) ($(forward_op.south)+(0, -0.6em)$) (dc_res.west)};
+                \draw<4-> [->] plot [smooth, tension=0.7] coordinates{(input_forward.east) ($(forward_op.south)+(0, -0.6em)$) (dc_concat.west)};
+                \draw<3> [->] (dc_res) -- (prox);
+                \draw<4-> [->] (dc_concat) -- (prox);
                 \draw [->] (prox) -- (outpt_prox);
                 \draw [line width=0.1em] (first_unit.south) -- (encompassing_unit.north west);
-                \draw [line width=0.1em] (prox.south) -- (prox_exp.north);
+                \draw<3-4> [line width=0.1em] (prox.south) -- (prox_exp_cnn.north);
+                \draw<5-> [line width=0.1em] (prox.south) -- (prox_exp_mwcnn.north);
+                % smaps arrows
+                \draw<6-> [<-] (smaps_refiner) -- (smaps);
+                \draw<6-> [->] (smaps_refiner) -| (forward_op);
+                \draw<6-> [->] (smaps_refiner) -| (simple_backward_op);
+                \draw<6-> [line width=0.1em] (smaps_refiner.south) -- (smaps_exp.north);
             }
             
         \end{tikzpicture}    
