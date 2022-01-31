@@ -1,4 +1,15 @@
 \section{Introduction to MRI}
+
+\begin{frame}[plain,c]
+    %\frametitle{A first slide}
+    
+    \begin{center}
+        \color{DarkBlue}
+    \Huge Magnetic Resonance Imaging~(MRI)
+    \end{center}
+    
+\end{frame}
+
 \begin{frame}{What does an MRI look like?}
     \begin{figure}
         \centering
@@ -68,7 +79,7 @@
     However, the FID carries global information.
     \pause
     
-    Using magnetic gradients enables changing a bit the magnetic field spatially, and therefore changing the global information depending on local factors.
+    Using magnetic \textbf{gradients} enables changing a bit the magnetic field spatially, and therefore changing the global information depending on local factors.
     \pause
     
     This allows us to receive a temporal signal of the form:
@@ -85,7 +96,7 @@
         % For "M"
         \onslide<5->{
             % XXX make green darker
-        \path (M.south) ++ (0, -6em) node[anchor=south east,color=green!47] (exp_M){\textbf{Magnetic field in each location $\rb$,}\\ \textbf{proportional to the spin density $\rhob(\rb)$}};
+        \path (M.south) ++ (0, -6em) node[anchor=south east,color=green!77] (exp_M){\textbf{Magnetic field in each location $\rb$,}\\ \textbf{proportional to the spin density $\rhob(\rb)$}};
         \draw [color=green!87](M.south) |- ([xshift=-0.3ex,color=green]exp_M.south west);
         }
         % For "G"
@@ -98,7 +109,7 @@
 
 \begin{frame}{Physics of MRI - 3}
     % Signal equation => k-space
-    The k-space vector, $\kb(t) = \frac{\gamma}{2\pi} \int_0^t \Gb(\tau) \dif \tau$, defines how we traverse the Fourier space of the anatomical image.
+    The \textbf{k-space} vector, $\kb(t) = \frac{\gamma}{2\pi} \int_0^t \Gb(\tau) \dif \tau$, defines how we traverse the Fourier space of the anatomical image.
 
     % We are sampling in the Fourier space of the anatomical image
     \begin{figure}
@@ -115,7 +126,7 @@
         MRI relies on the nuclear resonance phenomenon. This enables us to sample the Fourier space of the anatomical object of interest.
     \end{block}
     \pause
-    MRI is slow, because the relaxation is slow!
+    MRI is slow, because the \textbf{relaxation} is slow!
 \end{frame}
 
 \subsection{Acceleration in MRI}

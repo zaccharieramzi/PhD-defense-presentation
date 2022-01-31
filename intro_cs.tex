@@ -1,4 +1,15 @@
 \section{Compressed Sensing}
+
+\begin{frame}[plain,c]
+    %\frametitle{A first slide}
+    
+    \begin{center}
+        \color{DarkBlue}
+    \Huge Compressed Sensing
+    \end{center}
+    
+\end{frame}
+
 \begin{frame}{Another look at redundancy: the prior point of view}
     % give a sense of what structure is and how it relates to redundancy
     Redundancy is not always strict: we may only have a strong correlation between 2 structures of the image.
@@ -151,7 +162,7 @@
 \end{frame}
 
 \begin{frame}{The canonical MRI reconstruction problem}
-    We introduce the notion of a sparsity basis $\psib$ and the fact that the measurements can be noisy to obtain the canonical MRI reconstruction problem:
+    We introduce the notion of a \textbf{sparsity} basis $\psib$ (typically wavelets) and the fact that the measurements can be noisy to obtain the canonical MRI reconstruction problem:
     \begin{equation*}
         \min_{\xb \in \mathbb{C}^n} \overbrace{\|\tikzmarknode{calA}{\underline{\mathcal{A}}} \xb - \yb \|_2^2}^{\text{\sf \footnotesize Data consistency}}  + \overbrace{ \tikzmarknode{lambda}{\underline{\lambda}} \|\psib \xb\|_1}^{\text{\sf \footnotesize Regularization term } }
     \end{equation*}
@@ -209,10 +220,12 @@
 
 \begin{frame}{Compressed Sensing}
     \begin{block}{Recap}
-        MRI is slow because of relaxation. 
+        MRI is slow because of \textbf{relaxation}. 
         
-        We can use redundancy in many forms to reduce the amount of samples we need in the Fourier space, and therefore the number of relaxations.
+        \pause
+        We can use \textbf{redundancy} in many forms to reduce the amount of samples we need in the Fourier space, and therefore the number of relaxations.
         
+        \pause
         But we are limited by simple forms of redundancy.
     \end{block}
 \end{frame}
