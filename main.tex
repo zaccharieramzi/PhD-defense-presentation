@@ -149,6 +149,16 @@
 
 \begin{frame}{Conclusion}
     % what have we seen so far in the journey?
+    \begin{enumerate}[<+->]
+        \item MRI is an important medical imaging modality, but it is inherently slow due to the Nuclear Magnetic Resonance phenomenon it relies on.
+        \item Using redundancy is our main tool to accelerate MRI scans, but exploiting redundancy is not always straightforward.
+        \item Deep Learning can allow us to express structure in a more principled way, and we saw two examples of this.
+        \begin{itemize}[<+->]
+            \item The XPDNet, a deep learning network that secured the 2nd spot of the 2020 fastMRI challenge.
+            \item The NC-PDNet, a deep learning network that can reconstruct single-coil 3D non-Cartesian data.
+        \end{itemize}
+        \item In order to prepare for even deeper networks, with the promise of even better results, we proposed SHINE, a method to accelerate DEQs, which are memory-efficient models.
+    \end{enumerate}
 \end{frame}
 
 \begin{frame}{Future works}
