@@ -71,17 +71,56 @@
     \end{itemize}
 \end{frame}
 
-\begin{frame}{Deep Equilibrium networks}
+\begin{frame}{Deep Equilibrium networks - 1}
     % give equation and how to compute the gradient with IFT
+    \citet{Bai2019DeepModels} introduced Deep Equilibrium networks~(DEQs), a type of implicit model.
+    The output of DEQs is defined implicitly as the solution to a fixed-point equation.
+
+    \begin{equation*}
+        h_{\thetab}(\xb) = \zb^\star, \text{ where } \zb^\star = f_\thetab(\zb^\star, \xb)
+    \end{equation*}
+
+    \pause
+
+    In practice, we solve this equation with a quasi-Newton method.
+\end{frame}
+
+\begin{frame}{Deep Equilibrium networks - 2}
+    The big question is now: how do I compute the gradient $\frac{\partial \mathcal{L}}{\partial \thetab}$?
+    \pause
+
+    The \textbf{Implicit Function Theorem} gives us just that:
+    \begin{theorem}[Hypergradient~\citep{Krantz2013TheApplications,Bai2019DeepModels}]
+        Let $\thetab \in \mathbb{R}^p$ be a set of parameters, let $\mathcal{L}: \mathbb{R}^d \rightarrow \mathbb{R}$ be a loss function and $g_{\thetab}: \mathbb{R}^d \rightarrow \mathbb{R}^d$ be a root-defining function.
+Let $\zb^\star \in  \mathbb{R}^d$ such that $g_{\thetab}(\zb^\star) = 0$ and $J_{g_{\thetab}}(\zb^\star) = \frac{\partial g_{\theta}}{\partial \zb}\Bigr|_{\zb^\star}$ is invertible, then the gradient of the loss $\mathcal{L}$ wrt. $\thetab$, called Hypergradient, is given by
+\begin{equation*}
+    \frac{\partial \mathcal{L}}{\partial \thetab}\Bigr|_{\zb^\star} = \nabla_\zb \mathcal{L}(\zb^\star)^\top J_{g_{\thetab}}(\zb^\star)^{-1} \frac{\partial g_{\thetab}}{\partial \thetab}\Bigr|_{\zb^\star} \, .
+\end{equation*}
+    \end{theorem}
+    \pause
+
+    Key for our memory problem: it does not rely on any activations you could have when solving the fixed-point equation.
 \end{frame}
 
 \subsection{SHINE}
 \begin{frame}{The limits of DEQs}
     % they are slow to train
+    DEQs achieve excellent results in NLP~(Natural Language Processing) and CV~(Computer Vision) problems, but they are slow to train.
+
+    \begin{figure}
+        \centering
+        \includegraphics[width=0.6\textwidth]{Figures/shine_figures/deq_memory.png}
+        \caption{\textbf{Performance, memory and training speed of DEQs.}~\citep{Bai2020MultiscaleModels}}
+    \end{figure}
 \end{frame}
 
 \begin{frame}{Why are DEQs slow?}
     % bc of Jacobian inversion
+    If we look back the equation used to compute the gradient of DEQs:
+    \begin{equation*}
+        \frac{\partial \mathcal{L}}{\partial \thetab}\Bigr|_{\zb^\star} = \nabla_\zb \mathcal{L}(\zb^\star)^\top J_{g_{\thetab}}(\zb^\star)^{-1} \frac{\partial g_{\thetab}}{\partial \thetab}\Bigr|_{\zb^\star} \, ,
+    \end{equation*}
+    we see that we need to invert a huge matrix $J_{g_{\thetab}}(\zb^\star)^{-1}$.
 \end{frame}
 
 \begin{frame}{Can we avoid the Jacobian inversion?}
