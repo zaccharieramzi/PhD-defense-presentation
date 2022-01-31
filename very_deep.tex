@@ -77,7 +77,7 @@
     The output of DEQs is defined implicitly as the solution to a fixed-point equation.
 
     \begin{equation*}
-        h_{\thetab}(\xb) = \zb^\star, \text{ where } \zb^\star = f_\thetab(\zb^\star, \xb)
+        h_{\thetab}(\xb) = \zb^\star, \text{ where } \alt<3>{g_\thetab(\zb^\star, \xb) = \zb^\star - f_\thetab(\zb^\star, \xb) = 0}{\zb^\star = f_\thetab(\zb^\star, \xb)}
     \end{equation*}
 
     \pause
@@ -118,19 +118,96 @@ Let $\zb^\star \in  \mathbb{R}^d$ such that $g_{\thetab}(\zb^\star) = 0$ and $J_
     % bc of Jacobian inversion
     If we look back the equation used to compute the gradient of DEQs:
     \begin{equation*}
-        \frac{\partial \mathcal{L}}{\partial \thetab}\Bigr|_{\zb^\star} = \nabla_\zb \mathcal{L}(\zb^\star)^\top J_{g_{\thetab}}(\zb^\star)^{-1} \frac{\partial g_{\thetab}}{\partial \thetab}\Bigr|_{\zb^\star} \, ,
+        \frac{\partial \mathcal{L}}{\partial \thetab}\Bigr|_{\zb^\star} = \highlight{green}{$\nabla_\zb \mathcal{L}(\zb^\star)^\top$} \highlight{red}{$J_{g_{\thetab}}(\zb^\star)^{-1}$} \frac{\partial g_{\thetab}}{\partial \thetab}\Bigr|_{\zb^\star} \, ,
     \end{equation*}
-    we see that we need to invert a huge matrix $J_{g_{\thetab}}(\zb^\star)^{-1}$.
+    we see that we need to invert a huge matrix \highlight{red}{$J_{g_{\thetab}}(\zb^\star)$} in a certain direction \highlight{green}{$\nabla_\zb \mathcal{L}(\zb^\star)$}.
+    \pause
+
+    In practice this is done using an iterative algorithm.
 \end{frame}
 
 \begin{frame}{Can we avoid the Jacobian inversion?}
     % yes: reuse a by-product of the forward pass, share the inverse estimate
+    \begin{exampleblock}{Contribution}
+        \fullcite{Ramzi2021_shine}
+    \end{exampleblock}
+    
+    We introduced SHINE: SHaring the INverse Estimate.
+
+    \begin{equation*}
+        \tikzmarknode{qn_matrix}{\highlight{blue}{$\Bb^{-1}$}} \approx \tikzmarknode{true_jacobian}{\highlight{red}{$J_{g_{\thetab}}(\zb^\star)^{-1}$}}
+    \end{equation*}
+
+    \begin{tikzpicture}[overlay,remember picture,>=stealth,nodes={align=left,inner ysep=1pt},<-]
+        % For "kspace"
+        \onslide<2->{
+        \path (true_jacobian.south) ++ (0,-2em) node[anchor=south west,color=red!87] (exp_jac){
+            \textbf{True Jacobian inverse}};
+        \draw [color=red!87](true_jacobian.south) |- ([xshift=-0.3ex,color=red]exp_jac.south east);
+        }
+        % For "image"
+        \onslide<3->{
+        \path (qn_matrix.south) ++ (0, -2em) node[anchor=south east,color=blue!87] (exp_qnm){
+            \textbf{quasi-Newton matrix}};
+        \draw [color=blue!87](qn_matrix.south) |- ([xshift=-0.3ex,color=blue]exp_qnm.south west);
+    }
+    \end{tikzpicture}
+    \pause
+    \onslide<4->
+
+    \hfill \break
+    Properties of \highlight{blue}{$\Bb$}:
+    \begin{itemize}
+        \item<4-> It is computed when solving $g_\thetab(\zb^\star, \xb)$ using a quasi-Newton method.
+        \item<5-> It is easily invertible using the Sherman-Morrison formula.
+    \end{itemize}
 \end{frame}
 
-\begin{frame}{Application to Hyperparameter optimization}
+\begin{frame}{Application to Hyperparameter optimization - 1}
     % it's also a bilevel prob
+    Interestingly, other problems can benefit from this idea, notably Hyperparameter optimization.
+
+    \begin{equation*}
+        \begin{split}
+            &\argmin_{\lambda} \mathcal{L}_{\text{val}}(\xb^\star)\\
+            \text{s.t. } \quad \xb^\star = &\argmin_{\xb} \mathcal{L}_{\text{train}}(\xb) + \exp^{\lambda} \|\xb\|_2^2
+        \end{split}
+    \end{equation*}
+
+    \pause
+    The IFT can also be applied, and when a quasi-Newton method is used to solve $\argmin_{\xb} \mathcal{L}_{\text{train}}(\xb) + \exp^{\lambda} \|\xb\|_2^2$, we may use SHINE.
+\end{frame}
+
+\begin{frame}{Application to Hyperparameter optimization - 2}
+    \begin{figure}
+        \centering
+        \includegraphics[width=0.9\textwidth]{Figures/shine_figures/bilevel_test.pdf}
+        \caption{\textbf{Bilevel optimization~\citep{Pedregosa2016HyperparameterGradient} with SHINE:} convergence of held-out test loss.}
+    \end{figure}
+    
 \end{frame}
 
 \begin{frame}{Results on DEQs}
+    \begin{figure}
+        \centering
+        \includegraphics[width=0.8\textwidth]{Figures/shine_figures/merged_results_latency_style.pdf}
+        \caption{\textbf{MDEQs~\citep{Bai2020MultiscaleModels} with SHINE.}}
+    \end{figure}
+\end{frame}
 
+\begin{frame}{SHINE}
+    \begin{block}{Recap}
+        MRI is slow because of relaxation.
+        
+        \pause
+        If we want to do fewer relaxations, we need to exploit some redundancy in MR images.
+        
+        \pause
+        Deep Learning allows us to learn more complex structures in MR images than Compressed Sensing.
+        
+        \pause
+        But if we want to get the best performance, we need deep memory-hungry models.
+        DEQs are a solution to the memory requirements but are slow to train.
+        We introduced a method that could enable faster DEQ training.
+    \end{block}
 \end{frame}
