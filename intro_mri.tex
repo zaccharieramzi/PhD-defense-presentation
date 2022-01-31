@@ -95,7 +95,6 @@
         }
         % For "M"
         \onslide<5->{
-            % XXX make green darker
         \path (M.south) ++ (0, -6em) node[anchor=south east,color=green!77] (exp_M){\textbf{Magnetic field in each location $\rb$,}\\ \textbf{proportional to the spin density $\rhob(\rb)$}};
         \draw [color=green!87](M.south) |- ([xshift=-0.3ex,color=green]exp_M.south west);
         }
@@ -112,6 +111,7 @@
     The \textbf{k-space} vector, $\kb(t) = \frac{\gamma}{2\pi} \int_0^t \Gb(\tau) \dif \tau$, defines how we traverse the Fourier space of the anatomical image.
 
     % We are sampling in the Fourier space of the anatomical image
+    % XXX maybe review this figure as tikzfigure to have a better looking arrow
     \begin{figure}
         \centering
         \includegraphics[height=0.4\textheight]{Figures/intro_figures/kspace_to_image.pdf}
