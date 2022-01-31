@@ -170,16 +170,15 @@
             opnode/.style={rounded rectangle, draw=green!87, fill=green!17},
             kspace_node/.style={rounded rectangle, draw=yellow!87, fill=yellow!17},
             image_node/.style={rounded rectangle, draw=blue!87, fill=blue!17},
+            highlight_node/.style={rectangle, draw=red!70, dashed, inner sep=0.1em},
         ]
             % Unrolled net simple
             \node (input) {$\xb_0$};
             \only<1-2>{
                 % nodes
-                \only<2->{
-                    \node (first_unit) [fit=(dc_1)(prox_1), unitnode, inner sep=0.7em, ] {};
-                    \node (t_first_unit) [below right] at ($(first_unit.north west)+(-0.9em,0.25em)$) {\tiny Iteration Unit~(IU)};
-                    \node (second_unit) [fit=(dc_2)(prox_2), unitnode, inner sep=0.5em, ] {};
-                }
+                \node (first_unit) [fit=(dc_1)(prox_1), unitnode, inner sep=0.7em, visible on=<2>] {};
+                \node (t_first_unit) [below right, visible on=<2>] at ($(first_unit.north west)+(-0.9em,0.25em)$) {\tiny Iteration Unit~(IU)};
+                \node (second_unit) [fit=(dc_2)(prox_2), unitnode, inner sep=0.5em, visible on=<2>] {};
                 \node (input) {$\xb_0$};
                 \node (dc_1) [right=of input, kspace_node] {DC};
                 \node (prox_1) [right=of dc_1, image_node] {$f_{\thetab_1}$};
@@ -214,20 +213,24 @@
                 \node (prox) [image_node, right=of dc_input_comb] {$f_{\thetab_1}$};
                 \node (prox_exp) [below=2em of prox] {\alt<5->{MWCNN\footfullcite{Liu2018}}{CNN}};
                 \node (outpt_prox) [right=3em of prox] {};
-                \begin{scope}[on background layer]
-                    \node (encompassing_unit) [unitnode, fit=(forward_op)(dc)(backward_op)(dc_input_comb)(prox), inner sep=0.9em] {};
-                \end{scope}
                 \only<6->{
                     % smaps nodes
                     \node (smaps_refiner) [opnode, below left=of forward_op] {Smaps refiner\footfullcite{Sriram2020End-to-EndReconstruction}};
                     \node (smaps) [left=of smaps_refiner] {$\Sbb$};
-                    \node (smaps_exp) [below=1em of smaps_refiner] {U-Net\footfullcite{ronneberger2015u}};
+                    \node (smaps_exp) [below=0.4em of smaps_refiner] {U-Net\footfullcite{ronneberger2015u}};
                     % smaps arrows
                     \draw [<-] (smaps_refiner) -- (smaps);
                     \draw [->] (smaps_refiner) -| (forward_op);
                     \draw [->] (smaps_refiner) -| (backward_op);
                     \draw [line width=0.1em] (smaps_refiner.south) -- (smaps_exp.north);
                 }
+                \begin{scope}[on background layer]
+                    \node (encompassing_unit) [unitnode, fit=(forward_op)(dc)(backward_op)(dc_input_comb)(prox), inner sep=0.9em] {};
+                    %% highlighting nodes
+                    \node<4> (highlight_concat) [highlight_node, fit=(backward_op) (dc_input_comb)] {};
+                    \node<5> (highlight_mwcnn) [highlight_node, fit=(prox_exp)] {};
+                    \node<6> (highlight_smaps) [highlight_node, fit=(smaps_refiner) (smaps) (smaps_exp)] {};
+                \end{scope}
                 % arrows linking all nodes
                 %% main track
                 \draw [->] (input) -- (first_unit);
@@ -307,6 +310,7 @@
             opnode/.style={rounded rectangle, draw=green!87, fill=green!17},
             kspace_node/.style={rounded rectangle, draw=yellow!87, fill=yellow!17},
             image_node/.style={rounded rectangle, draw=blue!87, fill=blue!17},
+            highlight_node/.style={rectangle, draw=red!70, dashed, inner sep=0.1em},
         ]
             % XXX pot change black to other color for unit node
             % Unrolled net simple
@@ -324,14 +328,8 @@
             \node (forward_op) [opnode, below=4em of first_unit] {$\mathcal{A} \cdot$};
             \node (input_forward) [left=3em of forward_op] {};
             \node (dc) [kspace_node, above right=of forward_op] {$\cdot - \ybb$};
-            \only<2->{
-                \node (dcp) [kspace_node, right=of dc] {$\cdot \times$ DCp};
-            }
-            \alt<2->{
-                \node (backward_op) [opnode, right=of dcp] {$\mathcal{A}^H \cdot$};
-            }{
-                \node (backward_op) [opnode, right=of dc] {$\mathcal{A}^H \cdot$};
-            }
+            \node (dcp) [kspace_node, right=of dc, visible on=<2->] {$\cdot \times$ DCp};
+            \node (backward_op) [opnode, right=of dcp] {$\mathcal{A}^H \cdot$};
             \node (dc_input_comb) [rounded rectangle, draw, fill=white, below right=of backward_op] {$\operatorname{concat}$};
             \node (prox) [image_node, right=of dc_input_comb] {$f_{\thetab_1}$};
             \node (prox_exp) [below=2em of prox] {CNN};
@@ -342,7 +340,8 @@
             %% smaps nodes
             \node (smaps_refiner) [opnode, below left=of forward_op] {Smaps refiner};
             \node (smaps) [left=of smaps_refiner] {$\Sbb$};              
-            
+            %% highlight nodes
+            \node<2> (highlight_dcp) [highlight_node, fit=(dcp)] {};
             % arrows linking all nodes
             %% main track
             \draw [->] (input) -- (first_unit);
@@ -352,12 +351,9 @@
             %% IU track
             \draw [->] (input_forward) -- (forward_op);
             \draw [->] (forward_op) -| (dc);
-            \alt<2->{
-                \draw [->] (dc) -- (dcp);
-                \draw [->] (dcp) -- (backward_op);
-            }{
-                \draw [->] (dc) -- (backward_op);
-            }
+            \draw<2-> [->] (dc) -- (dcp);
+            \draw<2-> [->] (dcp) -- (backward_op);
+            \draw<1> [->] (dc) -- (backward_op);
             \draw [->] (backward_op) -| (dc_input_comb);
             \draw [->] plot [smooth, tension=0.7] coordinates{(input_forward.east) ($(forward_op.south)+(0, -0.6em)$) (dc_input_comb.west)};
             \draw [->] (dc_input_comb) -- (prox);
