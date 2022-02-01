@@ -56,7 +56,6 @@
         \caption{\label{fig:precession}\textbf{Illustration of the precession of a spin in a magnetic field:} the green arrow represents the $\Bb_0$ magnetic field, while the black arrow represents the magnetic moment of the particle. Illustration courtesy of \citet{wiki}.}
     \end{figure}
     }
-    % XXX: maybe change this into a tikzpicture to avoid any weird moving effects and have better arrows and font
     \only<2>{
     \begin{figure}
         \centering
@@ -116,12 +115,16 @@
     \textbf{k-space} vector: $\kb(t) = \frac{\gamma}{2\pi} \int_0^t \Gb(\tau) \dif \tau$.
 
     % We are sampling in the Fourier space of the anatomical image
-    % XXX maybe review this figure as tikzfigure to have a better looking arrow
-    \begin{figure}
-        \centering
-        \includegraphics[height=0.4\textheight]{Figures/intro_figures/kspace_to_image.pdf}
-        \caption{\label{fig:example-kspace}\textbf{Example of a k-space with its corresponding anatomical image}: The raw data is from the fastMRI dataset. The k-space is in log-scale and only the magnitude of the 2 images are represented. We selected only a single coil from the 16 coils available for illustrative purposes.}
-    \end{figure}
+    %     \caption{\label{fig:example-kspace}\textbf{Example of a k-space with its corresponding anatomical image}: The raw data is from the fastMRI dataset. The k-space is in log-scale and only the magnitude of the 2 images are represented. We selected only a single coil from the 16 coils available for illustrative purposes.}
+
+    \begin{center}
+        \begin{tikzpicture}
+            \node (kspace) {\includegraphics[width=0.31\textwidth]{Figures/intro_figures/kspace_phantom.png}};
+            \node[below=0.7em of kspace] (kspace_exp) {$\kb(t)$};
+            \node[right=of kspace] (brain) {\includegraphics[width=0.4\textwidth, angle=180]{Figures/intro_figures/image_gt (2).png}};
+            \draw[-{Triangle[width=18pt,length=8pt]}, line width=10pt, draw=blue!57](kspace.east) -- node [midway,above] {IFFT} ($(brain.west)+(1.6em, 0)$);
+        \end{tikzpicture}
+    \end{center}
 \end{frame}
 
 \begin{frame}{Physics of MRI - 4}
