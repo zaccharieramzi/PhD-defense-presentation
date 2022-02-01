@@ -15,7 +15,8 @@
 \begin{frame}{Why should we go deep?}
     % with deeper models, comes better performance
     % figure of Pezzotti et al.
-    The general empirical gist of DL is that with deeper models comes better performance.
+    % The general empirical gist of DL is that with deeper models comes better performance.
+    With deeper models comes better performance.
     \begin{figure}
         \begin{overprint}
             \onslide<2>\centering\includegraphics[width=0.4\textwidth]{Figures/shine_figures/more_layers.jpg}\caption{Credits: \href{reddit.com/r/ProgrammerHumor/comments/5si1f0/machine_learning_approaches/}{reddit.com/r/ProgrammerHumor/comments/5si1f0/machine\_learning\_approaches/}}
@@ -26,10 +27,13 @@
 
 \begin{frame}{Can we go deeper?}
     % in the current state not: activations + constrained memory
-    The big problem at hand is that deeper models need more \textbf{memory} to train, and the memory we have is constrained.
+    % The big problem at hand is that deeper models need more \textbf{memory} to train, and the memory we have is constrained.
+    Deeper models $\Rightarrow$ more \textbf{memory} to train.
+    Memory we have is constrained.
     \pause
 
-    This memory requirement comes primarily from the \textbf{activations} of the model, not from the model weights.
+    % This memory requirement comes primarily from the \textbf{activations} of the model, not from the model weights.
+    Why more memory? \textbf{activations}!
     \pause
 
     \begin{center}
@@ -74,7 +78,8 @@
     % gradient checkpointing
     % Invertible networks
     % Implicit models
-    On the modeling side, several solutions exist:
+    % On the modeling side, several solutions exist:
+    Memory-efficient training:
     \begin{itemize}[<+->]
         \item gradient checkpointing~\citep{Chen2016TrainingCost}
         \item invertible networks~\citep{Gomez2017TheActivations,Sander2021MomentumNetworks}
@@ -84,8 +89,10 @@
 
 \begin{frame}{Deep Equilibrium networks - 1}
     % give equation and how to compute the gradient with IFT
-    \citet{Bai2019DeepModels} introduced \textbf{Deep Equilibrium networks~(DEQs)}, a type of implicit model.
-    The output of DEQs is defined implicitly as the solution to a fixed-point equation.
+    % \citet{Bai2019DeepModels} introduced \textbf{Deep Equilibrium networks~(DEQs)}, a type of implicit model.
+    \textbf{Deep Equilibrium networks~(DEQs)}~\citep{Bai2019DeepModels} are a type of implicit model.
+    % The output of DEQs is defined implicitly as the solution to a fixed-point equation.
+    The output is the solution to a fixed-point equation.
 
     \begin{equation*}
         h_{\thetab}(\xb) = \zb^\star, \text{ where } \alt<3>{g_\thetab(\zb^\star, \xb) = \zb^\star - f_\thetab(\zb^\star, \xb) = 0}{\zb^\star = f_\thetab(\zb^\star, \xb)}
@@ -93,11 +100,13 @@
 
     \pause
 
-    In practice, we solve this equation with a \textbf{quasi-Newton method}.
+    % In practice, we solve this equation with a \textbf{quasi-Newton method}.
+    In practice, solved with a \textbf{quasi-Newton method}.
 \end{frame}
 
 \begin{frame}{Deep Equilibrium networks - 2}
-    The big question is now: how do I compute the gradient $\frac{\partial \mathcal{L}}{\partial \thetab}$?
+    % The big question is now: how do I compute the gradient $\frac{\partial \mathcal{L}}{\partial \thetab}$?
+    How do I compute the gradient $\frac{\partial \mathcal{L}}{\partial \thetab}$?
     \pause
 
     The \textbf{Implicit Function Theorem} gives us just that:
@@ -109,7 +118,7 @@ Let $\zb^\star \in  \mathbb{R}^d$ such that $g_{\thetab}(\zb^\star) = 0$ and $J_
 \end{equation*}
     \end{theorem}
     \pause
-
+    % XXX: add tikz here to showcase it does not rely on activations
     Key for our memory problem: it does not rely on any activations you could have when solving the fixed-point equation.
 \end{frame}
 
@@ -127,11 +136,13 @@ Let $\zb^\star \in  \mathbb{R}^d$ such that $g_{\thetab}(\zb^\star) = 0$ and $J_
 
 \begin{frame}{Why are DEQs slow?}
     % bc of Jacobian inversion
-    If we look back the equation used to compute the gradient of DEQs:
+    % If we look back the equation used to compute the gradient of DEQs:
+    DEQs gradient computation:
     \begin{equation*}
         \frac{\partial \mathcal{L}}{\partial \thetab}\Bigr|_{\zb^\star} = \highlight{green}{$\nabla_\zb \mathcal{L}(\zb^\star)^\top$} \highlight{red}{$J_{g_{\thetab}}(\zb^\star)^{-1}$} \frac{\partial g_{\thetab}}{\partial \thetab}\Bigr|_{\zb^\star} \, ,
     \end{equation*}
-    we see that we need to invert a huge matrix \highlight{red}{$J_{g_{\thetab}}(\zb^\star)$} in a certain direction \highlight{green}{$\nabla_\zb \mathcal{L}(\zb^\star)$}.
+    % we see that we need to invert a huge matrix \highlight{red}{$J_{g_{\thetab}}(\zb^\star)$} in a certain direction \highlight{green}{$\nabla_\zb \mathcal{L}(\zb^\star)$}.
+    we need to invert a huge matrix \highlight{red}{$J_{g_{\thetab}}(\zb^\star)$} in a certain direction \highlight{green}{$\nabla_\zb \mathcal{L}(\zb^\star)$}.
     \pause
 
     In practice this is done using an iterative algorithm.
@@ -176,7 +187,8 @@ Let $\zb^\star \in  \mathbb{R}^d$ such that $g_{\thetab}(\zb^\star) = 0$ and $J_
 
 \begin{frame}{Application to Hyperparameter optimization - 1}
     % it's also a bilevel prob
-    Interestingly, other problems can benefit from this idea, notably Hyperparameter optimization.
+    % Interestingly, other problems can benefit from this idea, notably Hyperparameter optimization.
+    Hyperparameter optimization can benefit from SHINE.
 
     \begin{equation*}
         \begin{split}
