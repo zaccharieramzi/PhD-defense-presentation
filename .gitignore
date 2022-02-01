@@ -10,5 +10,6 @@
 *.run.xml
 *.snm
 *.synctex.gz
+*.synctex(busy)
 *.toc
 *.vrb
