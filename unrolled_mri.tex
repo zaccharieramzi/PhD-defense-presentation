@@ -14,7 +14,8 @@
 \begin{frame}{Model agnostic learning}
     % reframing the problem as supervised learning
     % no knowledge of the physics imposed in the model
-    The first use of DL for MRI reconstruction is to actually throw away most of what we just saw:\footfullcite{Zhu2018}
+    % The first use of DL for MRI reconstruction is to actually throw away most of what we just saw:\footfullcite{Zhu2018}
+    Let's throw away all we know:\footfullcite{Zhu2018}
     \begin{equation*}
         f_{\thetab}(\tikzmarknode{kspace}{\highlight{yellow}{$\ybb$}}) = \tikzmarknode{image}{\highlight{blue}{$\xb$}}
     \end{equation*}
@@ -36,9 +37,9 @@
 
 \begin{frame}{Single domain learning}
     % Use the backward operator as a basis for the restoration model
-    We actually have access to the backward operator $\mathcal{A}^H$, the inverse FT composed with the sensitivity maps.
+    % We actually have access to the backward operator $\mathcal{A}^H$, the inverse FT composed with the sensitivity maps.
 
-    Let's use that to build a more informed model:
+    Let's use $\mathcal{A}^H$ to build a more informed model:
     \begin{equation*}
         \alt<1>{\mathcal{A}^H}{}f_{\thetab}(
             \tikzmarknode{aliased_image}{\alt<2->{\mathcal{A}^H}{}\highlight{yellow}{$\ybb$}}
@@ -66,7 +67,8 @@
     % recovery algorithm and corresponding computation graph
     % show on second slice unrolled computation graph
     We can mix the 2 single domain approaches, using the principled \textbf{optimization algorithm unrolling} method.\footfullcite{Gregor2010}
-    \alt<5->{}{Let's look at a graph representation of the ISTA algorithm:}
+
+    \alt<5->{}{A graph representation of ISTA:}
     \begin{columns}[totalwidth=\textwidth]
         \begin{column}[]{0.3\textwidth}
             
@@ -138,7 +140,13 @@
     \begin{exampleblock}{Contribution}
         \fullcite{Ramzi2020_benchmark_journal}
     \end{exampleblock}
-    We can build different models depending on the optimization algorithm we unroll, the choice of $f_{\thetab}$ and the number of iterations.
+    % We can build different models depending on the optimization algorithm we unroll, the choice of $f_{\thetab}$ and the number of iterations.
+    Different models based on:
+    \begin{itemize}
+        \item optimization algorithm to unroll
+        \item choice of $f_{\thetab}$
+        \item $N$
+    \end{itemize}
     \pause
 
     \begin{overprint}
@@ -294,7 +302,8 @@
 
 \begin{frame}{Robustness test}
     % XXX: only if we decide not to have clinical applicability
-    How does the XPDNet fare in a prospective out-of-distribution setting:
+    % How does the XPDNet fare in a prospective out-of-distribution setting:
+    XPDNet in a prospective out-of-distribution setting:
 
     different orientation, higher resolution, higher field strength, lower acceleration factor, presence of the cerebellum.\footnote{For anonymity reasons, the cerebellum is not present in the fastMRI dataset.}
 
@@ -313,11 +322,13 @@
 
 \begin{frame}{Non-Cartesian acquisitions}
     % Why do we need non-Cartesian acquisitions?
-    We need non-Cartesian acquisitions to better cover the k-space.
+    % We need non-Cartesian acquisitions to better cover the k-space.
+    Non-Cartesian acquisitions better cover the k-space.
     \pause
 
-    The difficulty from a computational point of view is that we need to now use the \textbf{Nonuniform Fourier Transform (NDFT)}.
-    We resort to using its fast approximation, the NUFFT, which we implemented in TensorFlow, to enable gradient-based learning:
+    % The difficulty from a computational point of view is that we need to now use the \textbf{Nonuniform Fourier Transform (NDFT)}.
+    \textbf{Nonuniform Fourier Transform (NDFT)} too costly $\Rightarrow$ NUFFT, with the TensorFlow implementation:
+    % We resort to using its fast approximation, the NUFFT, which we implemented in TensorFlow, to enable gradient-based learning:
     \begin{itemize}
         \item \faicon{github} Code available online: \texttt{github.com/zaccharieramzi/tfkbnufft}
     \end{itemize}
