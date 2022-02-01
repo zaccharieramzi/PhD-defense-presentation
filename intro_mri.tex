@@ -82,7 +82,7 @@
     \pause
     
     % Using magnetic \textbf{gradients} enables changing a bit the magnetic field spatially, and therefore changing the global information depending on local factors.
-    Magnetic \textbf{gradients} => change the magnetic field spatially.
+    Magnetic \textbf{gradients} $\Rightarrow$ change the magnetic field spatially.
     \pause
     
     % This allows us to receive a temporal signal of the form:
@@ -111,7 +111,7 @@
 \end{frame}
 
 \begin{frame}{Physics of MRI - 3}
-    % Signal equation => k-space
+    % Signal equation $\Rightarrow$ k-space
     % The \textbf{k-space} vector, $\kb(t) = \frac{\gamma}{2\pi} \int_0^t \Gb(\tau) \dif \tau$, defines how we traverse the Fourier space of the anatomical image.
     \textbf{k-space} vector: $\kb(t) = \frac{\gamma}{2\pi} \int_0^t \Gb(\tau) \dif \tau$.
 
@@ -137,32 +137,44 @@
 \subsection{Acceleration in MRI}
 \begin{frame}{Where is there room for acceleration?}
     % Explain the concept of redundancy
-    % first example: partial Fourier => give limits
+    % first example: partial Fourier $\Rightarrow$ give limits
     % \textbf{Redundancy}, otherwise called \textbf{sparsity, symmetry, structure or a priori information}, is the core concept that will help us accelerate MRI.\\
     \textbf{Redundancy}, or \textbf{sparsity, symmetry, structure or a priori information}, is the key.\\
     
     \begin{overprint}
-    \hfill \break
+        \onslide<2>
+        \hfill \break
     % Here is an illustrative example:
     An illustrative example:
     \begin{figure}
         \centering
-        \onslide<2>\includegraphics[height=0.4\textheight]{Figures/intro_figures/astronaut_masked.pdf}
-        \onslide<3>\includegraphics[height=0.4\textheight]{Figures/intro_figures/astronaut.pdf}
-        \caption{\label{fig:astronaut-masked}\textbf{The inpainting problem.} Even without access to all the pixel values directly, we can infer them, because the information in the image is redundant.
+        \includegraphics[height=0.4\textheight]{Figures/intro_figures/astronaut_masked.pdf}
+        \caption{\label{fig:astronaut-masked}\textbf{The inpainting problem.} 
+        % Even without access to all the pixel values directly, we can infer them, because the information in the image is redundant.
+        }
+    \end{figure}
+    
+    \onslide<3>
+    \hfill \break
+    An illustrative example:
+    \begin{figure}
+        \centering
+        \includegraphics[height=0.4\textheight]{Figures/intro_figures/astronaut.pdf}
+        \caption{\label{fig:astronaut}\textbf{The inpainting problem.} 
+        % Even without access to all the pixel values directly, we can infer them, because the information in the image is redundant.
         }
     \end{figure}
     
     \onslide<4>
         \hfill \break
-        Is there a similar thing in MRI?\\
+        Is there a similar thing in MRI?
 
         % Yes! The anatomical image is real-valued so its Fourier Transform~(FT) has a conjugate symmetry.
-        Yes! Fourier Transform~(FT) has a conjugate symmetry => \textbf{Partial Fourier}.\\
+        Yes! Fourier Transform~(FT) has a conjugate symmetry $\Rightarrow$ \textbf{Partial Fourier}
         % Using this redundancy to sample less points in the k-space (i.e. using the relaxation fewer times) is a technique called \textbf{Partial Fourier}.
         
         % But in practice it is still needed to sample 6/8 of the Fourier space (acceleration of 1.3).\footfullcite{emri}
-        Resulting acceleration: 1.3.
+        Resulting acceleration: 1.3
     
     \end{overprint}
     
@@ -171,14 +183,13 @@
 \begin{frame}{Parallel imaging}
     % "forging" the redundancy
     % We can build more redundancy in the measuring system by using \textbf{more antennas (called coils)} to measure the magnetic signal.
-    Build more redundancy: \textbf{more antennas (called coils)} => \textbf{Parallel Imaging~(PI)}.\\
-    
+    More redundancy using \textbf{more antennas (called coils)} $\Rightarrow$ \textbf{Parallel Imaging~(PI)}
+     
     % This technique is called \textbf{Parallel Imaging~(PI)}. 
     % A reconstruction algorithm is now needed to handle the multi-coil undersampled data.
         % \textbf{SENSE}\footfullcite{Pruessmann1999SENSE:MRI} and \textbf{GRAPPA}\footfullcite{Griswold2002GeneralizedGRAPPA} are such algorithms.    
-
-    Multi-coil reconstruction algorithms: \textbf{SENSE}\footfullcite{Pruessmann1999SENSE:MRI} and \textbf{GRAPPA}\footfullcite{Griswold2002GeneralizedGRAPPA}.
-    
+    Reconstruction algorithm: \textbf{SENSE}\footfullcite{Pruessmann1999SENSE:MRI} and \textbf{GRAPPA}\footfullcite{Griswold2002GeneralizedGRAPPA}.
+    % GRAPPA + SENSE examples
 \end{frame}
 
 \begin{frame}{The example of GRAPPA}
