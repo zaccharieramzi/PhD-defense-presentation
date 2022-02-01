@@ -40,7 +40,7 @@
 \usetikzlibrary{arrows,chains}
 \usetikzlibrary{overlay-beamer-styles}
 
-% \includeonly{very_deep}
+\includeonly{very_deep}
 %----------------------------------------------------------------------------------------
 %	TITLE PAGE
 %----------------------------------------------------------------------------------------
@@ -48,6 +48,16 @@
 \title[Advanced deep neural networks for MRI image reconstruction]{Advanced deep neural networks for MRI image reconstruction from highly undersampled data in challenging acquisition settings
 } % The short title appears at the bottom of every slide, the full title is only on the title page
 \subtitle{PhD defense}
+
+\titlegraphic{
+    \begin{tikzpicture}[overlay,remember picture]
+        \node[below right=0.2cm and 0.2cm of current page.150] (cea) {\includegraphics[width=4em]{Figures/logos/CEA_logo.jpg}};
+        \node[right=of cea] (neurospin) {\includegraphics[width=4em]{Figures/logos/neurospin_logo.jpg}};
+        \node[right=of neurospin] (cosmostat) {\includegraphics[width=6em]{Figures/logos/cosmostat_logo.jpg}};
+        \node[right=of cosmostat] (inria) {\includegraphics[width=6em]{Figures/logos/inria_logo.jpg}};
+        \node[right=of inria] (parietal) {\includegraphics[width=6em]{Figures/logos/parietal_logo.jpg}};
+    \end{tikzpicture}
+}
 
 \author[Zaccharie] {Zaccharie Ramzi}
 % XXX: add supervisors
