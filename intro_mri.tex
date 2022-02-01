@@ -22,7 +22,8 @@
 \begin{frame}{Importance of MRI - 1}
     % how many MRI scans / scanners
     % how likely is it that you will get an MRI in your life
-    Based on a rough extrapolation of the following figure, there is a 99.9\% chance that you will get an MRI in your life in France.
+    % Based on a rough extrapolation of the following figure, there is a 99.9\% chance that you will get an MRI in your life in France.
+    99.9\% chance you will get an MRI.
     \begin{figure}
         \centering
         \includegraphics[width=\textwidth]{Figures/intro_figures/num_mri_scans.png}
@@ -33,10 +34,11 @@
 % There is a reason for that: MRI can help diagnose many different conditions
 \begin{frame}{Importance of MRI - 2}
     % list of conditions
+    % This illustration provides a non-exhaustive list of all the diagnoses that can be carried out with MRI.
     \begin{figure}
         \centering
         \includegraphics[height=0.6\textheight]{Figures/intro_figures/What_can_we_diagnose_with_MRI.pdf}
-        \caption{\label{fig:diagnose-mri} \textbf{What can we diagnose with MRI?} This illustration provides a non-exhaustive list of all the diagnoses that can be carried out with MRI. All the information was compiled from the works of \citet{reimer2010clinical,runge2019essentials}.}
+        \caption{\label{fig:diagnose-mri} \textbf{What can we diagnose with MRI?}  Info compiled from \citet{reimer2010clinical,runge2019essentials}.}
     \end{figure}
 \end{frame}
 
@@ -75,13 +77,16 @@
     % Because all spins get excited, we get a global RF pulse that is the weighted sum of the contribution of all spins' relaxation RF pulses: global information
     % We can obtain "multiple global information", by changing a bit the magnetic field spatially using gradients
     % Signal equation
-    However, the FID carries global information.
+    % However, the FID carries global information.
+    FID: global info.
     \pause
     
-    Using magnetic \textbf{gradients} enables changing a bit the magnetic field spatially, and therefore changing the global information depending on local factors.
+    % Using magnetic \textbf{gradients} enables changing a bit the magnetic field spatially, and therefore changing the global information depending on local factors.
+    Magnetic \textbf{gradients} => change the magnetic field spatially.
     \pause
     
-    This allows us to receive a temporal signal of the form:
+    % This allows us to receive a temporal signal of the form:
+    Temporal signal:
     \begin{equation*}
         \vspace{\baselineskip}
         \tikzmarknode{S}{\highlight{blue}{$S_{tr}(t)$}} \propto \omega_0  \int_{V_s} B_{tr} \tikzmarknode{M}{\highlight{green}{$M_{tr}(t, \rb)$}} e^{-\imath \gamma \rb \cdot \int_0^t \tikzmarknode{G}{\highlight{red}{$\Gb(\tau)$}}  \dif \tau} \dif \rb 
@@ -107,7 +112,8 @@
 
 \begin{frame}{Physics of MRI - 3}
     % Signal equation => k-space
-    The \textbf{k-space} vector, $\kb(t) = \frac{\gamma}{2\pi} \int_0^t \Gb(\tau) \dif \tau$, defines how we traverse the Fourier space of the anatomical image.
+    % The \textbf{k-space} vector, $\kb(t) = \frac{\gamma}{2\pi} \int_0^t \Gb(\tau) \dif \tau$, defines how we traverse the Fourier space of the anatomical image.
+    \textbf{k-space} vector: $\kb(t) = \frac{\gamma}{2\pi} \int_0^t \Gb(\tau) \dif \tau$.
 
     % We are sampling in the Fourier space of the anatomical image
     % XXX maybe review this figure as tikzfigure to have a better looking arrow
@@ -132,37 +138,31 @@
 \begin{frame}{Where is there room for acceleration?}
     % Explain the concept of redundancy
     % first example: partial Fourier => give limits
-    \textbf{Redundancy}, otherwise called \textbf{sparsity, symmetry, structure or a priori information}, is the core concept that will help us accelerate MRI.\\
+    % \textbf{Redundancy}, otherwise called \textbf{sparsity, symmetry, structure or a priori information}, is the core concept that will help us accelerate MRI.\\
+    \textbf{Redundancy}, or \textbf{sparsity, symmetry, structure or a priori information}, is the key.\\
     
     \begin{overprint}
-        \onslide<2>
-        \hfill \break
-    Here is an illustrative example:
-    \begin{figure}
-        \centering
-        \includegraphics[height=0.4\textheight]{Figures/intro_figures/astronaut_masked.pdf}
-        \caption{\label{fig:astronaut-masked}\textbf{The inpainting problem.} Even without access to all the pixel values directly, we can infer them, because the information in the image is redundant.
-        }
-    \end{figure}
-    
-    \onslide<3>
     \hfill \break
-    Here is an illustrative example:
+    % Here is an illustrative example:
+    An illustrative example:
     \begin{figure}
         \centering
-        \includegraphics[height=0.4\textheight]{Figures/intro_figures/astronaut.pdf}
-        \caption{\label{fig:astronaut}\textbf{The inpainting problem.} Even without access to all the pixel values directly, we can infer them, because the information in the image is redundant.
+        \onslide<2>\includegraphics[height=0.4\textheight]{Figures/intro_figures/astronaut_masked.pdf}
+        \onslide<3>\includegraphics[height=0.4\textheight]{Figures/intro_figures/astronaut.pdf}
+        \caption{\label{fig:astronaut-masked}\textbf{The inpainting problem.} Even without access to all the pixel values directly, we can infer them, because the information in the image is redundant.
         }
     \end{figure}
     
     \onslide<4>
         \hfill \break
-        Is there a similar thing in MRI?
+        Is there a similar thing in MRI?\\
 
-        Yes! The anatomical image is real-valued so its Fourier Transform~(FT) has a conjugate symmetry.
-        Using this redundancy to sample less points in the k-space (i.e. using the relaxation fewer times) is a technique called \textbf{Partial Fourier}.
+        % Yes! The anatomical image is real-valued so its Fourier Transform~(FT) has a conjugate symmetry.
+        Yes! Fourier Transform~(FT) has a conjugate symmetry => \textbf{Partial Fourier}.\\
+        % Using this redundancy to sample less points in the k-space (i.e. using the relaxation fewer times) is a technique called \textbf{Partial Fourier}.
         
-        But in practice it is still needed to sample 6/8 of the Fourier space (acceleration of 1.3).\footfullcite{emri}
+        % But in practice it is still needed to sample 6/8 of the Fourier space (acceleration of 1.3).\footfullcite{emri}
+        Resulting acceleration: 1.3.
     
     \end{overprint}
     
@@ -170,12 +170,15 @@
 
 \begin{frame}{Parallel imaging}
     % "forging" the redundancy
-    We can build more redundancy in the measuring system by using \textbf{more antennas (called coils)} to measure the magnetic signal.
+    % We can build more redundancy in the measuring system by using \textbf{more antennas (called coils)} to measure the magnetic signal.
+    Build more redundancy: \textbf{more antennas (called coils)} => \textbf{Parallel Imaging~(PI)}.\\
     
-    This technique is called \textbf{Parallel Imaging~(PI)}. 
-    A reconstruction algorithm is now needed to handle the multi-coil undersampled data.
-        \textbf{SENSE}\footfullcite{Pruessmann1999SENSE:MRI} and \textbf{GRAPPA}\footfullcite{Griswold2002GeneralizedGRAPPA} are such algorithms.    
-    % GRAPPA + SENSE examples
+    % This technique is called \textbf{Parallel Imaging~(PI)}. 
+    % A reconstruction algorithm is now needed to handle the multi-coil undersampled data.
+        % \textbf{SENSE}\footfullcite{Pruessmann1999SENSE:MRI} and \textbf{GRAPPA}\footfullcite{Griswold2002GeneralizedGRAPPA} are such algorithms.    
+
+    Multi-coil reconstruction algorithms: \textbf{SENSE}\footfullcite{Pruessmann1999SENSE:MRI} and \textbf{GRAPPA}\footfullcite{Griswold2002GeneralizedGRAPPA}.
+    
 \end{frame}
 
 \begin{frame}{The example of GRAPPA}
