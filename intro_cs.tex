@@ -12,11 +12,13 @@
 
 \begin{frame}{Another look at redundancy: the prior point of view}
     % give a sense of what structure is and how it relates to redundancy
-    Redundancy is not always strict: we may only have a strong correlation between 2 structures of the image.
+    % Redundancy is not always strict: we may only have a strong correlation between 2 structures of the image.
+    Redundancy is not always strict
     \begin{figure}
         \centering
         \includegraphics[height=0.5\textheight]{Figures/cs_figures/smiley_prior.pdf}
-        \caption{\label{fig:redundancy-smiley}\textbf{A smiley example to a priori knowledge:} Even if we do not have access to the whole image, we still know which images are more \emph{likely} to correspond to it.
+        \caption{\label{fig:redundancy-smiley}\textbf{A smiley example to a priori knowledge.} 
+        % Even if we do not have access to the whole image, we still know which images are more \emph{likely} to correspond to it.
         }
     \end{figure}
 \end{frame}
@@ -24,7 +26,8 @@
 \subsection{Linear Inverse Problems}
 \begin{frame}{Linear Inverse Problems}
     % introduce linear inverse problems
-    To leverage this type of redundancy, we introduce the concept of \textbf{Linear Inverse Problems}:
+    % To leverage this type of redundancy, we introduce the concept of \textbf{Linear Inverse Problems}:
+    \textbf{Linear Inverse Problems}:
     \begin{equation*}
         \tikzmarknode{A}{\highlight{green}{$\Ab$}} \tikzmarknode{x}{\highlight{blue}{$\xb$}} = \tikzmarknode{y}{\highlight{yellow}{$\yb$}}
     \end{equation*}
@@ -63,12 +66,14 @@
     
 
     \onslide<8->{
-    Problems arise when $\ker{\Ab} \neq \{0\}$, i.e. when there are multiple solutions to this equation.
+    % Problems arise when $\ker{\Ab} \neq \{0\}$, i.e. when there are multiple solutions to this equation.
+    Problem: what if $\ker{\Ab} \neq \{0\}$? Multiple solutions!
     }
 
     \onslide<9->{
     \hfill \break
-    In order to select one of these solutions, we need to use a priori knowledge.
+    % In order to select one of these solutions, we need to use a priori knowledge.
+    To select one of these solutions, we need a priori knowledge.
     }
 \end{frame}
 
@@ -103,8 +108,10 @@
 \end{frame}
 
 \begin{frame}{Application to MRI}
-    MR images themselves cannot be represented as sparse vectors directly, we need a way to express them as such.
-    \citet{Lustig2007} did that by using the fact that MR images can be represented sparsely in a \textbf{wavelet} basis.
+    % MR images themselves cannot be represented as sparse vectors directly, we need a way to express them as such.
+    MR images are not sparse as is.
+    % \citet{Lustig2007} did that by using the fact that MR images can be represented sparsely in a \textbf{wavelet} basis.
+    \citet{Lustig2007} expressed their sparsity in a \textbf{wavelet} basis.
 
     \hfill \break
     The Inverse Problem becomes:
@@ -150,7 +157,7 @@
 
 \subsection{Recovery Algorithms}
 \begin{frame}{Relaxation}
-    Now we have an optimization problem to solve, but can we?
+    Can we solve the optimization problem?
     \pause
     No; we need to relax it using the basis pursuit:
     \begin{equation*}
@@ -159,14 +166,15 @@
     \end{equation*}
 
     \pause
-    For this problem to have the same solutions as the non-relaxed one, we need coherence-based constraints on the measurement operator $\Ab$.
+    % For this problem to have the same solutions as the non-relaxed one, we need coherence-based constraints on the measurement operator $\Ab$.
+    Coherence-based constraints on $\Ab$ $\Rightarrow$ same solutions.
 
 \end{frame}
 
 \begin{frame}{The canonical MRI reconstruction problem}
-    We introduce the notion of a \textbf{sparsity} basis $\psib$ (typically wavelets) and the fact that the measurements can be noisy to obtain the canonical MRI reconstruction problem:
+    % We introduce the notion of a \textbf{sparsity} basis $\psib$ (typically wavelets) and the fact that the measurements can be noisy to obtain the canonical MRI reconstruction problem:
     \begin{equation*}
-        \min_{\xb \in \mathbb{C}^n} \overbrace{\|\tikzmarknode{calA}{\underline{\mathcal{A}}} \xb - \yb \|_2^2}^{\text{\sf \footnotesize Data consistency}}  + \overbrace{ \tikzmarknode{lambda}{\underline{\lambda}} \|\psib \xb\|_1}^{\text{\sf \footnotesize Regularization term } }
+        \min_{\xb \in \mathbb{C}^n} \overbrace{\|\tikzmarknode{calA}{\underline{\mathcal{A}}} \xb - \yb \|_2^2}^{\text{\sf \footnotesize Noisy data consistency}}  + \overbrace{ \tikzmarknode{lambda}{\underline{\lambda}} \|\psib \xb\|_1}^{\text{\sf \footnotesize Regularization term } }
     \end{equation*}
     \vspace{\baselineskip}
     \begin{tikzpicture}[overlay,remember picture,>=stealth,nodes={align=left,inner ysep=1pt},<-]
@@ -185,7 +193,8 @@
 \end{frame}
 
 \begin{frame}{ISTA}
-     The Iterative Shrinkage-Thresholding Algorithm~(ISTA) can be used to solve the canonical MRI reconstruction problem:
+    %  The Iterative Shrinkage-Thresholding Algorithm~(ISTA) can be used to solve the canonical MRI reconstruction problem:
+     Iterative Shrinkage-Thresholding Algorithm~(ISTA):
      \begin{equation*}
         \label{eq:ista-step}
         \begin{split}
@@ -216,6 +225,7 @@
     % give max AF
     % also give a sense of the limitations in compute and in prior learning
     Additional acceleration factor on top of PI: 1.5. % from https://www.philips.fr/healthcare/ressources/landing/the-next-mr-wave/compressed-sense
+    
     \pause
     The prior knowledge expressed by the wavelet basis (or other basis) is limited: handcrafted and linear.
 \end{frame}
