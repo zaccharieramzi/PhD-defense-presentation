@@ -114,12 +114,19 @@
         Let $\thetab \in \mathbb{R}^p$ be a set of parameters, let $\mathcal{L}: \mathbb{R}^d \rightarrow \mathbb{R}$ be a loss function and $g_{\thetab}: \mathbb{R}^d \rightarrow \mathbb{R}^d$ be a root-defining function.
 Let $\zb^\star \in  \mathbb{R}^d$ such that $g_{\thetab}(\zb^\star) = 0$ and $J_{g_{\thetab}}(\zb^\star) = \frac{\partial g_{\theta}}{\partial \zb}\Bigr|_{\zb^\star}$ is invertible, then the gradient of the loss $\mathcal{L}$ wrt. $\thetab$, called Hypergradient, is given by
 \begin{equation*}
-    \frac{\partial \mathcal{L}}{\partial \thetab}\Bigr|_{\zb^\star} = \nabla_\zb \mathcal{L}(\zb^\star)^\top J_{g_{\thetab}}(\zb^\star)^{-1} \frac{\partial g_{\thetab}}{\partial \thetab}\Bigr|_{\zb^\star} \, .
+    \frac{\partial \mathcal{L}}{\partial \thetab}\Bigr|_{\zb^\star} = \tikzmarknode[rounded rectangle, draw=red!47, dashed, inner sep=0.1em]{grad_no_act}{\nabla_\zb \mathcal{L}(\zb^\star)^\top J_{g_{\thetab}}(\zb^\star)^{-1} \frac{\partial g_{\thetab}}{\partial \thetab}\Bigr|_{\zb^\star}} \, .
 \end{equation*}
     \end{theorem}
-    \pause
-    % XXX: add tikz here to showcase it does not rely on activations
-    Key for our memory problem: it does not rely on any activations you could have when solving the fixed-point equation.
+     % XXX: add tikz here to showcase it does not rely on activations
+    % Key for our memory problem: it does not rely on any activations you could have when solving the fixed-point equation.
+    \begin{tikzpicture}[overlay,remember picture,>=stealth,nodes={inner ysep=1pt},<-]
+        % For "aliased_image"
+        \onslide<3>{
+        \path (grad_no_act.south) ++ (0, -2em) node[anchor=north,color=red!47] (exp){
+            Does not rely on activations!};
+            \draw [color=red!47](grad_no_act.south) -- ([color=red]exp.north);
+        }
+    \end{tikzpicture}
 \end{frame}
 
 \subsection{SHINE}
