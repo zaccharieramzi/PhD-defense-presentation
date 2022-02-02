@@ -45,6 +45,28 @@
 
 \subsection{Physics of MRI}
 % MRI is so popular why isnt it solved already ?
+\begin{frame}{MRI players}
+    \begin{center}
+        \begin{tikzpicture}[
+            >=stealth,font=\Large, node distance=2em,
+            b0/.style={line width=7pt, draw=DarkGreen},
+        ]
+            % nodes
+            \node[] (mri) {\includegraphics[height=0.3\textheight,]{Figures/intro_figures/mri.jpg}};
+            \node[below=of mri] (brain) {\includegraphics[height=0.3\textheight,angle=180]{Figures/intro_figures/brain_mri.png}};
+            \shade[ball color = blue!47, visible on=<2>] ($(brain.east)+(8cm,0)$) circle (1cm);
+            \node[visible on=<2>] (bottom_arrow) at ($(mri.east)+(7.5cm,-1.3cm)$) {$\Bb_0$};
+            % arrows
+            %% pointing
+            %% field
+            \draw[->,-{Triangle[width=18pt,length=9pt]}, b0, visible on=<2>]  ($(mri.east)+(7.5cm,-1cm)$) -- ($(mri.east)+(7.5cm,1cm)$);
+            \draw[->, visible on=<2>] (mri.east) --  ($(mri.east)+(7cm,0)$);
+            \draw[->, visible on=<2>] (brain.east) --  ($(brain.east)+(6.5cm,0)$);
+        \end{tikzpicture}
+    \end{center}
+\end{frame}
+
+
 \begin{frame}{Nuclear Magnetic Resonance}
     \begin{center}
         \begin{tikzpicture}[
