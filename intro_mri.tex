@@ -157,7 +157,7 @@
     \begin{center}
         \begin{tikzpicture}
             \node (kspace) {\includegraphics[width=0.31\textwidth]{Figures/intro_figures/kspace_phantom.png}};
-            \node[below=0.7em of kspace] (kspace_exp) {$\kb(t)$};
+            \node[below=0.7em of kspace] (kspace_exp) {$\kb(t) \mapsto S_{tr}(t)$};
             \node[right=of kspace] (brain) {\includegraphics[width=0.4\textwidth, angle=180]{Figures/intro_figures/image_gt (2).png}};
             \draw[-{Triangle[width=18pt,length=8pt]}, line width=10pt, draw=blue!57](kspace.east) -- node [midway,above] {IFFT} ($(brain.west)+(1.6em, 0)$);
         \end{tikzpicture}
@@ -168,7 +168,7 @@
     % Let's not forget our initial goal here: we want to understand why MRI is slow
     % The relaxation is slow !
     \begin{block}{Recap}
-        MRI relies on the nuclear resonance phenomenon. This enables us to sample the Fourier space of the anatomical object of interest.
+        MRI relies on the nuclear magnetic resonance phenomenon. This enables us to sample the Fourier space of the anatomical object of interest.
     \end{block}
     \pause
     MRI is slow, because the \textbf{relaxation} is slow!
