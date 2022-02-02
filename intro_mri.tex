@@ -16,6 +16,7 @@
         \includegraphics[height=0.6\textheight]{Figures/intro_figures/example_knee_fastmri.pdf}
         \caption{\label{fig:mri-example} \textbf{Example of an MR image}: MR image of the knee taken from the fastMRI dataset.\footfullcite{Zbontar}}
     \end{figure}
+    % explain content of image: it's not a photo, but it tells us the tissue density
 \end{frame}
 
 \subsection{Importance of MRI}
@@ -44,64 +45,40 @@
 
 \subsection{Physics of MRI}
 % MRI is so popular why isnt it solved already ?
-\begin{frame}{Physics of MRI - 1}
-    % at its core MRI relies on the MR phenomenon
-    % in short: a spin is aligned with the magnetic field, when an RF pulse is sent, it tips the spin in the orthogonal plane before the spin realigns with the magnetic field sending another RF pulse
-    \only<1>{
-        \vspace{0.5em}
-
-    \begin{figure}
-        \centering
-        \includegraphics[width=0.14\textwidth]{Figures/intro_figures/Precession_in_magnetic_field.pdf}
-        \caption{\label{fig:precession}\textbf{Illustration of the precession of a spin in a magnetic field:} the green arrow represents the $\Bb_0$ magnetic field, while the black arrow represents the magnetic moment of the particle. Illustration courtesy of \citet{wiki}.}
-    \end{figure}
-    }
-    \only<2>{
-    \begin{figure}
-        \centering
-        \includegraphics[width=0.5\textwidth]{Figures/intro_figures/Excitation.pdf}
-        \caption{\label{fig:excitation}\textbf{Illustration of the excitation phenomenon:} the blue arrow represents an incoming RF~(Radio Frequency) pulse. Illustration courtesy of \citet{wiki}.}
-    \end{figure}
-    }
-    \only<3>{
-    \begin{figure}
-        % XXX: add antenna for reception of the pulse
-        \centering
-        \includegraphics[width=0.5\textwidth]{Figures/intro_figures/Relaxation.pdf}
-        \caption{\label{fig:relaxation}\textbf{Illustration of the relaxation phenomenon:} the blue arrow represents an outgoing FID~(Free Induction Decay) pulse. Illustration courtesy of \citet{wiki}.}
-    \end{figure}
-    }
-\end{frame}
-
-
 \begin{frame}{Nuclear Magnetic Resonance}
     \begin{center}
         \begin{tikzpicture}[
             >=stealth,font=\Large, node distance=2em,
             b0/.style={line width=7pt, draw=DarkGreen},
             spin/.style={line width=2pt},
+            excit/.style={line width=8pt},
+            pulse/.style={line width=3pt, color=blue!87},
+            pulse_text/.style={above,midway,color=blue!87},
         ]
             % nodes
-            \shade[ball color = blue!40] (0,0) circle (1cm);
+            \shade[ball color = blue!47] (0,0) circle (1cm);
             \node(top_spin) at (0,1cm) {};
             \node(bottom_spin) at (0,-1cm) {};
             \node(top_arrow) [above=of top_spin] {};
             \node(bottom_arrow) [below=of bottom_spin] {$\Bb_0$};
+            \node(coil) [circle, draw, visible on=<3>] at (4.5cm,0) {\textbf{Antenna}};
             % arrows/lines
             \draw[->,-{Triangle[width=18pt,length=9pt]}, b0] (top_spin.south) -- (top_arrow);
             \draw[b0] (0,-1cm) -- (bottom_arrow);
-            % \draw[->,dashed,semithick] (0:180:2 and 0.6) arc[radius=1.2, start angle=150, end angle=210];
-            % \draw[->,>=stealth',semithick] (-30:1.2cm) arc[radius=1.2, start angle=-30, end angle=30];
-            % \draw[dashed,->,semithick] arc (0:180:2 and 0.6);
             \begin{scope}[on background layer]
                 \draw<1>[->,dashed,semithick] (-0.6cm,1.6cm) arc [start angle=180, end angle=-70, x radius=0.6cm, y radius=.1cm];                
             \end{scope}
+            %% excitation/relaxation
+            \draw[excit, visible on=<2>, color=red!87,->] (-1.6cm,1.6cm) arc [start angle=95, end angle=175, x radius=1.6cm, y radius=1.6cm] node [left,midway, color=red!87, xshift=-0.3cm] {\textbf{Excitation}};
+            \draw[excit, visible on=<3>, color=green!87, <-] (-1.6cm,1.6cm) arc [start angle=95, end angle=175, x radius=1.6cm, y radius=1.6cm] node [left,midway, color=green!87, xshift=-0.3cm] {\textbf{Relaxation}};
+            %% pulses
+            \draw[<-, pulse,visible on=<2>] (1.9cm,0cm) -- node [pulse_text] {\textbf{RF pulse}} ($(coil.west)+(-0.3cm,0)$);
+            \draw[->, pulse,visible on=<3>] (1.9cm,0cm) -- node [pulse_text] {\textbf{FID}} ($(coil.west)+(-0.3cm,0)$);
             %% arrow spin
-            %%% init
-            \draw<1>[->,spin] (-0.3cm,0.8cm) -- (-0.6cm,1.6cm);
+            \draw<1,3>[->,spin] (-0.3cm,0.8cm) -- (-0.6cm,1.6cm);
             \draw<2>[->,spin] (-0.9cm,0.cm) -- (-1.8cm,0cm);
             \begin{scope}[on background layer]
-                \draw<1>[spin] (0.3cm,-0.8cm) -- (0.6cm,-1.6cm);
+                \draw<1,3>[spin] (0.3cm,-0.8cm) -- (0.6cm,-1.6cm);
                 \draw<2>[spin] (0.9cm,0cm) -- (1.8cm,0cm);
             \end{scope}
             
@@ -109,7 +86,7 @@
     \end{center}
 \end{frame}
 
-\begin{frame}{Physics of MRI - 2}
+\begin{frame}{Physics of MRI - 1}
     % Because all spins get excited, we get a global RF pulse that is the weighted sum of the contribution of all spins' relaxation RF pulses: global information
     % We can obtain "multiple global information", by changing a bit the magnetic field spatially using gradients
     % Signal equation
@@ -146,7 +123,7 @@
     \end{tikzpicture}
 \end{frame}
 
-\begin{frame}{Physics of MRI - 3}
+\begin{frame}{Physics of MRI - 2}
     % Signal equation $\Rightarrow$ k-space
     % The \textbf{k-space} vector, $\kb(t) = \frac{\gamma}{2\pi} \int_0^t \Gb(\tau) \dif \tau$, defines how we traverse the Fourier space of the anatomical image.
     \textbf{k-space} vector: $\kb(t) = \frac{\gamma}{2\pi} \int_0^t \Gb(\tau) \dif \tau$.
@@ -164,7 +141,7 @@
     \end{center}
 \end{frame}
 
-\begin{frame}{Physics of MRI - 4}
+\begin{frame}{Physics of MRI - 3}
     % Let's not forget our initial goal here: we want to understand why MRI is slow
     % The relaxation is slow !
     \begin{block}{Recap}
