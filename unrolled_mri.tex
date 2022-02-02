@@ -120,6 +120,8 @@
                     \node (dc_2) [rounded rectangle, right=of dots, draw=yellow!87, fill=yellow!17] {DC};
                     \node (prox_2) [rounded rectangle, right=of dc_2, draw=blue!87, fill=blue!17] {\alt<5->{$f_{\thetab_N}$}{Prx}};
                     \node (output) [right=of prox_2] {$\xb_{N}$};
+                    \node (whole) [visible on=<6->, fit=(dc_1) (prox_1) (dots) (dc_2) (prox_2), draw, rounded rectangle, inner sep=0.1em] {};
+                    \node (whole_exp) [visible on=<6->, below=of whole] {The whole network};
                     % arrows linking all nodes
                     \draw [->] (input) -- (dc_1);
                     \draw [->] (dc_1) -- (prox_1);
@@ -128,7 +130,8 @@
                     \draw [->] (dc_2) -- (prox_2);
                     \draw [->] (prox_2) -- (output);
                     % brace
-                    \draw [brace, line width=0.25mm] ($(dc_1.south west)+(0,-0.25em)$) -- ($(prox_1.south east)+(0,-0.25em)$) node [position label, pos=0.5] {$\times N$};
+                    \draw<4-5> [brace, line width=0.25mm] ($(dc_1.south west)+(0,-0.25em)$) -- ($(prox_1.south east)+(0,-0.25em)$) node [position label, pos=0.5] {$\times N$};
+                    \draw<6-> [line width=0.1em] (whole.south) -- (whole_exp.north);
                 \end{tikzpicture}
             }
         \end{column}
