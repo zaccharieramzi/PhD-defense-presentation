@@ -77,16 +77,17 @@
             }
         \end{figure}
     }
-    \only<2>{
+    \only<2->{
         \begin{center}
-            \begin{tikzpicture}[font=\large,>=stealth,node distance=1.5em]
+            \begin{tikzpicture}[font=\large,>=stealth,node distance=1.5em, remember picture]
                 % node
-                \node(f_smiley) {$f(\adjincludegraphics[valign=c,width=0.1\textwidth]{Figures/intro_figures/smiley_prior_x.pdf}) = $};
+                \node(f_smiley) {$\tikzmarknode{f}{f}(\adjincludegraphics[valign=c,width=0.1\textwidth]{Figures/intro_figures/smiley_prior_x.pdf}) = $};
                 \node(arrow) [right=of f_smiley.east, single arrow,bottom color=red,top color=green, minimum size=2cm,rotate=90, yshift=-1em, xshift=-1em] {};
                 \node(likely_smiley) [above=0.2em of arrow.east] {Smiley-like};
                 \node(unlikely_smiley) [below=0.2em of arrow.west] {Not smiley-like};
+                \node(f_exp) [below=of f, visible on=<3>] {Prior};
                 % arrow
-                % \draw[->,-{Triangle[width=18pt,length=9pt]}, line width=7pt, shade, bottom color=red, top color=green]  (unlikely_smiley.north) -- (likely_smiley.south);
+                \draw<3-> [line width=0.1em] ($(f.south)+(0,-0.1cm)$) -- (f_exp.north);
             \end{tikzpicture}
         \end{center}
     }
