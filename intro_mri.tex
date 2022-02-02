@@ -20,7 +20,7 @@
 \end{frame}
 
 \subsection{Importance of MRI}
-\begin{frame}{Importance of MRI - 1}
+\begin{frame}{Importance of MRI}
     % how many MRI scans / scanners
     % how likely is it that you will get an MRI in your life
     % Based on a rough extrapolation of the following figure, there is a 99.9\% chance that you will get an MRI in your life in France.
@@ -33,15 +33,15 @@
 \end{frame}
 
 % There is a reason for that: MRI can help diagnose many different conditions
-\begin{frame}{Importance of MRI - 2}
-    % list of conditions
-    % This illustration provides a non-exhaustive list of all the diagnoses that can be carried out with MRI.
-    \begin{figure}
-        \centering
-        \includegraphics[height=0.6\textheight]{Figures/intro_figures/What_can_we_diagnose_with_MRI.pdf}
-        \caption{\label{fig:diagnose-mri} \textbf{What can we diagnose with MRI?}  Info compiled from \citet{reimer2010clinical,runge2019essentials}.}
-    \end{figure}
-\end{frame}
+% \begin{frame}{Importance of MRI - 2}
+%     % list of conditions
+%     % This illustration provides a non-exhaustive list of all the diagnoses that can be carried out with MRI.
+%     \begin{figure}
+%         \centering
+%         \includegraphics[height=0.6\textheight]{Figures/intro_figures/What_can_we_diagnose_with_MRI.pdf}
+%         \caption{\label{fig:diagnose-mri} \textbf{What can we diagnose with MRI?}  Info compiled from \citet{reimer2010clinical,runge2019essentials}.}
+%     \end{figure}
+% \end{frame}
 
 \subsection{Physics of MRI}
 % MRI is so popular why isnt it solved already ?
@@ -180,42 +180,43 @@
     % \textbf{Redundancy}, otherwise called \textbf{sparsity, symmetry, structure or a priori information}, is the core concept that will help us accelerate MRI.\\
     \textbf{Redundancy}, or \textbf{sparsity, symmetry, structure or a priori information}, is the key.\\
     
-    \begin{overprint}
-        \onslide<2>
-        \hfill \break
-    % Here is an illustrative example:
-    An illustrative example:
-    \begin{figure}
-        \centering
-        \includegraphics[height=0.4\textheight]{Figures/intro_figures/astronaut_masked.pdf}
-        \caption{\label{fig:astronaut-masked}\textbf{The inpainting problem.} 
-        % Even without access to all the pixel values directly, we can infer them, because the information in the image is redundant.
-        }
-    \end{figure}
+    % \begin{overprint}
+    %     \onslide<2>
+    %     \hfill \break
+    % % Here is an illustrative example:
+    % An illustrative example:
+    % \begin{figure}
+    %     \centering
+    %     \includegraphics[height=0.4\textheight]{Figures/intro_figures/astronaut_masked.pdf}
+    %     \caption{\label{fig:astronaut-masked}\textbf{The inpainting problem.} 
+    %     % Even without access to all the pixel values directly, we can infer them, because the information in the image is redundant.
+    %     }
+    % \end{figure}
     
-    \onslide<3>
-    \hfill \break
-    An illustrative example:
-    \begin{figure}
-        \centering
-        \includegraphics[height=0.4\textheight]{Figures/intro_figures/astronaut.pdf}
-        \caption{\label{fig:astronaut}\textbf{The inpainting problem.} 
-        % Even without access to all the pixel values directly, we can infer them, because the information in the image is redundant.
-        }
-    \end{figure}
+    % \onslide<3>
+    % \hfill \break
+    % An illustrative example:
+    % \begin{figure}
+    %     \centering
+    %     \includegraphics[height=0.4\textheight]{Figures/intro_figures/astronaut.pdf}
+    %     \caption{\label{fig:astronaut}\textbf{The inpainting problem.} 
+    %     % Even without access to all the pixel values directly, we can infer them, because the information in the image is redundant.
+    %     }
+    % \end{figure}
     
-    \onslide<4>
+    % \onslide<4>
+    \pause
         \hfill \break
-        Is there a similar thing in MRI?
+        Where is it in MRI?
 
         % Yes! The anatomical image is real-valued so its Fourier Transform~(FT) has a conjugate symmetry.
-        Yes! Fourier Transform~(FT) has a conjugate symmetry $\Rightarrow$ \textbf{Partial Fourier}
+        Fourier Transform~(FT) has a conjugate symmetry $\Rightarrow$ \textbf{Partial Fourier}
         % Using this redundancy to sample less points in the k-space (i.e. using the relaxation fewer times) is a technique called \textbf{Partial Fourier}.
         
         % But in practice it is still needed to sample 6/8 of the Fourier space (acceleration of 1.3).\footfullcite{emri}
         Resulting acceleration: 1.3
     
-    \end{overprint}
+    % \end{overprint}
     
 \end{frame}
 
