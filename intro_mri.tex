@@ -94,13 +94,15 @@
             % \draw[->,>=stealth',semithick] (-30:1.2cm) arc[radius=1.2, start angle=-30, end angle=30];
             % \draw[dashed,->,semithick] arc (0:180:2 and 0.6);
             \begin{scope}[on background layer]
-                \draw[->,dashed,semithick] (-0.6cm,1.6cm) arc [start angle=180, end angle=-70, x radius=0.6cm, y radius=.1cm];                
+                \draw<1>[->,dashed,semithick] (-0.6cm,1.6cm) arc [start angle=180, end angle=-70, x radius=0.6cm, y radius=.1cm];                
             \end{scope}
             %% arrow spin
             %%% init
             \draw<1>[->,spin] (-0.3cm,0.8cm) -- (-0.6cm,1.6cm);
+            \draw<2>[->,spin] (-0.9cm,0.cm) -- (-1.8cm,0cm);
             \begin{scope}[on background layer]
                 \draw<1>[spin] (0.3cm,-0.8cm) -- (0.6cm,-1.6cm);
+                \draw<2>[spin] (0.9cm,0cm) -- (1.8cm,0cm);
             \end{scope}
             
         \end{tikzpicture}
