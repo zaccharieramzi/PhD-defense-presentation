@@ -199,6 +199,11 @@
             $= \left(\Ib_L\otimes {\mathcal{F}}_{\Omega}\right)\Sbb$
         };
         \draw [color=green!87](calA.south) |- ([xshift=-0.3ex,color=green]exp_calA.south west);
+        % For psi
+        \path (psi.south) ++ (0, -2.5em) node[anchor=south west,color=brown!87] (exp_psi){
+            Wavelet basis
+        };
+        \draw [color=brown!87](psi.south) |- ([xshift=-0.3ex,color=brown]exp_psi.south east);
         % For "lambda"
         \path (lambda.south) ++ (0, -4.5em) node[anchor=south west,color=black!87] (exp_lambda){
             Regularization hyperparameter
