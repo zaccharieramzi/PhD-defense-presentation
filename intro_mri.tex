@@ -73,6 +73,40 @@
     }
 \end{frame}
 
+
+\begin{frame}{Nuclear Magnetic Resonance}
+    \begin{center}
+        \begin{tikzpicture}[
+            >=stealth,font=\Large, node distance=2em,
+            b0/.style={line width=7pt, draw=DarkGreen},
+            spin/.style={line width=2pt},
+        ]
+            % nodes
+            \shade[ball color = blue!40] (0,0) circle (1cm);
+            \node(top_spin) at (0,1cm) {};
+            \node(bottom_spin) at (0,-1cm) {};
+            \node(top_arrow) [above=of top_spin] {};
+            \node(bottom_arrow) [below=of bottom_spin] {$\Bb_0$};
+            % arrows/lines
+            \draw[->,-{Triangle[width=18pt,length=9pt]}, b0] (top_spin.south) -- (top_arrow);
+            \draw[b0] (0,-1cm) -- (bottom_arrow);
+            % \draw[->,dashed,semithick] (0:180:2 and 0.6) arc[radius=1.2, start angle=150, end angle=210];
+            % \draw[->,>=stealth',semithick] (-30:1.2cm) arc[radius=1.2, start angle=-30, end angle=30];
+            % \draw[dashed,->,semithick] arc (0:180:2 and 0.6);
+            \begin{scope}[on background layer]
+                \draw[->,dashed,semithick] (-0.6cm,1.6cm) arc [start angle=180, end angle=-70, x radius=0.6cm, y radius=.1cm];                
+            \end{scope}
+            %% arrow spin
+            %%% init
+            \draw<1>[->,spin] (-0.3cm,0.8cm) -- (-0.6cm,1.6cm);
+            \begin{scope}[on background layer]
+                \draw<1>[spin] (0.3cm,-0.8cm) -- (0.6cm,-1.6cm);
+            \end{scope}
+            
+        \end{tikzpicture}
+    \end{center}
+\end{frame}
+
 \begin{frame}{Physics of MRI - 2}
     % Because all spins get excited, we get a global RF pulse that is the weighted sum of the contribution of all spins' relaxation RF pulses: global information
     % We can obtain "multiple global information", by changing a bit the magnetic field spatially using gradients
