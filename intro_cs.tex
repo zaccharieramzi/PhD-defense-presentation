@@ -10,24 +10,11 @@
     
 \end{frame}
 
-\begin{frame}{Another look at redundancy: the prior point of view}
-    % give a sense of what structure is and how it relates to redundancy
-    % Redundancy is not always strict: we may only have a strong correlation between 2 structures of the image.
-    Redundancy is not always strict
-    \begin{figure}
-        \centering
-        \includegraphics[height=0.5\textheight]{Figures/cs_figures/smiley_prior.pdf}
-        \caption{\label{fig:redundancy-smiley}\textbf{A smiley example to a priori knowledge.} 
-        % Even if we do not have access to the whole image, we still know which images are more \emph{likely} to correspond to it.
-        }
-    \end{figure}
-\end{frame}
-
 \subsection{Linear Inverse Problems}
 \begin{frame}{Linear Inverse Problems}
     % introduce linear inverse problems
     % To leverage this type of redundancy, we introduce the concept of \textbf{Linear Inverse Problems}:
-    \textbf{Linear Inverse Problems}:
+    % \textbf{Linear Inverse Problems}:
     \begin{equation*}
         \tikzmarknode{A}{\highlight{green}{$\Ab$}} \tikzmarknode{x}{\highlight{blue}{$\xb$}} = \tikzmarknode{y}{\highlight{yellow}{$\yb$}}
     \end{equation*}
@@ -77,41 +64,69 @@
     }
 \end{frame}
 
-\begin{frame}{Sparsity and Inverse Problems}
-    % explain the concept of sparsity and its link to recovery guarantees
-    \begin{definition}[Sparsity]
-        A vector $\xb \in \mathbb{C}^n$ is called $s$-sparse if it contains at most $s$ non-zero entries.
-    \end{definition}
-
-    \begin{lemma}[Optimization reformulation of sparse vector recovery~\citep{Foucart2013SparseSystems}]
-        For a given sparsity $s$, and $s$-sparse vector $\xb$:
-    \begin{enumerate}[(a)]
-        \item The vector $\xb$ is the unique $s$-sparse solution of $\Ab \xb = \yb$, that is $\{\zb \in \mathbb{C}^n : \Ab \zb = \Ab \xb, \|z\|_0 \leq s\} = \{\xb\}$
-        \item The vector $\xb$ can be reconstructed as the unique solution of:
-        \begin{equation*}
-            \label{eq:cs-problem-l0-min}
-            \min_{\zb \in \mathbb{C}^n} \|\zb\|_0 \quad \text{subject to} \quad \Ab \zb = \yb
-        \end{equation*}
-    \end{enumerate}
-    \end{lemma}
+\begin{frame}{Another look at redundancy: the prior point of view}
+    % give a sense of what structure is and how it relates to redundancy
+    % Redundancy is not always strict: we may only have a strong correlation between 2 structures of the image.
+    Redundancy is not always strict
+    \only<1>{
+        \begin{figure}
+            \centering
+            \includegraphics[height=0.5\textheight]{Figures/cs_figures/smiley_prior.pdf}
+            \caption{\label{fig:redundancy-smiley}\textbf{A smiley example to a priori knowledge.} 
+            % Even if we do not have access to the whole image, we still know which images are more \emph{likely} to correspond to it.
+            }
+        \end{figure}
+    }
+    \only<2>{
+        \begin{center}
+            \begin{tikzpicture}[font=\large,>=stealth,node distance=1.5em]
+                % node
+                \node(f_smiley) {$f(\adjincludegraphics[valign=c,width=0.1\textwidth]{Figures/intro_figures/smiley_prior_x.pdf}) = $};
+                \node(arrow) [right=of f_smiley.east, single arrow,bottom color=red,top color=green, minimum size=2cm,rotate=90, yshift=-1em, xshift=-1em] {};
+                \node(likely_smiley) [above=0.2em of arrow.east] {Smiley-like};
+                \node(unlikely_smiley) [below=0.2em of arrow.west] {Not smiley-like};
+                % arrow
+                % \draw[->,-{Triangle[width=18pt,length=9pt]}, line width=7pt, shade, bottom color=red, top color=green]  (unlikely_smiley.north) -- (likely_smiley.south);
+            \end{tikzpicture}
+        \end{center}
+    }
 \end{frame}
 
-\begin{frame}{Recovery guarantees}
-    \begin{theorem}[{{\citep[Theorem~2.13]{Foucart2013SparseSystems}}}]
-        The following properties are equivalent:
-\begin{enumerate}[(a)]
-    \item Every $s$-sparse vector $\xb \in \mathbb{C}^n$ is the unique $s$-sparse solution of $\Ab \zb = \Ab \xb$, that is, if $\Ab \xb = \Ab \zb$ and both $\xb$ and $\zb$ are $s$-sparse, then $\xb = \zb$.
-    \item The null space $\ker(\Ab)$ does not contain any $2s$-sparse vector other than the zero.
-    \item Every set of $2s$ columns of $\Ab$ is linearly independent.
-\end{enumerate}
-    \end{theorem}
-\end{frame}
+% \begin{frame}{Sparsity and Inverse Problems}
+%     % explain the concept of sparsity and its link to recovery guarantees
+%     \begin{definition}[Sparsity]
+%         A vector $\xb \in \mathbb{C}^n$ is called $s$-sparse if it contains at most $s$ non-zero entries.
+%     \end{definition}
+
+%     \begin{lemma}[Optimization reformulation of sparse vector recovery~\citep{Foucart2013SparseSystems}]
+%         For a given sparsity $s$, and $s$-sparse vector $\xb$:
+%     \begin{enumerate}[(a)]
+%         \item The vector $\xb$ is the unique $s$-sparse solution of $\Ab \xb = \yb$, that is $\{\zb \in \mathbb{C}^n : \Ab \zb = \Ab \xb, \|z\|_0 \leq s\} = \{\xb\}$
+%         \item The vector $\xb$ can be reconstructed as the unique solution of:
+%         \begin{equation*}
+%             \label{eq:cs-problem-l0-min}
+%             \min_{\zb \in \mathbb{C}^n} \|\zb\|_0 \quad \text{subject to} \quad \Ab \zb = \yb
+%         \end{equation*}
+%     \end{enumerate}
+%     \end{lemma}
+% \end{frame}
+
+% \begin{frame}{Recovery guarantees}
+%     \begin{theorem}[{{\citep[Theorem~2.13]{Foucart2013SparseSystems}}}]
+%         The following properties are equivalent:
+% \begin{enumerate}[(a)]
+%     \item Every $s$-sparse vector $\xb \in \mathbb{C}^n$ is the unique $s$-sparse solution of $\Ab \zb = \Ab \xb$, that is, if $\Ab \xb = \Ab \zb$ and both $\xb$ and $\zb$ are $s$-sparse, then $\xb = \zb$.
+%     \item The null space $\ker(\Ab)$ does not contain any $2s$-sparse vector other than the zero.
+%     \item Every set of $2s$ columns of $\Ab$ is linearly independent.
+% \end{enumerate}
+%     \end{theorem}
+% \end{frame}
 
 \begin{frame}{Application to MRI}
     % MR images themselves cannot be represented as sparse vectors directly, we need a way to express them as such.
-    MR images are not sparse as is.
+    % MR images are not sparse as is.
     % \citet{Lustig2007} did that by using the fact that MR images can be represented sparsely in a \textbf{wavelet} basis.
-    \citet{Lustig2007} expressed their sparsity in a \textbf{wavelet} basis.
+    % \citet{Lustig2007} expressed their sparsity in a \textbf{wavelet} basis.
 
     \hfill \break
     The Inverse Problem becomes:
@@ -156,35 +171,35 @@
 \end{frame}
 
 \subsection{Recovery Algorithms}
-\begin{frame}{Relaxation}
-    Can we solve the optimization problem?
-    \pause
-    No; we need to relax it using the basis pursuit:
-    \begin{equation*}
-        \label{eq:basis-pursuit}
-        \min_{\xb \in \mathbb{C}^n} \|\xb\|_1 \quad \text{subject to} \quad \Ab \xb = \yb
-    \end{equation*}
+% \begin{frame}{Relaxation}
+%     Can we solve the optimization problem?
+%     \pause
+%     No; we need to relax it using the basis pursuit:
+%     \begin{equation*}
+%         \label{eq:basis-pursuit}
+%         \min_{\xb \in \mathbb{C}^n} \|\xb\|_1 \quad \text{subject to} \quad \Ab \xb = \yb
+%     \end{equation*}
 
-    \pause
-    % For this problem to have the same solutions as the non-relaxed one, we need coherence-based constraints on the measurement operator $\Ab$.
-    Coherence-based constraints on $\Ab$ $\Rightarrow$ same solutions.
+%     \pause
+%     % For this problem to have the same solutions as the non-relaxed one, we need coherence-based constraints on the measurement operator $\Ab$.
+%     Coherence-based constraints on $\Ab$ $\Rightarrow$ same solutions.
 
-\end{frame}
+% \end{frame}
 
 \begin{frame}{The canonical MRI reconstruction problem}
     % We introduce the notion of a \textbf{sparsity} basis $\psib$ (typically wavelets) and the fact that the measurements can be noisy to obtain the canonical MRI reconstruction problem:
     \begin{equation*}
-        \min_{\xb \in \mathbb{C}^n} \overbrace{\|\tikzmarknode{calA}{\underline{\mathcal{A}}} \xb - \yb \|_2^2}^{\text{\sf \footnotesize Noisy data consistency}}  + \overbrace{ \tikzmarknode{lambda}{\underline{\lambda}} \|\psib \xb\|_1}^{\text{\sf \footnotesize Regularization term } }
+        \min_{\xb \in \mathbb{C}^n} \overbrace{\|\tikzmarknode{calA}{\highlight{green}{$\mathcal{A}$}} \xb - \yb \|_2^2}^{\text{\sf \footnotesize Noisy data consistency}}  + \overbrace{ \tikzmarknode{lambda}{\underline{\lambda}} \|\tikzmarknode{psi}{\highlight{brown}{$\psib$}} \xb\|_1}^{\text{\sf \footnotesize Regularization term } }
     \end{equation*}
     \vspace{\baselineskip}
     \begin{tikzpicture}[overlay,remember picture,>=stealth,nodes={align=left,inner ysep=1pt},<-]
         % For "calA"
-        \path (calA.south) ++ (0,-2.5em) node[anchor=south east,color=black!87] (exp_calA){
+        \path (calA.south) ++ (0,-2.5em) node[anchor=south east,color=green!87] (exp_calA){
             $= \left(\Ib_L\otimes {\mathcal{F}}_{\Omega}\right)\Sbb$
         };
-        \draw [color=black!87](calA.south) |- ([xshift=-0.3ex,color=black]exp_calA.south west);
+        \draw [color=green!87](calA.south) |- ([xshift=-0.3ex,color=green]exp_calA.south west);
         % For "lambda"
-        \path (lambda.south) ++ (0, -2.5em) node[anchor=south west,color=black!87] (exp_lambda){
+        \path (lambda.south) ++ (0, -4.5em) node[anchor=south west,color=black!87] (exp_lambda){
             Regularization hyperparameter
         };
         \draw [color=black!87](lambda.south) |- ([xshift=-0.3ex,color=black]exp_lambda.south east);
