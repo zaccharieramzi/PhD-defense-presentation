@@ -111,6 +111,7 @@
                             decorate
                         }
                     }
+                    % XXX: add here something to explain clearly what the whole network is
                     % nodes
                     \node (input) {$\xb_0$};
                     \node (dc_1) [rounded rectangle, right=of input, draw=yellow!87, fill=yellow!17] {DC};
@@ -345,6 +346,12 @@
     % We need non-Cartesian acquisitions to better cover the k-space.
     Non-Cartesian acquisitions better cover the k-space.
     \pause
+    \begin{figure}
+        \centering
+        \includegraphics[height=0.5\textheight]{Figures/dl_mri_figures/radial_trajectory.png}
+        \caption{\textbf{Radial undersampled trajectory.}}
+    \end{figure}
+    \pause
 
     % The difficulty from a computational point of view is that we need to now use the \textbf{Nonuniform Fourier Transform (NDFT)}.
     \textbf{Nonuniform Fourier Transform (NDFT)} too costly $\Rightarrow$ NUFFT, with the TensorFlow implementation:
@@ -352,12 +359,6 @@
     \begin{itemize}
         \item \faicon{github} Code available online: \texttt{github.com/zaccharieramzi/tfkbnufft}
     \end{itemize}
-    \pause
-    \begin{figure}
-        \centering
-        \includegraphics[height=0.5\textheight]{Figures/dl_mri_figures/radial_trajectory.png}
-        \caption{\textbf{Radial undersampled trajectory.}}
-    \end{figure}
 \end{frame}
 
 \begin{frame}{NC-PDNet - 1}
@@ -372,7 +373,6 @@
             image_node/.style={rounded rectangle, draw=blue!87, fill=blue!17},
             highlight_node/.style={rectangle, draw=red!70, dashed, inner sep=0.1em},
         ]
-            % XXX pot change black to other color for unit node
             % Unrolled net simple
             \node (input) {$\xb_0$};
             % Unrolled net exploded
