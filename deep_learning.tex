@@ -50,13 +50,13 @@
         % For "input"
         \onslide<2->{
         \path (input.north) ++ (0,1.5em) node[anchor=south west,color=blue!87] (exp_input){
-            input};
+            \includegraphics[width=0.05\textwidth]{Figures/intro_figures/chowchow.jpg} input};
         \draw [color=blue!87](input.north) |- ([xshift=-0.3ex,color=blue]exp_input.south east);
         }
         % For "label"
         \onslide<3->{
         \path (label.south) ++ (0, -2.5em) node[anchor=south west,color=red!87] (exp_label){
-            label};
+            "DOG", label};
         \draw [color=red!87](label.south) |- ([xshift=-0.3ex,color=red]exp_label.south east);
         }
         % For "nn"
