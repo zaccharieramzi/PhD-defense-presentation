@@ -117,7 +117,6 @@ Let $\zb^\star \in  \mathbb{R}^d$ such that $g_{\thetab}(\zb^\star) = 0$ and $J_
     \frac{\partial \mathcal{L}}{\partial \thetab}\Bigr|_{\zb^\star} = \tikzmarknode[rounded rectangle, draw=red!47, dashed, inner sep=0.1em]{grad_no_act}{\nabla_\zb \mathcal{L}(\zb^\star)^\top J_{g_{\thetab}}(\zb^\star)^{-1} \frac{\partial g_{\thetab}}{\partial \thetab}\Bigr|_{\zb^\star}} \, .
 \end{equation*}
     \end{theorem}
-     % XXX: add tikz here to showcase it does not rely on activations
     % Key for our memory problem: it does not rely on any activations you could have when solving the fixed-point equation.
     \begin{tikzpicture}[overlay,remember picture,>=stealth,nodes={inner ysep=1pt},<-]
         % For "aliased_image"
@@ -157,7 +156,7 @@ Let $\zb^\star \in  \mathbb{R}^d$ such that $g_{\thetab}(\zb^\star) = 0$ and $J_
 
 \begin{frame}{Can we avoid the Jacobian inversion?}
     % yes: reuse a by-product of the forward pass, share the inverse estimate
-    \begin{exampleblock}{Contribution}
+    \begin{exampleblock}{Contribution \#4}
         \fullcite{Ramzi2021_shine}
     \end{exampleblock}
     
