@@ -23,8 +23,16 @@
     Deep Learning~(DL) has been used to build complicated functions:
     {\Large
         \begin{equation*}
-            f_\thetab\left( \adjincludegraphics[valign=c,width=0.2\textwidth]{Figures/intro_figures/chowchow.jpg} \right) = \text{"DOG"}
+            \tikzmarknode{nn}{\highlight{brown}{$f_\thetab$}}\left( \adjincludegraphics[valign=c,width=0.2\textwidth]{Figures/intro_figures/chowchow.jpg} \right) = \text{"DOG"}
         \end{equation*}
+        \begin{tikzpicture}[overlay,remember picture,>=stealth,nodes={align=left,inner ysep=1pt},<-,font=\normalsize]
+            % For "nn"
+            \onslide<2->{
+            \path (nn.south) ++ (0, -4.5em) node[anchor=south west,color=brown!87] (exp_nn){
+                Neural network:\\a chain of elementary linear \& nonlinear functions};
+            \draw [color=brown!87](nn.south) |- ([xshift=-0.3ex,color=brown]exp_nn.south east);
+            }            
+        \end{tikzpicture}
     }
 \end{frame}
 
