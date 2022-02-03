@@ -18,7 +18,7 @@
     % The first use of DL for MRI reconstruction is to actually throw away most of what we just saw:\footfullcite{Zhu2018}
     Let's throw away all we know:\footfullcite{Zhu2018}
     \begin{equation*}
-        f_{\thetab}(\tikzmarknode{kspace}{\highlight{yellow}{$\ybb$}}) = \tikzmarknode{image}{\highlight{blue}{$\xb$}}
+        f_{\thetab}(\measurements) = \imageb
     \end{equation*}
     \begin{tikzpicture}[overlay,remember picture,>=stealth,nodes={align=left,inner ysep=1pt},<-]
         % For "kspace"
@@ -42,22 +42,28 @@
 
     Let's use $\mathcal{A}^H$ to build a more informed model:
     \begin{equation*}
-        \alt<1>{\mathcal{A}^H}{}f_{\thetab}(
-            \tikzmarknode{aliased_image}{\alt<2->{\mathcal{A}^H}{}\highlight{yellow}{$\ybb$}}
-        ) = \highlight{blue}{$\xb$}
+        \alt<1>{\adjointop}{}f_{\thetab}(
+            \tikzmarknode{aliased_image}{\alt<2->{\adjointop}{}\measurements}
+        ) = \imageb
     \end{equation*}
 
     \begin{tikzpicture}[overlay,remember picture,>=stealth,nodes={align=left,inner ysep=1pt},<-]
-        % For "aliased_image"
-        \onslide<3>{
-        \path (aliased_image.south) ++ (0, -4em) node[anchor=south west,color=yellow!87] (exp_aliased_image){
-            \textbf{aliased image}};
-        \draw [color=yellow!87](aliased_image.south) |- ([xshift=-0.3ex,color=yellow]exp_aliased_image.south east);
+        % For image
+        \path (image.south) ++ (0, -4em) node[anchor=south west,color=blue!87] (exp_image){
+            \includegraphics[width=0.1\textwidth,trim=0 3.3em 0 0,clip]{Figures/dl_mri_figures/gt_knee.png} \textbf{image}};
+        \draw [color=blue!87](image.south) |- ([xshift=-0.3ex,color=blue]exp_image.south east);
+        % For kspace
+        \onslide<1>{
+            \path (kspace.south) ++ (0,-4em) node[anchor=south east,color=yellow!87] (exp_kspace){
+                \includegraphics[width=0.07\textwidth]{Figures/intro_figures/kspace_mri.png} \textbf{kspace}};
+            \draw [color=yellow!87](kspace.south) |- ([xshift=-0.3ex,color=yellow]exp_kspace.south west);
+            
         }
-        \onslide<4->{
-        \path (aliased_image.south) ++ (0, -4em) node[anchor=south west,color=yellow!87] (exp_aliased_image){
-            \includegraphics[width=0.1\textwidth]{Figures/dl_mri_figures/zfilled_recon_af4.png}};
-        \draw [color=yellow!87](aliased_image.south) |- ([xshift=-0.3ex,color=yellow]exp_aliased_image.south east);
+        % For aliased image
+        \onslide<2>{
+        \path (kspace.south) ++ (0, -4em) node[anchor=south east,color=yellow!87] (exp_aliased_image){
+            \includegraphics[width=0.1\textwidth,trim=0 3.3em 0 0,clip]{Figures/dl_mri_figures/zfilled_recon_af4.png}\textbf{aliased image}};
+        \draw [color=yellow!87](kspace.south) |- ([xshift=-0.3ex,color=yellow]exp_aliased_image.south west);
         }
     \end{tikzpicture}
     

@@ -41,7 +41,7 @@
 \usetikzlibrary{overlay-beamer-styles}
 \usetikzlibrary{shapes.arrows}
 
-% \includeonly{intro_cs}
+\includeonly{unrolled_mri}
 %----------------------------------------------------------------------------------------
 %	TITLE PAGE
 %----------------------------------------------------------------------------------------
@@ -91,6 +91,10 @@
 %----------------------------------------------------------------------------------------
 %	PRESENTATION SLIDES
 %----------------------------------------------------------------------------------------
+
+\newcommand*{\measurements}{\tikzmarknode{kspace}{\highlight{yellow}{$\ybb$}}}
+\newcommand*{\imageb}{\tikzmarknode{image}{\highlight{blue}{$\xb$}}}
+\newcommand*{\adjointop}{\highlight{green}{$\mathcal{A}^H$}}
 
 \begin{document}
 
