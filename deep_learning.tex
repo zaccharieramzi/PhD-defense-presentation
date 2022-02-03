@@ -17,7 +17,7 @@
     % universal approx
     % We want to learn a complicated function that tells us whether a complex-valued vector is an MR image or not.
     % We want a function that tells us whether a vector is an MR image or not.
-    The prior is a complicated visual function
+    The prior is a complicated visual function.
     \pause
 
     Deep Learning~(DL) has been used to build complicated functions:
@@ -27,7 +27,7 @@
         \end{equation*}
         \begin{tikzpicture}[overlay,remember picture,>=stealth,nodes={align=left,inner ysep=1pt},<-,font=\normalsize]
             % For "nn"
-            \onslide<2->{
+            \onslide<3->{
             \path (nn.south) ++ (0, -4.5em) node[anchor=south west,color=brown!87] (exp_nn){
                 Neural network:\\a chain of elementary linear \& nonlinear functions};
             \draw [color=brown!87](nn.south) |- ([xshift=-0.3ex,color=brown]exp_nn.south east);
@@ -45,6 +45,7 @@
     \begin{equation*}
         \argmin_{\tikzmarknode{params}{\highlight{orange}{$\thetab \in \Theta$}}} \tikzmarknode{sum}{\highlight{purple}{$\sum\limits_{(\xb_i, \yb_i) \in \mathcal{D}}$}} \tikzmarknode{loss}{\highlight{green}{$\mathcal{L}$}}(\tikzmarknode{nn}{\highlight{brown}{$f_{\thetab}$}} (\tikzmarknode{input}{\highlight{blue}{$\xb_i$}}), \tikzmarknode{label}{\highlight{red}{$\yb_i$}}, \thetab)
     \end{equation*}
+    % XXX add visual aid to formalism
     \begin{tikzpicture}[overlay,remember picture,>=stealth,nodes={align=left,inner ysep=1pt},<-]
         % For "input"
         \onslide<2->{
@@ -133,6 +134,6 @@
         But this redundancy is not easy to express with handcrafted linear functions.
         
         \pause
-        This is why we want to use \textbf{Deep Learning} which enables the calibration of complicated function.
+        This is why we want to use \textbf{Deep Learning} which enables the calibration of complicated functions.
     \end{block}
 \end{frame}
