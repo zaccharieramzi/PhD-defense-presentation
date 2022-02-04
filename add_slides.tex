@@ -88,7 +88,18 @@
 \end{frame}
 
 \begin{frame}{Noise model for MRI}
-
+    Bayesian view of MRI reconstruction:
+    \begin{equation*}
+        \argmax_{\xb} p(\xb|\ybb) \propto p(\ybb|\xb) p(\xb)
+    \end{equation*}
+    If we consider an additive white Gaussian noise model:
+    \begin{equation*}
+        p(\ybb|\xb) = \frac{1}{\sigma \sqrt{2\pi}} e^{-\frac{1}{2\sigma^2} \|\mathcal{A}\xb - \ybb \| ^2 }
+    \end{equation*}
+    We retrieve:
+    \begin{equation*}
+        - \log p(\ybb|\xb) \propto \|\mathcal{A}\xb - \ybb \| ^2 + \text{cst}
+    \end{equation*}
 \end{frame}
 
 \begin{frame}{Proximity operator}
