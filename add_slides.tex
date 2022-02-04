@@ -147,7 +147,10 @@
 \end{frame}
 
 \begin{frame}{Adjoint Broyden}
+    For DEQs, vanilla OPA direction involves $\frac{\partial g_{\thetab}}{\partial \thetab}\Bigr|_{\zb_n}$ $\Rightarrow$ inefficient.\\
 
+    Recall that the SHINE direction is: $pb_\thetab = \nabla_\zb \highlight{blue}{$\mathcal{L}(\zb^\star)$} B^{-1} \frac{\partial g_{\thetab}}{\partial \thetab}\Bigr|_{\zb^\star}$.
+    Other direction, \highlight{blue}{$\mathcal{L}(\zb^\star)$}, in left-multiplication $\Rightarrow$ Adjoint Broyden for the secant condition to work.
 \end{frame}
 
 \begin{frame}{Jacobian-Free}
