@@ -92,7 +92,15 @@
 \end{frame}
 
 \begin{frame}{Proximity operator}
-
+    Definition:
+    \begin{equation*}
+        \operatorname{prox}_{\mathcal{R}}(\xb) = \argmin_{\zb \in \mathcal{H}} \mathcal{R}(\zb) + \frac12\|\zb - \xb\|_2^2
+    \end{equation*}
+    2 intuitions:
+    \begin{itemize}
+        \item Prox. of indicator of $\mathcal{C}$, a convex set, is the projection onto $\mathcal{C}$.
+        \item Prox. of a smooth function is its gradient step.
+    \end{itemize}
 \end{frame}
 
 \begin{frame}{Convolutions}
