@@ -144,7 +144,23 @@
 \end{frame}
 
 \begin{frame}{Image quality metrics}
-
+    \begin{multicols}{2}
+        \textbf{Peak Signal to Noise Ratio~(PSNR)}:
+        \begin{equation*}
+            \operatorname{PSNR}(\xb, \hat{\xb}) = 10 \log_{10}\left( \frac{\max_i{\xb_i}}{\frac1n \|\xb - \hat{\xb}\|^2_2}\right)
+        \end{equation*}
+        \newpage
+        \textbf{Structural Similarity Index~(SSIM)}:
+        \begin{equation*}
+            \operatorname{SSIM}(\xb, \hat{\xb}) = [l(\xb, \hat{\xb})]^\alpha . [c(\xb, \hat{\xb})]^\beta . [s(\xb, \hat{\xb})]^\gamma
+        \end{equation*}
+        \begin{itemize}
+            \item $l$: luminance
+            \item $c$: contrast
+            \item $s$: structure
+        \end{itemize}
+    \end{multicols}
+    Problem: not a good correlation with the actual visual quality.
 \end{frame}
 
 \begin{frame}{quasi-Newton methods - 1}
