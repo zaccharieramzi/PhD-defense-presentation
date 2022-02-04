@@ -5,6 +5,9 @@
 \usetheme{SimplePlus}
 
 \usepackage{amsmath,amssymb,amsfonts,amsthm}
+\usepackage[titlenumbered,ruled,noend,linesnumbered]{algorithm2e}
+\newcommand\mycommfont[1]{\footnotesize\ttfamily\textcolor{blue}{#1}}
+\SetCommentSty{mycommfont}
 \usepackage{bbm}
 \usepackage{mathtools}
 \usepackage{xspace}
@@ -18,9 +21,9 @@
 \usepackage{adjustbox}
 \usepackage{appendixnumberbeamer}
 \usepackage[
-	backend=biber, 
-	style=authoryear-comp, 
-	natbib=true, 
+	backend=biber,
+	style=authoryear-comp,
+	natbib=true,
 	backref=True,
 	hyperref=true,
 	url=false,
@@ -122,9 +125,9 @@
     %  \href{run:sons/extract.mp3}{\beamerbutton{écouter}} (https://texnique.fr/osqa/questions/2988/du-son-dans-beamer)
     % https://www.francetvinfo.fr/sante/malgre-l-augmentation-des-besoins-medicaux-le-deficit-en-france-d-appareils-irm-se-fait-de-plus-en-plus-sentir_220301.html
     \href{run:Sounds/mri_sounds.mp3}{\faPlayCircle}
-    \begin{minipage}[t][.8\textheight]{\textwidth}    
+    \begin{minipage}[t][.8\textheight]{\textwidth}
         \vfill
-        
+
         \tiny
         Credits: \href{https://www.francetvinfo.fr/sante/malgre-l-augmentation-des-besoins-medicaux-le-deficit-en-france-d-appareils-irm-se-fait-de-plus-en-plus-sentir_220301.html}{Getty Images / rubberball}
       \end{minipage}
@@ -215,7 +218,7 @@
 \begin{frame}{Thank you all!}
     \begin{center}
         \includegraphics[height=0.5\textheight]{Figures/parietal_2019.png}
-        \includegraphics[width=0.5\textwidth]{Figures/cosmostat_zoom.jpeg}    
+        \includegraphics[width=0.5\textwidth]{Figures/cosmostat_zoom.jpeg}
     \end{center}
 \end{frame}
 %----------------------------------------------------------------------------------------
