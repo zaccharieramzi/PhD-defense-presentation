@@ -74,15 +74,67 @@
 \end{frame}
 
 \begin{frame}{XPDNet - ct'ed}
-    % only writing the algos
+    \begin{center}
+        \scalebox{0.85}{
+        \begin{algorithm}[H]
+            \SetAlgoLined
+            \KwData{$\ybb$ the k-space data, $\Omega$ the Cartesian trajectory, $\Sbb$ the coarse estimates of the sensitivity maps}
+            \KwResult{$\xb$, the reconstructed magnitude MR image}
+             $\Sbb = g_{\theta_r}(\Sbb)$ ; \tcp{Sensitivity maps refinement}
+             Update ${\cal A}$ and ${\cal A}^H$\;
+             $\xb =  {\cal A}^H \ybb$\;
+
+             $\xb_b = [\xb, \xb, \xb, \xb, \xb]$; \tcp{Buffer creation, in practice concatenation along the channel dimension}
+             \For{$i \leftarrow 1$ \KwTo $N_C$}{
+               $\ybb_{res} = {\cal A}\, \xb_b[0] - \ybb $; \tcp{Data consistency}
+              $\xb_{dc} = {\cal A}^H \ybb_{res}$; \tcp{Density compensation}
+              $\xb_b = \xb_b + f_{\theta_i}([\xb_b, \xb_{dc}]))$; \tcp{Proximity operator learning and nonlinear acceleration scheme}
+             }
+             $\xb = |\xb_b[0]|$ \tcp{Magnitude computation}
+             \caption{\emph{XPDNet}.}
+        \end{algorithm}
+    }
+    \end{center}
 \end{frame}
 
-\begin{frame}{PDNet \& Recurent Inference Machines}
-
+\begin{frame}{PDNet \& Recurent Inference Machines~(RIMs)}
+    Bayesian Inverse Problem formulation:
+    \begin{equation*}
+        \argmax_x p(x|y) \propto p(y|x) p(x)
+    \end{equation*}
+    Updates:
+    \begin{equation*}
+        x_{n+1} = x_n + \epsilon_n \nabla_x (\log p(y|x) + \log p(x))(x_n)
+    \end{equation*}
+    RIMs generalize to:\footfullcite{Putzky2017RecurrentProblems}
+    \begin{equation*}
+        x_{n+1} = x_n + g(\nabla_x(\log p(y|x))(x_n), x_n)
+    \end{equation*}
 \end{frame}
 
 \begin{frame}{NC-PDNet - ct'ed}
-    % only writing the algos
+    \begin{center}
+        \scalebox{0.85}{
+        \begin{algorithm}[H]
+            \SetAlgoLined
+            \KwData{$\ybb$ the k-space data, $\Omega$ the non-Cartesian trajectories, $\db$ the pre-computed DCp weights, $\Sbb$ the coarse estimates of the sensitivity maps}
+            \KwResult{$\xb$, the reconstructed magnitude MR image}
+             $\Sbb = g_{\theta_r}(\Sbb)$ ; \tcp{Sensitivity maps refinement}
+             Update ${\cal A}$ and ${\cal A}^H$\;
+             $\xb =  {\cal A}^H \ybb$\;
+
+             $\xb_b = [\xb, \xb, \xb, \xb, \xb]$; \tcp{Buffer creation, in practice concatenation along the channel dimension}
+             \For{$i \leftarrow 1$ \KwTo $N_C$}{
+               $\ybb_{res} = {\cal A}\, \xb_b[0] - \ybb $; \tcp{Data consistency}
+              $\xb_{dc} = {\cal A}^H \db\, \ybb_{res}$; \tcp{Density compensation}
+              $\xb_b = \xb_b + f_{\theta_i}([\xb_b, \xb_{dc}]))$; \tcp{Proximity operator learning and nonlinear acceleration scheme}
+             }
+             $\xb = |\xb_b[0]|$ \tcp{Magnitude computation}
+             \caption{\emph{NC-PDNet}: Density compensated Primal Dual unrolled neural network over $N_C$ iterations.}
+             \label{alg:NC-PDNet}
+        \end{algorithm}
+    }
+    \end{center}
 \end{frame}
 
 \begin{frame}{Density Compensation}
