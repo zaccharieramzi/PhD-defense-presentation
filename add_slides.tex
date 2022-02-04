@@ -93,8 +93,34 @@
 
 \end{frame}
 
-\begin{frame}{quasi-Newton methods}
+\begin{frame}{quasi-Newton methods - 1}
+    Idea: replace the costly Jacobian inverse with a qN matrix $\Bb^{-1}$.\\
+    \begin{equation*}
+        f(x^\star) = 0
+    \end{equation*}
+    \begin{multicols}{2}
 
+            \begin{center}
+                \textbf{Newton Methods}
+                \begin{equation*}
+                    x_{n+1} = x_n -\frac{\partial f}{\partial x}(x_n)^{-1}f(x_n)
+                \end{equation*}
+            \end{center}
+            \newpage
+            \begin{center}
+                \textbf{Quasi-Newton Methods}
+                \begin{equation*}
+                    x_{n+1} = x_n -\Bb_n^{-1}f(x_n)
+                \end{equation*}
+            \end{center}
+            Update $\Bb_n$ and its inverse with the Sherma-Morrison formula.
+    \end{multicols}
+\end{frame}
+
+\begin{frame}{quasi-Newton methods - 2}
+    Secant conditions: set of conditions $\Bb$ must verify.\\
+    Typically: $\Bb_n(x_n - x_{n-1}) = f(x_n) - f(x_{n-1})$.\\
+    Multiple solutions $\Rightarrow$ regularization with $\Bb_n = \argmin_{\Bb: \Bb \Delta x_n = \Delta f_n} \|\Bb - \Bb_{n-1}\|$
 \end{frame}
 
 \begin{frame}{OPA - 1}
