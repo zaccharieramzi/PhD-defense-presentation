@@ -57,7 +57,18 @@
 \end{frame}
 
 \begin{frame}{Fourier Transform and MRI}
-
+    \begin{multicols}{2}
+        MR signal:
+        \begin{equation*}
+            \vspace{\baselineskip}
+            S_{tr}(t) \propto \omega_0  \int_{V_s} B_{tr} M_{tr}(t, \rb) e^{-\imath \gamma \rb \cdot \int_0^t \Gb(\tau)  \dif \tau} \dif \rb
+        \end{equation*}
+        \newpage
+        Fourier Transform of a signal:
+        \begin{equation*}
+            \hat{f}(\omega) = \int_{-\infty}^{\infty} f(x) e^{-2\pi \imath \omega x} dx
+        \end{equation*}
+    \end{multicols}
 \end{frame}
 
 \begin{frame}{More details on GRAPPA}
