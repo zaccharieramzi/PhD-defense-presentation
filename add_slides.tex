@@ -6,6 +6,53 @@
 
 % XXX write those
 \begin{frame}{MR signal derivation}
+    \only<1>{
+        Bloch equations:
+        \begin{equation*}
+            \begin{split}
+                \diff{\Mb_{tr}}{t} &= - \frac{ \tikzmarknode{mtr}{\Mb_{tr}} }{T_2} \\
+            \diff{\Mb_l}{t} &= \frac{ \tikzmarknode{mo}{\Mb_0}  - \tikzmarknode{ml}{\Mb_l} }{T_1}
+            \end{split}
+        \end{equation*}
+
+        \vspace{4em}
+        \begin{tikzpicture}[overlay,remember picture,>=stealth,nodes={align=left,inner ysep=1pt},<-]
+            % For "mtr"
+            \path (mtr.north) ++ (0,2em) node[anchor=south west,color=black!87] (exp_mtr){
+                \textbf{Transverse component of $\Mb$}};
+            \draw [color=black!87](mtr.north) |- ([xshift=-0.3ex,color=black]exp_mtr.south east);
+            % For "mo"
+            \path (mo.south) ++ (0, -4em) node[anchor=south east,color=black!87] (exp_mo){
+                \textbf{Equilibrium state}};
+            \draw [color=black!87](mo.south) |- ([xshift=-0.3ex,color=black]exp_mo.south west);
+            % For "ml"
+            \path (ml.south) ++ (0,-4em) node[anchor=south west,color=black!87] (exp_ml){
+                \textbf{Longitudinal component of $\Mb$}};
+            \draw [color=black!87](ml.south) |- ([xshift=-0.3ex,color=black]exp_ml.south east);
+        \end{tikzpicture}
+    }
+    \only<2>{
+        Solution:
+        \begin{equation*}
+            \begin{split}
+                \Mb_{tr}(t, \rb) &= \tikzmarknode{mtro}{\Mb_{tr}(0, \rb)} e^{-\frac{t}{T_2}}\\
+                \Mb_l(t, \rb) &= \Mb_l(0, \rb) e^{-\frac{t}{T_1}} + \Mb_0 (1 - e^{-\frac{t}{T_1}})
+            \end{split}
+        \end{equation*}
+        \vspace{4em}
+        \begin{tikzpicture}[overlay,remember picture,>=stealth,nodes={align=left,inner ysep=1pt},<-]
+            % For "mtro"
+            \path (mtro.north) ++ (0, 2em) node[anchor=south west,color=black!87] (exp_mtro){
+                $|\Mb_{tr}(0, \rb)| = \frac14 \rho(\rb) \frac{\gamma^2 \hbar^2}{kT}B_0$};
+            \draw [color=black!87](mtro.north) |- ([xshift=-0.3ex,color=black]exp_mtro.south east);
+        \end{tikzpicture}
+    }
+    \only<3>{
+        EF force in antenna:
+        \begin{equation*}
+            S(t) = - \diff{}{t} \int_{V_s} \Bb_1 \cdot \Mb(t, \rb) \dif \rb
+        \end{equation*}
+    }
 
 \end{frame}
 
@@ -62,14 +109,31 @@
 \end{frame}
 
 \begin{frame}{fastMRI dataset}
-
+    \href{https://fastmri.org/}{fastmri.org}
+    \begin{multicols}{2}
+        \textbf{Knee}
+        \begin{itemize}
+            \item 973 train volumes, 199 validation volumes
+            \item 2 contrasts: PD and PDFS
+            \item 15 coils, 1.5T/3T, 320x320, 0.5mmx0.5mm, Cartesian 2D TSE
+        \end{itemize}
+        \newpage
+        \textbf{Brain}
+        \begin{itemize}
+            \item 4469 train volumes, 1378 validation volumes
+            \item 4 contrasts: T1, T1 post injection, T2, FLAIR
+            \item different locations, different coil architecture
+            \item 1.5T/3T, 320x320 (with exceptions), 0.5mmx0.5mm, Cartesian 2D TSE
+        \end{itemize}
+    \end{multicols}
 \end{frame}
 
 \begin{frame}{2020 fastMRI challenge}
     \begin{itemize}
         \item 2nd edition
-        \item 8 participants
+        \item 8 teams
         \item Brain data
+        \item 3 tracks: 4X, 8X, transfer
     \end{itemize}
 \end{frame}
 
