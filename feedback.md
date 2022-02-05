@@ -72,3 +72,61 @@ Add stuff that was not in the main presentation:
 - learnlets
 - dsm uq
 - benchmark CS
+
+## GDF's feedback
+(1) je voulais rappeler un coup le commentaire de PA sur les couleurs trop vives, en particulier vert et jaune
+(2) slide 70: la mention de black-box me dérange. Est-ce qu'il s'agit d'un piège pour que les reviewers posent la question de l'interpretabilité et de la confiance dans les algos de ML ? Est ce que tu as préparé des slides supplémentaires pour répondre à ça ?
+(3) slide 94: Je ne crois pas que tu introduises le terme de CNN, ce qui peut être déroutant dans certaines slides sachant que la structure du PDNet & Co n'est pas détaillée
+(4) slide 95: Pareil pour les cartes de sensitivité, Le raffinage des cartes manque d'une phrase de contexte, ou au moins d'un piil plus d'emphase
+(5) slide 102: a l'oral, tu introduisais la slide en disant qu'on allait se demander pourquoi on a besoin du non cartésien, sans qu'on sache ce que le Cartesien est, puis explique ce qu'est le non Cartesien plutôt que pourquoi on en a besoin. Les quelques phrases d'introduction étaient déroutantes
+(6) slide 108: les noms au dessus du tableau sont un peu petits
+(7) slide 115: magnifiques dessins, très explicite
+(8) slide 151: perso je préfère le terme de B0 in homogeneity correction, ou bien off-resonance correction. Juste B0 corrections n'est pas assez explicite
+(9) quelques éléments d'anglais sur lesquels j'ai tiqué, mais ça vient peut être seulement de moi. Des moments où tu disais "less" au lieu de "fewer", et surtout slide 153 j'entendais "co-funding" au lieu de "co-founding"
+
+## CG's feedback
+Presentation and slide appearance
+Please remember to start on time
+At the beginning, I would have preferred if you had told us what you are going to 
+tell us – like prepping us for the good talk ahead. Tell us how you increase the 
+knowledge base
+ A shortened form of the following would be good (I rewrote it slightly as it’s oriented to a 
+verbal delivery): 
+The main objective of my PhD thesis is to propose new architecture designs for 
+acquisition scenarios, which deviate from the typical Cartesian 2D sampling. To this end, 
+I review various neural networks for MRI reconstruction. I show you that we had a  
+superior performance with , “the PDNet” model, which was used in two contexts: The 
+fastMRI 2020 reconstruction challenge and the 3D non-Cartesian data problem. The 
+clinical applicability of deep learning for medical imaging is important and to address this 
+I will propose ways in which to build a robust model that can be thoroughly inspected, 
+and tested. I show you how deep learning frameworks can implement deeper MRI 
+reconstruction models, and will conclude with the introduction ot my new acceleration 
+method (called SHINE) for the training of such models.
+Good spacing and not too much info on each slide and an easy transition for over 
+100 slides!
+At the end, I couldn’t hear anybody but you
+Content
+I was surprised at the level you started at. – super elementary. Although the 
+information was correct, it seemed to be MRI 101 which your jury members might 
+find redundant. This was especially offsetting, when you introduced the concept of
+acceleration after the graph of the number of French MRI scans that are 
+effectuated.  – sudden complexity!
+You talked about the concept of procession. You said ‘it’s sort of procession’ but 
+what you meant it is procession. That qualifier is certainly not needed in a thesis 
+presentation
+Record – you said this numerous times like you say ‘ I play a record (récord). 
+Actually, it’s pronounced REE_CORD. “We Ree_cord the measurements...”
+So appreciated your numerous recaps of why MRI is slow...
+Slide 17 is finally when the true beauty of your talk begins
+Slide 24 starts to ramp up in complexity suddenly in comparison with the rest
+Side 25: Could you include an image of these multiple coils?
+Slide 34 at first it was super easy to understand and then suddenly you just state 
+Ker A ≠[0] without an explanation....
+Slide 132 is a good explanation of memoryless training
+Delivery 
+This concerns how you spoke, tonality and speed. All really good, a few too many 
+hmms, ahhs a few times which gave the impression that you were thinking out 
+loud instead of giving us a well-rehearsed presentation – take this as a comment 
+for perfecting your already good presentation
+Your enunciation at the end of your sentences drops off very slightly – but overall 
+is really good! Bravo
