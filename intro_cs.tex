@@ -21,12 +21,12 @@
     \begin{tikzpicture}[overlay,remember picture,>=stealth,nodes={align=left,inner ysep=1pt},<-]
         % For "A"
         \onslide<6>{
-        \path (A.south) ++ (0,-2em) node[anchor=south east,color=green!77] (exp_A){\includegraphics[width=0.05\textwidth]{Figures/intro_figures/smiley_prior_forw_op.pdf}};
-        \draw [color=green!87](A.south) |- ([xshift=-0.3ex,color=green]exp_A.south west);
+        \path (A.south) ++ (0,-2em) node[anchor=south east,color=DarkGreen!77] (exp_A){\includegraphics[width=0.05\textwidth]{Figures/intro_figures/smiley_prior_forw_op.pdf}};
+        \draw [color=DarkGreen!87](A.south) |- ([xshift=-0.3ex,color=DarkGreen]exp_A.south west);
         }
         \onslide<7->{
-        \path (A.south) ++ (0,-2em) node[anchor=south east,color=green!77] (exp_A){\includegraphics[width=0.05\textwidth]{Figures/intro_figures/smiley_prior_forw_op.pdf} \textbf{Measurement operator}};
-        \draw [color=green!87](A.south) |- ([xshift=-0.3ex,color=green]exp_A.south west);
+        \path (A.south) ++ (0,-2em) node[anchor=south east,color=DarkGreen!77] (exp_A){\includegraphics[width=0.05\textwidth]{Figures/intro_figures/smiley_prior_forw_op.pdf} \textbf{Measurement operator}};
+        \draw [color=DarkGreen!87](A.south) |- ([xshift=-0.3ex,color=DarkGreen]exp_A.south west);
         }
         % For "x"
         \onslide<2>{
@@ -39,12 +39,12 @@
         }
         % For "y"
         \onslide<4>{
-            \path (y.south) ++ (0, -1em) node[anchor=north west,color=yellow!67] (exp_y){\includegraphics[width=0.05\textwidth]{Figures/intro_figures/smiley_prior_y.pdf}};
-            \draw [color=yellow!87](y.south) |- ([xshift=-0.3ex,color=yellow]exp_y.south east);
+            \path (y.south) ++ (0, -1em) node[anchor=north west,color=amber!67] (exp_y){\includegraphics[width=0.05\textwidth]{Figures/intro_figures/smiley_prior_y.pdf}};
+            \draw [color=amber!87](y.south) |- ([xshift=-0.3ex,color=amber]exp_y.south east);
         }
         \onslide<5->{
-        \path (y.south) ++ (0, -1em) node[anchor=north west,color=yellow!67] (exp_y){\includegraphics[width=0.05\textwidth]{Figures/intro_figures/smiley_prior_y.pdf} \textbf{Measurements}};
-        \draw [color=yellow!87](y.south) |- ([xshift=-0.3ex,color=yellow]exp_y.south east);
+        \path (y.south) ++ (0, -1em) node[anchor=north west,color=amber!67] (exp_y){\includegraphics[width=0.05\textwidth]{Figures/intro_figures/smiley_prior_y.pdf} \textbf{Measurements}};
+        \draw [color=amber!87](y.south) |- ([xshift=-0.3ex,color=amber]exp_y.south east);
         }
     \end{tikzpicture}
     
@@ -90,35 +90,7 @@
     }
 \end{frame}
 
-% \begin{frame}{Sparsity and Inverse Problems}
-%     % explain the concept of sparsity and its link to recovery guarantees
-%     \begin{definition}[Sparsity]
-%         A vector $\xb \in \mathbb{C}^n$ is called $s$-sparse if it contains at most $s$ non-zero entries.
-%     \end{definition}
 
-%     \begin{lemma}[Optimization reformulation of sparse vector recovery~\citep{Foucart2013SparseSystems}]
-%         For a given sparsity $s$, and $s$-sparse vector $\xb$:
-%     \begin{enumerate}[(a)]
-%         \item The vector $\xb$ is the unique $s$-sparse solution of $\Ab \xb = \yb$, that is $\{\zb \in \mathbb{C}^n : \Ab \zb = \Ab \xb, \|z\|_0 \leq s\} = \{\xb\}$
-%         \item The vector $\xb$ can be reconstructed as the unique solution of:
-%         \begin{equation*}
-%             \label{eq:cs-problem-l0-min}
-%             \min_{\zb \in \mathbb{C}^n} \|\zb\|_0 \quad \text{subject to} \quad \Ab \zb = \yb
-%         \end{equation*}
-%     \end{enumerate}
-%     \end{lemma}
-% \end{frame}
-
-% \begin{frame}{Recovery guarantees}
-%     \begin{theorem}[{{\citep[Theorem~2.13]{Foucart2013SparseSystems}}}]
-%         The following properties are equivalent:
-% \begin{enumerate}[(a)]
-%     \item Every $s$-sparse vector $\xb \in \mathbb{C}^n$ is the unique $s$-sparse solution of $\Ab \zb = \Ab \xb$, that is, if $\Ab \xb = \Ab \zb$ and both $\xb$ and $\zb$ are $s$-sparse, then $\xb = \zb$.
-%     \item The null space $\ker(\Ab)$ does not contain any $2s$-sparse vector other than the zero.
-%     \item Every set of $2s$ columns of $\Ab$ is linearly independent.
-% \end{enumerate}
-%     \end{theorem}
-% \end{frame}
 
 \begin{frame}{Application to MRI}
     % MR images themselves cannot be represented as sparse vectors directly, we need a way to express them as such.
@@ -134,18 +106,18 @@
     \begin{tikzpicture}[overlay,remember picture,>=stealth,nodes={align=left,inner ysep=1pt},<-]
         % For "FS"
         \onslide<4>{
-        \path (FS.south) ++ (0,-4em) node[anchor=south east,color=green!77,align=right] (exp_FS){
+        \path (FS.south) ++ (0,-4em) node[anchor=south east,color=DarkGreen!77,align=right] (exp_FS){
             \textbf{$\mathcal{F}_{\Omega}$ : FT on the $\Omega$ set;}\\
             \textbf{$\Sbb=[\Sb_1^H,\ldots, \Sb_L^H]^\top$: the sensitivity maps}\\
             \textbf{per coil}
         };
-        \draw [color=green!87](FS.south) |- ([xshift=-0.3ex,color=green]exp_FS.south west);
+        \draw [color=DarkGreen!87](FS.south) |- ([xshift=-0.3ex,color=DarkGreen]exp_FS.south west);
         }
         \onslide<5>{
-        \path (FS.south) ++ (0,-4em) node[anchor=south east,color=green!77] (exp_FS){
+        \path (FS.south) ++ (0,-4em) node[anchor=south east,color=DarkGreen!77] (exp_FS){
             \includegraphics[width=0.1\textwidth]{Figures/intro_figures/mri.jpg}
         };
-        \draw [color=green!87](FS.south) |- ([xshift=-0.3ex,color=green]exp_FS.south west);
+        \draw [color=DarkGreen!87](FS.south) |- ([xshift=-0.3ex,color=DarkGreen]exp_FS.south west);
         }
         % For "x"
         \onslide<2-4>{
@@ -158,12 +130,12 @@
         }
         % For "y"
         \onslide<3-4>{
-        \path (y.north) ++ (0, 1em) node[anchor=south west,color=yellow!67] (exp_y){$\ybb=[\yb_1^H, \ldots, \yb_L^H]^\top$,\\ \textbf{k-space measurements} \\ \textbf{for each coil}};
-        \draw [color=yellow!87](y.north) |- ([xshift=-0.3ex,color=yellow]exp_y.south east);
+        \path (y.north) ++ (0, 1em) node[anchor=south west,color=amber!67] (exp_y){$\ybb=[\yb_1^H, \ldots, \yb_L^H]^\top$,\\ \textbf{k-space measurements} \\ \textbf{for each coil}};
+        \draw [color=amber!87](y.north) |- ([xshift=-0.3ex,color=amber]exp_y.south east);
         }
         \onslide<5->{
-        \path (y.north) ++ (0, 1em) node[anchor=south west,color=yellow!67] (exp_y){\includegraphics[width=0.07\textwidth]{Figures/intro_figures/kspace_mri.png}};
-        \draw [color=yellow!87](y.north) |- ([xshift=-0.3ex,color=yellow]exp_y.south east);
+        \path (y.north) ++ (0, 1em) node[anchor=south west,color=amber!67] (exp_y){\includegraphics[width=0.07\textwidth]{Figures/intro_figures/kspace_mri.png}};
+        \draw [color=amber!87](y.north) |- ([xshift=-0.3ex,color=amber]exp_y.south east);
         }
     \end{tikzpicture}
 \end{frame}
@@ -191,10 +163,10 @@
     \vspace{\baselineskip}
     \begin{tikzpicture}[overlay,remember picture,>=stealth,nodes={align=left,inner ysep=1pt},<-]
         % For "calA"
-        \path (calA.south) ++ (0,-2.5em) node[anchor=south east,color=green!87] (exp_calA){
+        \path (calA.south) ++ (0,-2.5em) node[anchor=south east,color=DarkGreen!87] (exp_calA){
             $= \left(\Ib_L\otimes {\mathcal{F}}_{\Omega}\right)\Sbb$
         };
-        \draw [color=green!87](calA.south) |- ([xshift=-0.3ex,color=green]exp_calA.south west);
+        \draw [color=DarkGreen!87](calA.south) |- ([xshift=-0.3ex,color=DarkGreen]exp_calA.south west);
         % For psi
         \path (psi.south) ++ (0, -2.5em) node[anchor=south west,color=brown!87] (exp_psi){
             Wavelet basis
