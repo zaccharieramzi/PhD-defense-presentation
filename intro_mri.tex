@@ -92,43 +92,6 @@
     \end{center}
 \end{frame}
 
-\begin{frame}{Physics of MRI - 1}
-    % Because all spins get excited, we get a global RF pulse that is the weighted sum of the contribution of all spins' relaxation RF pulses: global information
-    % We can obtain "multiple global information", by changing a bit the magnetic field spatially using gradients
-    % Signal equation
-    % However, the FID carries global information.
-    FID: global info.
-    \pause
-    
-    % Using magnetic \textbf{gradients} enables changing a bit the magnetic field spatially, and therefore changing the global information depending on local factors.
-    Magnetic \textbf{gradients} $\Rightarrow$ change the magnetic field spatially.
-    \pause
-    
-    % This allows us to receive a temporal signal of the form:
-    Temporal signal:
-    \begin{equation*}
-        \vspace{\baselineskip}
-        \tikzmarknode{S}{\highlight{blue}{$S_{tr}(t)$}} \propto \omega_0  \int_{V_s} B_{tr} \tikzmarknode{M}{\highlight{green}{$M_{tr}(t, \rb)$}} e^{-\imath \gamma \rb \cdot \int_0^t \tikzmarknode{G}{\highlight{red}{$\Gb(\tau)$}}  \dif \tau} \dif \rb 
-    \end{equation*}
-    \begin{tikzpicture}[overlay,remember picture,>=stealth,nodes={align=left,inner ysep=1pt},<-]
-        % For "S"
-        \onslide<4->{
-        \path (S.south) ++ (0,-2em) node[anchor=south east,color=blue!67] (exp_S){\textbf{Recorded MR signal}};
-        \draw [color=blue!87](S.south) |- ([xshift=-0.3ex,color=blue]exp_S.south west);
-        }
-        % For "M"
-        \onslide<5->{
-        \path (M.south) ++ (0, -6em) node[anchor=south east,color=green!77,align=right] (exp_M){\textbf{Magnetic field in each location $\rb$,}\\ \textbf{$\propto$ spin density $\rho(\rb)$}};
-        \draw [color=green!87](M.south) |- ([xshift=-0.3ex,color=green]exp_M.south west);
-        }
-        % For "G"
-        \onslide<6->{
-        \path (G.south) ++ (0, -2em) node[anchor=north west,color=red!47] (exp_G){\textbf{Temporal gradients,}\\\textbf{controlled by the operator}};
-        \draw [color=red!87](G.south) |- ([xshift=-0.3ex,color=red]exp_G.south east);
-        }
-    \end{tikzpicture}
-\end{frame}
-
 \begin{frame}{Physics of MRI - 2}
     % Signal equation $\Rightarrow$ k-space
     % The \textbf{k-space} vector, $\kb(t) = \frac{\gamma}{2\pi} \int_0^t \Gb(\tau) \dif \tau$, defines how we traverse the Fourier space of the anatomical image.
