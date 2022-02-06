@@ -186,22 +186,42 @@
 
         % XXX dk why I need to write the number manually but this needs to change
         % if the footnotes change
-        \footnotetext{$^7$\fullcite{Adler2018}}
-    
-    \onslide<3>
+        \footnotetext{$^7$\fullcite{Adler2018}}    
+\end{overprint}
+   
+
+
+\end{frame}
+
+\begin{frame}
+    \% benchmark quali results
+\end{frame}
+
+
+\begin{frame}{Unrolled models - 2}
+    % first benchmark: different unrolling strategies give different results
+    \begin{exampleblock}{Contribution \#1}
+        \fullcite{Ramzi2020_benchmark_journal}
+    \end{exampleblock}
+    % We can build different models depending on the optimization algorithm we unroll, the choice of $f_{\thetab}$ and the number of iterations.
+    Different models based on:
+    \begin{itemize}
+        \item optimization algorithm to unroll
+        \item choice of $f_{\thetab}$
+        \item $N$
+    \end{itemize}
+       
+
     \noindent\rule{\textwidth}{1pt}
 
         \begin{itemize}
             \item \faicon{github} Code available online: \texttt{github.com/zaccharieramzi/fastmri-reproducible-benchmark}
             \item\begin{tabular}{@{}c@{}}\includegraphics[width=3ex]{Figures/hf_logo.jpeg}\end{tabular}Model weights available online: \texttt{huggingface.co/zaccharieramzi}
         \end{itemize}
-    
-\end{overprint}
-    
+   
 
 
 \end{frame}
-
 
 \begin{frame}{XPDNet}
     
@@ -341,8 +361,8 @@
     \end{overprint}
 \end{frame}
 
-\begin{frame}{Qualitative XPDNet results}
-    
+\begin{frame}
+    \% XPDNET quali res
 \end{frame}
 
 \begin{frame}{Robustness test}
