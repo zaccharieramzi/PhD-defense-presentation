@@ -407,6 +407,7 @@
             \node (outpt_prox) [right=3em of prox] {};
             \begin{scope}[on background layer]
                 \node (encompassing_unit) [unitnode, fit=(forward_op)(dc)(backward_op)(dc_input_comb)(prox), inner sep=0.9em] {};
+                \node (t_first_unit) [below right] at ($(encompassing_unit.north west)+(-0.9em,0.25em)$) {\tiny Iteration Unit};
             \end{scope}
             %% smaps nodes
             \node (smaps_refiner) [opnode, below left=1.5em of forward_op] {Smaps refiner};
