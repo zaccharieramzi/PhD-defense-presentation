@@ -130,3 +130,6 @@ loud instead of giving us a well-rehearsed presentation – take this as a comme
 for perfecting your already good presentation
 Your enunciation at the end of your sentences drops off very slightly – but overall 
 is really good! Bravo
+
+## PAC feedback
+La seule remarque qui me restait c'etais sur le schéma du. XPDNet , où y a la double flèche (dont une grande courbe) , ça manquait d'une légende de l'input, ou au moins décalé la partir courbe vers la droite pour bien marquer le départ.
