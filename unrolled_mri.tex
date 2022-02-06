@@ -48,7 +48,7 @@
     % Use the backward operator as a basis for the restoration model
     % We actually have access to the backward operator $\mathcal{A}^H$, the inverse FT composed with the sensitivity maps.
 
-    Let's use $\mathcal{A}^H$ to build a more informed model:
+    Let's use $\mathcal{A}^H$ to build a more informed model \alt<2->{in the image space}{in the k-space}:
     \begin{equation*}
         \alt<1>{\adjointop}{}f_{\thetab}(
             \tikzmarknode{aliased_image}{\alt<2->{\adjointop}{}\measurements}
