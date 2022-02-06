@@ -5,7 +5,7 @@
     
     \begin{center}
         \color{DarkBlue}
-    \Huge \insertsection
+    \Huge \thesection. \insertsection
     \end{center}
     
 \end{frame}
@@ -43,7 +43,7 @@
         \node[below=of mri] (brain) {\includegraphics[height=0.3\textheight,angle=180]{Figures/intro_figures/brain_mri.png}};
         \shade[ball color = blue!47] (0,0) circle (1cm);
         \node(coil) [circle, draw, visible on=<3->] at (4.5cm,0) {\textbf{Antenna}};
-        \node[visible on=<2->] (bottom_arrow) at (0, -1.8cm) {$\Bb_0$};
+        \node(bottom_arrow) at (0, -1.8cm) {$\Bb_0$};
         \node(kspace) [visible on=<4->, below=of coil] {\includegraphics[width=0.13\textwidth]{Figures/intro_figures/kspace_phantom.png}}; 
         %% excitation / relaxation
         \draw[excit, visible on=<2>, color=red!87,->] (-1.3cm,1.6cm) arc [start angle=95, end angle=175, x radius=1.6cm, y radius=1.6cm] ;
@@ -91,7 +91,6 @@
         MRI relies on the nuclear magnetic resonance phenomenon. This enables us to sample the Fourier space of the anatomical object of interest.
         MRI is slow, because the \textbf{relaxation} is slow!
     \end{block}
-    \pause
 \end{frame}
 
 \begin{frame}{Acceleration}
