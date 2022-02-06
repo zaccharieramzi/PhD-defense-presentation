@@ -22,9 +22,9 @@
     \begin{tikzpicture}[overlay,remember picture,>=stealth,nodes={align=left,inner ysep=1pt},<-]
         % For "kspace"
         \onslide<2->{
-        \path (kspace.south) ++ (0,-4em) node[anchor=south east,color=yellow!87] (exp_kspace){
+        \path (kspace.south) ++ (0,-4em) node[anchor=south east,color=amber!87] (exp_kspace){
             \includegraphics[width=0.07\textwidth]{Figures/intro_figures/kspace_mri.png} \textbf{kspace}};
-        \draw [color=yellow!87](kspace.south) |- ([xshift=-0.3ex,color=yellow]exp_kspace.south west);
+        \draw [color=amber!87](kspace.south) |- ([xshift=-0.3ex,color=amber]exp_kspace.south west);
         }
         % For "image"
         \onslide<3->{
@@ -53,9 +53,9 @@
         \draw [color=blue!87](image.south) |- ([xshift=-0.3ex,color=blue]exp_image.south east);
         % For kspace
         \onslide<1>{
-            \path (kspace.south) ++ (0,-4em) node[anchor=south east,color=yellow!87] (exp_kspace){
+            \path (kspace.south) ++ (0,-4em) node[anchor=south east,color=amber!87] (exp_kspace){
                 \includegraphics[width=0.07\textwidth]{Figures/intro_figures/kspace_mri.png} \textbf{kspace}};
-            \draw [color=yellow!87](kspace.south) |- ([xshift=-0.3ex,color=yellow]exp_kspace.south west);
+            \draw [color=amber!87](kspace.south) |- ([xshift=-0.3ex,color=amber]exp_kspace.south west);
             
         }
         % For aliased image
