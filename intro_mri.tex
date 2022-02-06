@@ -51,7 +51,7 @@
         \draw[excit, visible on=<3->, color=green!87, <-] (-1.3cm,1.6cm) arc [start angle=95, end angle=175, x radius=1.6cm, y radius=1.6cm];
         \node(arrow_relax_end) at (-2.8cm, 0) {};
         \node(text_relax) [color=DarkGreen!87, visible on=<3->] at (0,2cm) {\textbf{Relaxation}};
-        \node(fit_relax) [visible on=<5->, fit=(text_relax) (bottom_arrow) (arrow_relax_end), draw=red!47, dashed] {};
+        \node(fit_relax) [visible on=<5->, fit=(text_relax) (bottom_arrow) (arrow_relax_end), draw=red!47, dashed, inner sep=0.1em] {};
         \node(text_slow) [visible on=<5->, above right=-1.3em and 0 of fit_relax, color=red!47] {\textbf{This is slow!}};
         %% pulses
         % \draw[<-, pulse,visible on=<2>] (1.9cm,0cm) -- node [pulse_text] {\textbf{RF pulse}} ($(coil.west)+(-0.3cm,0)$);
