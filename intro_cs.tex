@@ -186,7 +186,7 @@
 \begin{frame}{The canonical MRI reconstruction problem}
     % We introduce the notion of a \textbf{sparsity} basis $\psib$ (typically wavelets) and the fact that the measurements can be noisy to obtain the canonical MRI reconstruction problem:
     \begin{equation*}
-        \argmin_{\xb \in \mathbb{C}^n} \overbrace{\|\tikzmarknode{calA}{\highlight{green}{$\mathcal{A}$}} \xb - \yb \|_2^2}^{\text{\sf \footnotesize Noisy data consistency}}  + \overbrace{ \tikzmarknode{lambda}{\underline{\lambda}} \|\tikzmarknode{psi}{\highlight{brown}{$\psib$}} \xb\|_1}^{\text{\sf \footnotesize Regularization term } }
+        \argmin_{\xb \in \mathbb{C}^n} \overbrace{\frac12 \|\tikzmarknode{calA}{\highlight{green}{$\mathcal{A}$}} \xb - \yb \|_2^2}^{\text{\sf \footnotesize Noisy data consistency}}  + \overbrace{ \tikzmarknode{lambda}{\underline{\lambda}} \|\tikzmarknode{psi}{\highlight{brown}{$\psib$}} \xb\|_1}^{\text{\sf \footnotesize Regularization term } }
     \end{equation*}
     \vspace{\baselineskip}
     \begin{tikzpicture}[overlay,remember picture,>=stealth,nodes={align=left,inner ysep=1pt},<-]
