@@ -186,7 +186,7 @@
 \begin{frame}{The canonical MRI reconstruction problem}
     % We introduce the notion of a \textbf{sparsity} basis $\psib$ (typically wavelets) and the fact that the measurements can be noisy to obtain the canonical MRI reconstruction problem:
     \begin{equation*}
-        \argmin_{\xb \in \mathbb{C}^n} \overbrace{\frac12 \|\tikzmarknode{calA}{\highlight{green}{$\mathcal{A}$}} \xb - \yb \|_2^2}^{\text{\sf \footnotesize Noisy data consistency}}  + \overbrace{ \tikzmarknode{lambda}{\underline{\lambda}} \|\tikzmarknode{psi}{\highlight{brown}{$\psib$}} \xb\|_1}^{\text{\sf \footnotesize Regularization term } }
+        \argmin_{\xb \in \mathbb{C}^n} \overbrace{\frac12 \|\tikzmarknode{calA}{\highlight{green}{$\mathcal{A}$}} \xb - \yb \|_2^2}^{\text{\sf \footnotesize Noisy data consistency}}  + \overbrace{ \tikzmarknode{lambda}{\underline{\lambda}} \|\tikzmarknode{psi}{\highlight{brown}{$\psib$}} \xb\|_1}^{\text{\sf \footnotesize Regularization term, $\mathcal{R}$ } }
     \end{equation*}
     \vspace{\baselineskip}
     \begin{tikzpicture}[overlay,remember picture,>=stealth,nodes={align=left,inner ysep=1pt},<-]
@@ -209,30 +209,30 @@
     
 \end{frame}
 
-\begin{frame}{ISTA}
-    %  The Iterative Shrinkage-Thresholding Algorithm~(ISTA) can be used to solve the canonical MRI reconstruction problem:
-     Iterative Shrinkage-Thresholding Algorithm~(ISTA):
-     % XXX: already highlight the steps to have a visual understanding
-     \begin{equation*}
-        \label{eq:ista-step}
-        \begin{split}
-            \xb_{n+1} &= \highlight{yellow}{$\xb_n - \epsilon_n \mathcal{A}^H\left(\mathcal{A} \xb_n - \ybb\right)$}\\
-            \xb_{n+1} &= \highlight{blue}{$\tikzmarknode{prox}{\operatorname{prox}}_{\epsilon_n \tikzmarknode{reg}{\mathcal{R}}}\left(\xb_{n+1}\right)$}
-        \end{split}
-    \end{equation*}
-    \begin{tikzpicture}[overlay,remember picture,>=stealth,nodes={align=left,inner ysep=1pt},<-]
-        % For "prox"
-        \path (prox.south) ++ (0,-2.5em) node[anchor=south east,color=black!87] (exp_prox){
-            Proximity operator
-        };
-        \draw [color=black!87](prox.south) |- ([xshift=-0.3ex,color=black]exp_prox.south west);
-        % For "reg
-        \path (reg.south) ++ (0, -2.5em) node[anchor=south west,color=black!87] (exp_reg){
-            \footnotesize $= \|\psib \cdot\|_1$
-        };
-        \draw [color=black!87](reg.south) |- ([xshift=-0.3ex,color=black]exp_reg.south east);
-    \end{tikzpicture}
-\end{frame}
+% \begin{frame}{ISTA}
+%     %  The Iterative Shrinkage-Thresholding Algorithm~(ISTA) can be used to solve the canonical MRI reconstruction problem:
+%      Iterative Shrinkage-Thresholding Algorithm~(ISTA):
+%      % XXX: already highlight the steps to have a visual understanding
+%      \begin{equation*}
+%         \label{eq:ista-step}
+%         \begin{split}
+%             \xb_{n+1} &= \highlight{yellow}{$\xb_n - \epsilon_n \mathcal{A}^H\left(\mathcal{A} \xb_n - \ybb\right)$}\\
+%             \xb_{n+1} &= \highlight{blue}{$\tikzmarknode{prox}{\operatorname{prox}}_{\epsilon_n \tikzmarknode{reg}{\mathcal{R}}}\left(\xb_{n+1}\right)$}
+%         \end{split}
+%     \end{equation*}
+%     \begin{tikzpicture}[overlay,remember picture,>=stealth,nodes={align=left,inner ysep=1pt},<-]
+%         % For "prox"
+%         \path (prox.south) ++ (0,-2.5em) node[anchor=south east,color=black!87] (exp_prox){
+%             Proximity operator
+%         };
+%         \draw [color=black!87](prox.south) |- ([xshift=-0.3ex,color=black]exp_prox.south west);
+%         % For "reg
+%         \path (reg.south) ++ (0, -2.5em) node[anchor=south west,color=black!87] (exp_reg){
+%             \footnotesize $= \|\psib \cdot\|_1$
+%         };
+%         \draw [color=black!87](reg.south) |- ([xshift=-0.3ex,color=black]exp_reg.south east);
+%     \end{tikzpicture}
+% \end{frame}
 
 % \begin{frame}{Dictionary Learning}
 
