@@ -48,7 +48,7 @@
 \usetikzlibrary{shapes.arrows}
 
 
-% \includeonly{add_slides}
+\includeonly{intro_mri}
 %----------------------------------------------------------------------------------------
 %	TITLE PAGE
 %----------------------------------------------------------------------------------------
@@ -142,19 +142,23 @@
 \begin{frame}{MRI is slow}
     % for debug
     % This has been run with \TeX~Live~\TeXLiveVersion.
-    MRI~(Magnetic Resonance Imaging) scan duration: 15 min (up to 90 min).\footfullcite{nhs}
+    \begin{multicols}{2}
+        MRI~(Magnetic Resonance Imaging) scan duration: 15 min (up to 90 min).\footfullcite{nhs}
     \begin{itemize}
         \item discomfort \& accessibility issues
         \item reduced patient throughput
         \item increased chance of motion as time progresses
     \end{itemize}
-    % give typical duration (compare to CT)
-    % give associated problems
+    \newpage
     \begin{figure}
         \centering
-        \includegraphics[]{Figures/intro_figures/motion_mri.png}
+        \includegraphics[height=0.5\textheight]{Figures/intro_figures/motion_mri.png}
         \caption{Example of motion artefacts in MRI\footfullcite{grimm2015reconstruction}}
     \end{figure}
+    \end{multicols}
+    % give typical duration (compare to CT)
+    % give associated problems
+    
 \end{frame}
 
 \begin{frame}{Our objective: accelerate MRI scans}
