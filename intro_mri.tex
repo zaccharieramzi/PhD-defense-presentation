@@ -84,7 +84,7 @@
 
 
 
-\begin{frame}{Physics of MRI }
+\begin{frame}{Physics of MRI}
     % Let's not forget our initial goal here: we want to understand why MRI is slow
     % The relaxation is slow !
     \begin{block}{Recap}
@@ -94,24 +94,24 @@
     \pause
 \end{frame}
 
-\begin{frame}{Where is there room for acceleration?}
+\begin{frame}{Acceleration}
     % Explain the concept of redundancy
     % first example: partial Fourier $\Rightarrow$ give limits
     % \textbf{Redundancy}, otherwise called \textbf{sparsity, symmetry, structure or a priori information}, is the core concept that will help us accelerate MRI.\\
     \textbf{Redundancy}, or \textbf{sparsity, symmetry, structure or a priori information}, is the key.\\
 
     \pause
-        \hfill \break
-        Where is it in MRI?
+    Naively: sample fewer lines in the k-space.
 
-        % Yes! The anatomical image is real-valued so its Fourier Transform~(FT) has a conjugate symmetry.
-        Fourier Transform~(FT) has a conjugate symmetry $\Rightarrow$ \textbf{Partial Fourier}
-        % Using this redundancy to sample less points in the k-space (i.e. using the relaxation fewer times) is a technique called \textbf{Partial Fourier}.
-        
-        % But in practice it is still needed to sample 6/8 of the Fourier space (acceleration of 1.3).\footfullcite{emri}
-        Resulting acceleration: 1.3
-    
-    % \end{overprint}
+    \begin{center}
+        \begin{tikzpicture}[>=stealth]
+            \node (kspace) {\includegraphics[width=0.25\textwidth]{Figures/intro_figures/kspace_mri.png}};
+            \node[below=0.7em of kspace] (kspace_exp) {Undersampled k-space};
+            \node[right=6em of kspace] (knee) {\includegraphics[width=0.4\textwidth]{Figures/dl_mri_figures/zfilled_recon_af4.png}};
+            \node[below=-1em of knee] (knee_exp) {Aliased image};
+            \draw[->, line width=0.3cm, color=DarkBlue] (kspace.east) -- ($(knee.west)+(0.8cm,0)$) node [below,midway, color=DarkBlue!87, yshift=-0.3cm] {\textbf{IFFT}};
+        \end{tikzpicture}
+    \end{center}
     
 \end{frame}
 
