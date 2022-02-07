@@ -1,13 +1,14 @@
+% cSpell: disable
 \section{Magnetic Resonance Imaging~(MRI)}
 
 \begin{frame}[plain,c]
     %\frametitle{A first slide}
-    
+
     \begin{center}
         \color{DarkBlue}
     \Huge \thesection. \insertsection
     \end{center}
-    
+
 \end{frame}
 
 \begin{frame}{What does an MRI look like?}
@@ -17,7 +18,7 @@
             \includegraphics[height=0.6\textheight]{Figures/intro_figures/example_knee_fastmri.pdf}
         \end{subfigure}
         \begin{subfigure}{0.45\textwidth}
-            \includegraphics[height=0.6\textheight]{Figures/intro_figures/brain_mri.png}  
+            \includegraphics[height=0.6\textheight]{Figures/intro_figures/brain_mri.png}
         \end{subfigure}
         \caption{\label{fig:mri-example} \textbf{Examples of MR images}: knee and brain taken from the fastMRI dataset.\footfullcite{Zbontar}}
     \end{figure}
@@ -45,7 +46,7 @@
         \shade[ball color = blue!47] (0,0) circle (1cm);
         \node(coil) [circle, draw, visible on=<3->] at (4.5cm,0) {\textbf{Antenna}};
         \node(bottom_arrow) at (0, -1.8cm) {$\Bb_0$};
-        \node(kspace) [visible on=<4->, below=of coil] {\includegraphics[width=0.13\textwidth]{Figures/intro_figures/kspace_phantom.png}}; 
+        \node(kspace) [visible on=<4->, below=of coil] {\includegraphics[width=0.13\textwidth]{Figures/intro_figures/kspace_phantom.png}};
         %% excitation / relaxation
         \draw[excit, visible on=<2>, color=red!87,->] (-1.3cm,1.6cm) arc [start angle=95, end angle=175, x radius=1.6cm, y radius=1.6cm] ;
         \node [color=red!87, visible on=<2>] at (0, 2.5cm) {\textbf{Excitation}};
@@ -75,10 +76,10 @@
         \draw[->, visible on=<4->] (coil.south) -- ($(kspace.north)+(0,-0.1cm)$);
         %% ift
         \draw[->, line width=0.15cm, color=DarkBlue, visible on=<4->] (kspace.west) -- ($(brain.east)+(-0.3cm,-0.5cm)$) node [below,midway, color=DarkBlue!87, yshift=-0.3cm] {\textbf{IFFT}};
-            
+
         \end{tikzpicture}
     \end{center}
-    
+
 \end{frame}
 
 
@@ -110,7 +111,7 @@
 
     \pause
     \textbf{Redundancy}, or \textbf{sparsity, symmetry, structure or a priori information}, is the key.
-    
+
 \end{frame}
 
 \begin{frame}{Parallel imaging}
@@ -121,10 +122,10 @@
         \centering
         \includegraphics[height=0.4\textheight]{Figures/intro_figures/multicoil.jpg}
     \end{figure}
-     
-    % This technique is called \textbf{Parallel Imaging~(PI)}. 
+
+    % This technique is called \textbf{Parallel Imaging~(PI)}.
     % A reconstruction algorithm is now needed to handle the multi-coil undersampled data.
-        % \textbf{SENSE}\footfullcite{Pruessmann1999SENSE:MRI} and \textbf{GRAPPA}\footfullcite{Griswold2002GeneralizedGRAPPA} are such algorithms.    
+        % \textbf{SENSE}\footfullcite{Pruessmann1999SENSE:MRI} and \textbf{GRAPPA}\footfullcite{Griswold2002GeneralizedGRAPPA} are such algorithms.
     Multi-coil reconstruction algorithms: \textbf{SENSE}\footfullcite{Pruessmann1999SENSE:MRI} and \textbf{GRAPPA}\footfullcite{Griswold2002GeneralizedGRAPPA}.
     % GRAPPA + SENSE examples
 \end{frame}
@@ -135,7 +136,7 @@
         \includegraphics[height=0.6\textheight]{Figures/intro_figures/GRAPPA.jpeg}
         \caption{\label{fig:GRAPPA}\textbf{GRAPPA illustration.} Image courtesy of \citet{deshmane2012parallel}.
         }
-    \end{figure} 
+    \end{figure}
 \end{frame}
 
 \begin{frame}{Limits of Parallel Imaging}

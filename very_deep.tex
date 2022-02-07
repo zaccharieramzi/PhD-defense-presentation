@@ -1,13 +1,14 @@
+% cSpell: disable
 \section{Going even deeper}
 
 \begin{frame}[plain,c]
     %\frametitle{A first slide}
-    
+
     \begin{center}
         \color{DarkBlue}
     \Huge \thesection. \insertsection
     \end{center}
-    
+
 \end{frame}
 
 
@@ -34,7 +35,7 @@
     \pause
 
     % This memory requirement comes primarily from the \textbf{activations} of the model, not from the model weights.
-    Why more memory? \textbf{activations}!
+    Why more memory? \textbf{Activations}!
     \pause
 
     \begin{center}
@@ -70,9 +71,9 @@
                     }
                 }{?}
             } (op_params.north);
-        \end{tikzpicture}    
+        \end{tikzpicture}
     \end{center}
-    
+
 \end{frame}
 
 \begin{frame}{The modeling solutions}
@@ -159,7 +160,7 @@ Let $\zb^\star \in  \mathbb{R}^d$ such that $g_{\thetab}(\zb^\star) = 0$ and $J_
     \begin{exampleblock}{Contribution \#4}
         \fullcite{Ramzi2021_shine}
     \end{exampleblock}
-    
+
     We introduced \textbf{SHINE: SHaring the INverse Estimate}.
 
     \begin{equation*}
@@ -213,7 +214,7 @@ Let $\zb^\star \in  \mathbb{R}^d$ such that $g_{\thetab}(\zb^\star) = 0$ and $J_
         \includegraphics[width=0.9\textwidth]{Figures/shine_figures/bilevel_test.pdf}
         \caption{\textbf{Bilevel optimization~\citep{Pedregosa2016HyperparameterGradient} with SHINE:} convergence of held-out test loss.}
     \end{figure}
-    
+
 \end{frame}
 
 \begin{frame}{Results on DEQs}
@@ -227,13 +228,13 @@ Let $\zb^\star \in  \mathbb{R}^d$ such that $g_{\thetab}(\zb^\star) = 0$ and $J_
 % \begin{frame}{SHINE}
 %     \begin{block}{Recap}
 %         MRI is slow because of \textbf{relaxation}.
-        
+
 %         \pause
 %         If we want to do fewer relaxations, we need to exploit some \textbf{redundancy} in MR images.
-        
+
 %         \pause
 %         \textbf{Deep Learning} allows us to learn more complex structures in MR images than Compressed Sensing.
-        
+
 %         \pause
 %         But if we want to get the best performance, we need deep memory-hungry models.
 %         \textbf{DEQs} are a solution to the memory requirements but are slow to train.

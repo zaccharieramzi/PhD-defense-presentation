@@ -1,13 +1,14 @@
+% cSpell: disable
 \section{Deep Learning}
 
 \begin{frame}[plain,c]
     %\frametitle{A first slide}
-    
+
     \begin{center}
         \color{DarkBlue}
     \Huge \thesection. \insertsection
     \end{center}
-    
+
 \end{frame}
 
 \begin{frame}{The power of Deep Learning}
@@ -30,7 +31,7 @@
             \path (nn.south) ++ (0, -4.5em) node[anchor=south west,color=brown!87] (exp_nn){
                 Neural network:\\a chain of elementary linear \& nonlinear functions};
             \draw [color=brown!87](nn.south) |- ([xshift=-0.3ex,color=brown]exp_nn.south east);
-            }            
+            }
         \end{tikzpicture}
     }
 \end{frame}
@@ -76,27 +77,27 @@
             Estimator of the expected value};
         \draw [color=purple!87](sum.south) |- ([xshift=-0.3ex,color=purple]exp_sum.south west);
         }
-        
+
         % For "params"
         \onslide<7->{
         \path (params.west) ++ (-2em, 0) node[anchor=east,color=orange!87] (exp_params){
             Parameters};
         \draw [color=orange!87](params.west) -- ([xshift=-0.3ex,color=orange]exp_params.east) -- ([xshift=-0.3ex,color=orange]exp_params.south east) -- ([xshift=-0.3ex,color=orange]exp_params.south west);
         }
-        
+
     \end{tikzpicture}
 \end{frame}
 
 \begin{frame}{Formalism - 2}
     % Stochastic Gradient descent and chain rule
     To solve the previous equation we will use two main tools:
-    
+
     \begin{enumerate}
         \item \alt<2>{Stochastic Gradient Descent~(SGD)}{\highlight{blue}{Stochastic Gradient Descent~(SGD)}};
         \item<2> \highlight{blue}{Chain rule}.
     \end{enumerate}
 
-    
+
         \begin{block}{Definition}
             \only<1>{An algorithm to solve the previous optimization problem based on first order derivatives.}
             \only<2>{
@@ -105,8 +106,8 @@
                     \frac{\partial f}{\partial y} = \frac{\partial f}{\partial x} \frac{\partial x}{\partial y}
                 \end{equation*}
             }
-        \end{block}   
-    
+        \end{block}
+
 \end{frame}
 
 \begin{frame}{Requirements for Deep Learning}
@@ -129,13 +130,13 @@
 \begin{frame}{Introduction Recap}
     \begin{block}{Recap}
         MRI is slow because of \textbf{relaxation}.
-        
+
         \pause
         If we want to do fewer relaxations, we need to exploit some \textbf{redundancy} in MR images.
-        
+
         \pause
         But this redundancy is not easy to express with handcrafted linear functions.
-        
+
         \pause
         This is why we want to use \textbf{Deep Learning} which enables the calibration of complicated functions.
     \end{block}
