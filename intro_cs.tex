@@ -2,12 +2,12 @@
 
 \begin{frame}[plain,c]
     %\frametitle{A first slide}
-    
+
     \begin{center}
         \color{DarkBlue}
     \Huge \thesection. \insertsection
     \end{center}
-    
+
 \end{frame}
 
 \begin{frame}{Linear Inverse Problems}
@@ -47,7 +47,7 @@
         \draw [color=amber!87](y.south) |- ([xshift=-0.3ex,color=amber]exp_y.south east);
         }
     \end{tikzpicture}
-    
+
 
     \onslide<8->{
     % Problems arise when $\ker{\Ab} \neq \{0\}$, i.e. when there are multiple solutions to this equation.
@@ -69,7 +69,7 @@
         \begin{figure}
             \centering
             \includegraphics[height=0.5\textheight]{Figures/cs_figures/smiley_prior.pdf}
-            \caption{\label{fig:redundancy-smiley}\textbf{A smiley example to a priori knowledge.} 
+            \caption{\label{fig:redundancy-smiley}\textbf{A smiley example to a priori knowledge.}
             % Even if we do not have access to the whole image, we still know which images are more \emph{likely} to correspond to it.
             }
         \end{figure}
@@ -140,8 +140,10 @@
     \end{tikzpicture}
 
     \onslide<4>{
-        \vspace{6em}
+        \vspace{4em}
         $\Omega$: Cartesian when on a uniform grid, non-Cartesian otherwise.
+
+        $\Sbb$: \includegraphics[height=0.2\textheight]{Figures/cs_figures/smaps.png}
     }
 \end{frame}
 
@@ -220,18 +222,18 @@
     % give max AF
     % also give a sense of the limitations in compute and in prior learning
     Additional acceleration factor on top of PI: 1.5. % from https://www.philips.fr/healthcare/ressources/landing/the-next-mr-wave/compressed-sense
-    
+
     \pause
     The prior knowledge expressed by the wavelet basis (or other basis) is limited: handcrafted and linear.
 \end{frame}
 
 \begin{frame}{Compressed Sensing}
     \begin{block}{Recap}
-        MRI is slow because of \textbf{relaxation}. 
-        
+        MRI is slow because of \textbf{relaxation}.
+
         \pause
         We can use \textbf{redundancy} in many forms to reduce the amount of samples we need in the Fourier space, and therefore the number of relaxations.
-        
+
         \pause
         But we are limited by simple forms of redundancy.
     \end{block}
