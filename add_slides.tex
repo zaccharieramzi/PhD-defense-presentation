@@ -1,3 +1,4 @@
+% cSpell: disable
 \appendix
 
 \begin{frame}[noframenumbering, plain]{}
@@ -34,16 +35,16 @@
     % However, the FID carries global information.
     FID: global info.
     \pause
-    
+
     % Using magnetic \textbf{gradients} enables changing a bit the magnetic field spatially, and therefore changing the global information depending on local factors.
     Magnetic \textbf{gradients} $\Rightarrow$ change the magnetic field spatially.
     \pause
-    
+
     % This allows us to receive a temporal signal of the form:
     Temporal signal:
     \begin{equation*}
         \vspace{\baselineskip}
-        \tikzmarknode{S}{\highlight{blue}{$S_{tr}(t)$}} \propto \omega_0  \int_{V_s} B_{tr} \tikzmarknode{M}{\highlight{green}{$M_{tr}(t, \rb)$}} e^{-\imath \gamma \rb \cdot \int_0^t \tikzmarknode{G}{\highlight{red}{$\Gb(\tau)$}}  \dif \tau} \dif \rb 
+        \tikzmarknode{S}{\highlight{blue}{$S_{tr}(t)$}} \propto \omega_0  \int_{V_s} B_{tr} \tikzmarknode{M}{\highlight{green}{$M_{tr}(t, \rb)$}} e^{-\imath \gamma \rb \cdot \int_0^t \tikzmarknode{G}{\highlight{red}{$\Gb(\tau)$}}  \dif \tau} \dif \rb
     \end{equation*}
     \begin{tikzpicture}[overlay,remember picture,>=stealth,nodes={align=left,inner ysep=1pt},<-]
         % For "S"
@@ -217,7 +218,7 @@
         \begin{itemize}
             \item 973 train volumes, 199 validation volumes
             \item 2 contrasts: PD and PDFS
-            \item 15 coils, 1.5T/3T, 320x320, 0.5mmx0.5mm, Cartesian 2D TSE
+            \item 15 coils, 1.5T/3T, 320 x 320, 0.5 mm x 0.5 mm, Cartesian 2D TSE
         \end{itemize}
         \newpage
         \textbf{Brain}
@@ -225,7 +226,7 @@
             \item 4469 train volumes, 1378 validation volumes
             \item 4 contrasts: T1, T1 post injection, T2, FLAIR
             \item different locations, different coil architecture
-            \item 1.5T/3T, 320x320 (with exceptions), 0.5mmx0.5mm, Cartesian 2D TSE
+            \item 1.5T/3T, 320 x 320 (with exceptions), 0.5 mm x 0.5 mm, Cartesian 2D TSE
         \end{itemize}
     \end{multicols}
 \end{frame}
@@ -279,7 +280,7 @@
     \end{center}
 \end{frame}
 
-\begin{frame}{PDNet \& Recurent Inference Machines~(RIMs)}
+\begin{frame}{PDNet \& Recurrent Inference Machines~(RIMs)}
     Bayesian Inverse Problem formulation:
     \begin{equation*}
         \argmax_x p(x|y) \propto p(y|x) p(x)
@@ -440,13 +441,13 @@
 \begin{frame}{Learnlets}
     \begin{figure}
         \centering
-        \includegraphics[width=\textwidth]{Figures/clinic_applic/learnlets_tikz_reduced.pdf}
+        \includegraphics[height=0.8\textheight]{Figures/clinic_applic/learnlets_tikz_reduced.pdf}
     \end{figure}
 \end{frame}
 
 \begin{frame}
     \begin{figure}
         \centering
-        \includegraphics[width=\textwidth]{Figures/clinic_applic/reconstruction_samples_1.png}
+        \includegraphics[width=\textwidth]{Figures/clinic_applic/dsm_main.pdf}
     \end{figure}
 \end{frame}

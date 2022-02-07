@@ -1,3 +1,4 @@
+% cSpell: disable
 %----------------------------------------------------------------------------------------
 %	PACKAGES AND THEMES
 %----------------------------------------------------------------------------------------
@@ -15,6 +16,7 @@
 \usepackage{pifont}
 \usepackage{hyperref}
 \usepackage{graphicx} % Allows including images
+\usepackage{makecell}
 \usepackage{booktabs} % Allows the use of \toprule, \midrule and \bottomrule in tables
 \usepackage{fontawesome}
 \usepackage{multicol}
@@ -49,7 +51,7 @@
 \usetikzlibrary{decorations.pathmorphing}
 
 
-% \includeonly{intro_mri}
+% \includeonly{unrolled_mri}
 %----------------------------------------------------------------------------------------
 %	TITLE PAGE
 %----------------------------------------------------------------------------------------
@@ -154,12 +156,12 @@
     \begin{figure}
         \centering
         \includegraphics[height=0.5\textheight]{Figures/intro_figures/motion_mri.png}
-        \caption{Example of motion artefacts in MRI\footfullcite{grimm2015reconstruction}}
+        \caption{Example of motion artifacts in MRI\footfullcite{grimm2015reconstruction}}
     \end{figure}
     \end{multicols}
     % give typical duration (compare to CT)
     % give associated problems
-    
+
 \end{frame}
 
 \begin{frame}{Our objective: accelerate MRI scans}

@@ -1,14 +1,15 @@
+% cSpell: disable
 \def\qualifigsepigogd{.1mm}
 \section{Deep Learning for MRI reconstruction}
 
 \begin{frame}[plain,c]
     %\frametitle{A first slide}
-    
+
     \begin{center}
         \color{DarkBlue}
     \Huge \thesection. \insertsection
     \end{center}
-    
+
 \end{frame}
 
 % XXX have visual aid in all equations
@@ -66,16 +67,16 @@
             \path (kspace.south) ++ (0,-4em) node[anchor=south east,color=amber!87] (exp_kspace){
                 \includegraphics[width=0.07\textwidth]{Figures/intro_figures/kspace_mri.png} \textbf{kspace}};
             \draw [color=amber!87](kspace.south) |- ([xshift=-0.3ex,color=amber]exp_kspace.south west);
-            
+
         }
         % For aliased image
         \onslide<2>{
-        \path (kspace.south) ++ (0, -4em) node[anchor=south east,color=yellow!87] (exp_aliased_image){
+        \path (kspace.south) ++ (0, -4em) node[anchor=south east,color=amber!87] (exp_aliased_image){
             \includegraphics[width=0.1\textwidth,trim=0 3.3em 0 0,clip]{Figures/dl_mri_figures/zfilled_recon_af4.png}\textbf{aliased image}};
-        \draw [color=yellow!87](kspace.south) |- ([xshift=-0.3ex,color=yellow]exp_aliased_image.south west);
+        \draw [color=amber!87](kspace.south) |- ([xshift=-0.3ex,color=amber]exp_aliased_image.south west);
         }
     \end{tikzpicture}
-    
+
 \end{frame}
 
 \begin{frame}{Unrolled models - 1}
@@ -86,14 +87,14 @@
     \alt<5->{}{A graph representation of ISTA:}
     \begin{columns}[totalwidth=\textwidth]
         \begin{column}[]{0.3\textwidth}
-            
+
             \begin{equation*}
                 \begin{split}
                     \xb_{n+1} &= \highlight{yellow}{$\xb_n - \epsilon_n \mathcal{A}^H\left(\mathcal{A} \xb_n - \ybb\right)$}\\
                     \xb_{n+1} &= \alt<5->{\highlight{blue}{$f_{\thetab_n}\left(\xb_{n+1}\right)$}}{\highlight{blue}{$\operatorname{prox}_{\epsilon_n \mathcal{R}}\left(\xb_{n+1}\right)$}}
                 \end{split}
             \end{equation*}
-            
+
         \end{column}
         \begin{column}[]{0.6\textwidth}
             \only<2-3>{
@@ -168,8 +169,8 @@
     \pause
 
     \begin{overprint}
-        
-    
+
+
     \onslide<2>
         \vspace{-1em}
         \begin{table}[h]
@@ -186,15 +187,35 @@
 
         % XXX dk why I need to write the number manually but this needs to change
         % if the footnotes change
-        \footnotetext{$^7$\fullcite{Adler2018}}    
+        \footnotetext{$^8$\fullcite{Adler2018}}
 \end{overprint}
-   
+
 
 
 \end{frame}
 
 \begin{frame}
-    \% benchmark quali results
+    \def\thefigdim{.205}
+    \def\qualifigsep{-6mm}
+    \begin{figure}
+        \begin{center}\hspace*{-.3cm}
+        \begin{tabular}{@{\hspace*{\qualifigsep}}c@{\hspace*{\qualifigsep}}c@{\hspace*{\qualifigsep}}c@{\hspace*{\qualifigsep}}c@{\hspace*{\qualifigsep}}c@{\hspace*{\qualifigsep}}c@{\hspace*{\qualifigsep}}}
+        {\textbf{Reference}} & {\textbf{Zero-filled}} & {\textbf{KIKI-net}} & {\textbf{U-net}} & {\textbf{Cascade-net}} & {\textbf{PD-net}} \\
+        \includegraphics[width=\thefigdim\linewidth]{Figures/dl_mri_figures/bench_figs/image_gt.png}&
+        \includegraphics[width=\thefigdim\linewidth]{Figures/dl_mri_figures/bench_figs/zfilled_recon_af4.png}&
+        \includegraphics[width=\thefigdim\linewidth]{Figures/dl_mri_figures/bench_figs/kikinet-sep-16_recon_af4.png}&
+        \includegraphics[width=\thefigdim\linewidth]{Figures/dl_mri_figures/bench_figs/unet_recon_af4.png}&
+        \includegraphics[width=\thefigdim\linewidth]{Figures/dl_mri_figures/bench_figs/cascadenet_recon_af4.png}&
+        \includegraphics[width=\thefigdim\linewidth]{Figures/dl_mri_figures/bench_figs/pdnet_recon_af4.png}\\[-.70cm]
+        &
+        \includegraphics[width=\thefigdim\linewidth]{Figures/dl_mri_figures/bench_figs/zfilled_residu_af4.png}&
+        \includegraphics[width=\thefigdim\linewidth]{Figures/dl_mri_figures/bench_figs/kikinet-sep-16_residu_af4.png}&
+        \includegraphics[width=\thefigdim\linewidth]{Figures/dl_mri_figures/bench_figs/unet_residu_af4.png}&
+        \includegraphics[width=\thefigdim\linewidth]{Figures/dl_mri_figures/bench_figs/cascadenet_residu_af4.png}&
+        \includegraphics[width=\thefigdim\linewidth]{Figures/dl_mri_figures/bench_figs/pdnet_residu_af4.png}
+        \end{tabular}
+        \end{center}
+        \end{figure}
 \end{frame}
 
 
@@ -210,7 +231,7 @@
         \item choice of $f_{\thetab}$
         \item $N$
     \end{itemize}
-       
+
 
     \noindent\rule{\textwidth}{1pt}
 
@@ -218,13 +239,13 @@
             \item \faicon{github} Code available online: \texttt{github.com/zaccharieramzi/fastmri-reproducible-benchmark}
             \item\begin{tabular}{@{}c@{}}\includegraphics[width=3ex]{Figures/hf_logo.jpeg}\end{tabular}Model weights available online: \texttt{huggingface.co/zaccharieramzi}
         \end{itemize}
-   
+
 
 
 \end{frame}
 
 \begin{frame}{XPDNet}
-    
+
 \end{frame}
 
 \begin{frame}{XPDNet}
@@ -274,6 +295,7 @@
                 %% then residual connection , then applies f_{\thetab_1} (in blue)
                 \node (forward_op) [opnode, below=4em of first_unit] {$\mathcal{A} \cdot$};
                 \node (input_forward) [left=3em of forward_op] {};
+                \node (input_str_forward) [left=of input_forward] {$\xb_0$};
                 \node (dc) [kspace_node, above right=of forward_op] {$\cdot - \ybb$};
                 \node (backward_op) [opnode, right=of dc, visible on=<3>] {$\epsilon_1 \mathcal{A}^H \cdot$};
                 \node (simple_backward_op) [opnode, right=of dc, visible on=<4->] {$\mathcal{A}^H \cdot$};
@@ -282,7 +304,7 @@
                 \node (prox) [image_node, right=of dc_concat] {$f_{\thetab_1}$};
                 \node (prox_exp_cnn) [below=2em of prox, visible on=<3-4>] {CNN};
                 \node (prox_exp_mwcnn) [below=2em of prox, visible on=<5->] {MWCNN\footfullcite{Liu2018}};
-                \node (outpt_prox) [right=3em of prox] {};
+                \node (outpt_prox) [right=3em of prox] {$\xb_1$};
                 % smaps nodes
                 \node (smaps_refiner) [opnode, below left=of forward_op, visible on=<6->] {Smaps refiner\footfullcite{Sriram2020End-to-EndReconstruction}};
                 \node (smaps) [left=of smaps_refiner, visible on=<6->] {$\Sbb$};
@@ -307,8 +329,9 @@
                 \draw<4-> [->] (dc) -- (simple_backward_op);
                 \draw<3> [->] (backward_op) -| (dc_res);
                 \draw<4-> [->] (simple_backward_op) -| (dc_concat);
-                \draw<3> [->] plot [smooth, tension=0.7] coordinates{(input_forward.east) ($(forward_op.south)+(0, -0.6em)$) (dc_res.west)};
-                \draw<4-> [->] plot [smooth, tension=0.7] coordinates{(input_forward.east) ($(forward_op.south)+(0, -0.6em)$) (dc_concat.west)};
+                \draw<3> [->] plot [smooth, tension=0.7] coordinates{(input_forward.east)  ($(forward_op.south)+(0, -0.6em)$) (dc_res.west)};
+                \draw<4-> [->] plot [smooth, tension=0.7] coordinates{(input_forward.east)  ($(forward_op.south)+(0, -0.6em)$) (dc_concat.west)};
+                \draw (input_str_forward) -- (input_forward.east);
                 \draw<3> [->] (dc_res) -- (prox);
                 \draw<4-> [->] (dc_concat) -- (prox);
                 \draw [->] (prox) -- (outpt_prox);
@@ -321,8 +344,8 @@
                 \draw<6-> [->] (smaps_refiner) -| (simple_backward_op);
                 \draw<6-> [line width=0.1em] (smaps_refiner.south) -- (smaps_exp.north);
             }
-            
-        \end{tikzpicture}    
+
+        \end{tikzpicture}
     \end{center}
 \end{frame}
 
@@ -336,7 +359,7 @@
     \end{exampleblock}
 
     \begin{overprint}
-    
+
         \onslide<2>
         \noindent\rule{\textwidth}{1pt}
 
@@ -361,8 +384,18 @@
     \end{overprint}
 \end{frame}
 
+
 \begin{frame}
-    \% XPDNET quali res
+    \def\thefigdimigogd{.35}
+
+    \hspace*{-.7cm}
+    \begin{tabular}{c@{\hspace*{\qualifigsepigogd}}c@{\hspace*{\qualifigsepigogd}}c}
+        {\textbf{Reference}} & \makecell{{\textbf{GRAPPA }} \\ PSNR: 26, SSIM: 0.77} & \makecell{{\textbf{XPDNet}} \\ PSNR: 36, SSIM: 0.96} \\
+        \includegraphics[width=\thefigdimigogd\textwidth]{Figures/clinic_applic/fastmri_r8/GT_Pinf_S1.0000.png}&
+        \includegraphics[width=\thefigdimigogd\textwidth]{Figures/clinic_applic/fastmri_r8/GRAPPA-ideal_P26.18_S0.7704.png}&
+        \includegraphics[width=\thefigdimigogd\textwidth]{Figures/clinic_applic/fastmri_r8/NN_P36.82_S0.9626.png}
+    \end{tabular}
+
 \end{frame}
 
 \begin{frame}{Robustness test}
@@ -398,7 +431,7 @@
     \begin{figure}
         \centering
         \begin{subfigure}{0.48\textwidth}
-            \includegraphics[height=0.48\textheight]{Figures/dl_mri_figures/radial_trajectory.png}    
+            \includegraphics[height=0.48\textheight]{Figures/dl_mri_figures/radial_trajectory.png}
         \end{subfigure}
         \begin{subfigure}{0.48\textwidth}
             \includegraphics[height=0.48\textheight]{Figures/dl_mri_figures/spiral_trajectory.png}
@@ -441,20 +474,21 @@
             %% then residual connection , then applies f_{\thetab_1} (in blue)
             \node (forward_op) [opnode, below=4em of first_unit] {$\mathcal{A} \cdot$};
             \node (input_forward) [left=3em of forward_op] {};
+            \node (input_str_forward) [left=of input_forward] {$\xb_0$};
             \node (dc) [kspace_node, above right=of forward_op] {$\cdot - \ybb$};
             \node (dcp) [kspace_node, right=of dc, visible on=<2->] {$\cdot \times$ DCp\footfullcite{Pipe1999SamplingSolution}};
             \node (backward_op) [opnode, right=of dcp] {$\mathcal{A}^H \cdot$};
             \node (dc_input_comb) [rounded rectangle, draw, fill=white, below right=of backward_op] {$\operatorname{concat}$};
             \node (prox) [image_node, right=of dc_input_comb] {$f_{\thetab_1}$};
             \node (prox_exp) [below=2em of prox] {CNN};
-            \node (outpt_prox) [right=3em of prox] {};
+            \node (outpt_prox) [right=3em of prox] {$\xb_1$};
             \begin{scope}[on background layer]
                 \node (encompassing_unit) [unitnode, fit=(forward_op)(dc)(backward_op)(dc_input_comb)(prox), inner sep=0.9em] {};
                 \node (t_first_unit) [below right] at ($(encompassing_unit.north west)+(-0.9em,0.25em)$) {\tiny Iteration Unit};
             \end{scope}
             %% smaps nodes
             \node (smaps_refiner) [opnode, below left=1.5em of forward_op] {Smaps refiner};
-            \node (smaps) [left=of smaps_refiner] {$\Sbb$};              
+            \node (smaps) [left=of smaps_refiner] {$\Sbb$};
             %% highlight nodes
             \node<2> (highlight_dcp) [highlight_node, fit=(dcp)] {};
             % arrows linking all nodes
@@ -471,6 +505,7 @@
             \draw<1> [->] (dc) -- (backward_op);
             \draw [->] (backward_op) -| (dc_input_comb);
             \draw [->] plot [smooth, tension=0.7] coordinates{(input_forward.east) ($(forward_op.south)+(0, -0.6em)$) (dc_input_comb.west)};
+            \draw (input_str_forward) -- (input_forward.east);
             \draw [->] (dc_input_comb) -- (prox);
             \draw [->] (prox) -- (outpt_prox);
             \draw [line width=0.1em] (first_unit.south) -- (encompassing_unit.north west);
@@ -479,8 +514,8 @@
             \draw [<-] (smaps_refiner) -- (smaps);
             \draw [->] (smaps_refiner) -| (forward_op);
             \draw [->] (smaps_refiner) -| (backward_op);
-            
-        \end{tikzpicture}    
+
+        \end{tikzpicture}
     \end{center}
 \end{frame}
 
@@ -490,15 +525,16 @@
         \fullcite{Ramzi2021_ncpdnet_journal}
     \end{exampleblock}
 
-    
+
 \end{frame}
 
 \begin{frame}
     \begin{figure}
         \begin{overprint}
             \onslide<1>\centering\includegraphics[height=0.9\textheight]{Figures/dl_mri_figures/single_coil.pdf}\caption{\textbf{2D single-coil reconstruction quantitative results on the fastMRI knee dataset.}}
-            \onslide<2>\centering\includegraphics[width=0.7\textwidth]{Figures/dl_mri_figures/3d.pdf}\caption{\textbf{3D single-coil reconstruction quantitative results on the OASIS dataset for a radial trajectory.}}
-            \onslide<3>\centering\includegraphics[width=\textwidth]{Figures/dl_mri_figures/quali_no_err_3d_af4_radial.pdf}\caption{\textbf{3D single-coil reconstruction qualitative results on the OASIS dataset for a radial trajectory.}}
+            \onslide<2>\centering\includegraphics[width=\textwidth]{Figures/dl_mri_figures/quali_no_err_af4_radial.pdf}\caption{\textbf{2D single-coil reconstruction qualitative results on the fastMRI dataset for a radial trajectory.}}
+            \onslide<3>\centering\includegraphics[width=0.7\textwidth]{Figures/dl_mri_figures/3d.pdf}\caption{\textbf{3D single-coil reconstruction quantitative results on the OASIS dataset for a radial trajectory.}}
+            \onslide<4>\centering\includegraphics[width=\textwidth]{Figures/dl_mri_figures/quali_no_err_3d_af4_radial.pdf}\caption{\textbf{3D single-coil reconstruction qualitative results on the OASIS dataset for a radial trajectory.}}
         \end{overprint}
     \end{figure}
 \end{frame}
@@ -510,10 +546,10 @@
     % <otherwise>: ok we get good results, but we have sacrificed a bit of power in 3D, and multi-coil is not possible as is
     \begin{block}{Recap}
         MRI is slow because of \textbf{relaxation}.
-        
+
         \pause
         If we want to do fewer relaxations, we need to exploit some \textbf{redundancy} in MR images.
-        
+
         \pause
         \textbf{Deep Learning} allows us to learn more complex structures in MR images than Compressed Sensing.
         We showcased 2 instances of unrolled models, \textbf{XPDNet} and \textbf{NC-PDNet}, which can perform really well in challenging acquisition settings.
