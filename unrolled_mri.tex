@@ -294,6 +294,7 @@
                 %% then residual connection , then applies f_{\thetab_1} (in blue)
                 \node (forward_op) [opnode, below=4em of first_unit] {$\mathcal{A} \cdot$};
                 \node (input_forward) [left=3em of forward_op] {};
+                \node (input_str_forward) [left=of input_forward] {$\xb_0$};
                 \node (dc) [kspace_node, above right=of forward_op] {$\cdot - \ybb$};
                 \node (backward_op) [opnode, right=of dc, visible on=<3>] {$\epsilon_1 \mathcal{A}^H \cdot$};
                 \node (simple_backward_op) [opnode, right=of dc, visible on=<4->] {$\mathcal{A}^H \cdot$};
@@ -302,7 +303,7 @@
                 \node (prox) [image_node, right=of dc_concat] {$f_{\thetab_1}$};
                 \node (prox_exp_cnn) [below=2em of prox, visible on=<3-4>] {CNN};
                 \node (prox_exp_mwcnn) [below=2em of prox, visible on=<5->] {MWCNN\footfullcite{Liu2018}};
-                \node (outpt_prox) [right=3em of prox] {};
+                \node (outpt_prox) [right=3em of prox] {$\xb_1$};
                 % smaps nodes
                 \node (smaps_refiner) [opnode, below left=of forward_op, visible on=<6->] {Smaps refiner\footfullcite{Sriram2020End-to-EndReconstruction}};
                 \node (smaps) [left=of smaps_refiner, visible on=<6->] {$\Sbb$};
@@ -327,8 +328,9 @@
                 \draw<4-> [->] (dc) -- (simple_backward_op);
                 \draw<3> [->] (backward_op) -| (dc_res);
                 \draw<4-> [->] (simple_backward_op) -| (dc_concat);
-                \draw<3> [->] plot [smooth, tension=0.7] coordinates{(input_forward.east) ($(forward_op.south)+(0, -0.6em)$) (dc_res.west)};
-                \draw<4-> [->] plot [smooth, tension=0.7] coordinates{(input_forward.east) ($(forward_op.south)+(0, -0.6em)$) (dc_concat.west)};
+                \draw<3> [->] plot [smooth, tension=0.7] coordinates{(input_forward.east)  ($(forward_op.south)+(0, -0.6em)$) (dc_res.west)};
+                \draw<4-> [->] plot [smooth, tension=0.7] coordinates{(input_forward.east)  ($(forward_op.south)+(0, -0.6em)$) (dc_concat.west)};
+                \draw (input_str_forward) -- (input_forward.east);
                 \draw<3> [->] (dc_res) -- (prox);
                 \draw<4-> [->] (dc_concat) -- (prox);
                 \draw [->] (prox) -- (outpt_prox);
@@ -471,13 +473,14 @@
             %% then residual connection , then applies f_{\thetab_1} (in blue)
             \node (forward_op) [opnode, below=4em of first_unit] {$\mathcal{A} \cdot$};
             \node (input_forward) [left=3em of forward_op] {};
+            \node (input_str_forward) [left=of input_forward] {$\xb_0$};
             \node (dc) [kspace_node, above right=of forward_op] {$\cdot - \ybb$};
             \node (dcp) [kspace_node, right=of dc, visible on=<2->] {$\cdot \times$ DCp\footfullcite{Pipe1999SamplingSolution}};
             \node (backward_op) [opnode, right=of dcp] {$\mathcal{A}^H \cdot$};
             \node (dc_input_comb) [rounded rectangle, draw, fill=white, below right=of backward_op] {$\operatorname{concat}$};
             \node (prox) [image_node, right=of dc_input_comb] {$f_{\thetab_1}$};
             \node (prox_exp) [below=2em of prox] {CNN};
-            \node (outpt_prox) [right=3em of prox] {};
+            \node (outpt_prox) [right=3em of prox] {$\xb_1$};
             \begin{scope}[on background layer]
                 \node (encompassing_unit) [unitnode, fit=(forward_op)(dc)(backward_op)(dc_input_comb)(prox), inner sep=0.9em] {};
                 \node (t_first_unit) [below right] at ($(encompassing_unit.north west)+(-0.9em,0.25em)$) {\tiny Iteration Unit};
@@ -501,6 +504,7 @@
             \draw<1> [->] (dc) -- (backward_op);
             \draw [->] (backward_op) -| (dc_input_comb);
             \draw [->] plot [smooth, tension=0.7] coordinates{(input_forward.east) ($(forward_op.south)+(0, -0.6em)$) (dc_input_comb.west)};
+            \draw (input_str_forward) -- (input_forward.east);
             \draw [->] (dc_input_comb) -- (prox);
             \draw [->] (prox) -- (outpt_prox);
             \draw [line width=0.1em] (first_unit.south) -- (encompassing_unit.north west);
