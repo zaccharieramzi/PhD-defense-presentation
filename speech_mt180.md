@@ -38,7 +38,12 @@ Ce qui est nouveau dans les algorithmes que je développe, c'est qu'ils prennent
 Il faut donc que je comprenne à la fois bien la physique de l'IRM, mais aussi que je me tienne à jour sur ce qui se fait de mieux en Intelligence Artificielle.
 Ensuite je code ces algorithmes à l'aide d'un langage informatique : Python, c'est ce qui occupe une bonne partie de mes journées.
 Une fois codés, j'entraine ces algorithmes à accélérer des IRMs sur l'ordinateur le plus puissant de France.
-Je m'assure ensuite qu'ils vont assez vite et que les images qu'ils génèrent sont de bonne qualité : en effet, il ne faut pas confondre vitesse et précipitation.
+<!-- L'entrainement pour un algorithme d'Intelligence Artificielle, ca consiste a simuler le processus  -->
+Dans mon cas, l'entrainement pour un de mes algos commence deja par de la preparation: je dois simuler des images accelerees qu'il va falloir corriger pour qu'on ne voit plus la difference avec une image normale.
+Une fois les simulations finies, je montre ces images a mon algorithme, et je regarde la maniere dont ils les a corrigees.
+Si c'est du bon travail je le felicite, sinon...
+Bien sur tout ca est fait de maniere automatique, je suis pas sans arret derriere mon ordi, en plus il y en a souvent plusieurs qui s'entrainent en meme temps.
+Une fois l'entrainement fini, je m'assure qu'ils vont assez vite et que les images qu'ils génèrent sont de bonne qualité : en effet, il ne faut pas confondre vitesse et précipitation.
 
 Parfois, ce sont d'autres personnes qui jugent mes algorithmes.
 J'ai par exemple participé à un concours organisé par Facebook et l'université de New-York, où j'ai atteint la 2ᵉ place grâce à la qualité de mes images.
