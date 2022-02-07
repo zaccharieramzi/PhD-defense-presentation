@@ -23,24 +23,27 @@ Avec un de mes méthode, j'ai atteint la 2eme place d'un concours fb
 Fin : mes méthodes sont disponibles en ligne sur GitHub, le Facebook des codeurs : si jamais l'un de vous a envie d'améliorer encore mes méthodes, libre à vous. -->
 
 <!-- Intro: -->
-J'ai souvent fait des IRMs dans ma vie a cause de mes problemes de genou.
-Et une IRM c'est tres desagreable: en plus de devoir rester allonger immobile avec un genou douloureux, il faut supporter un bruit metallique de sonnerie stridente.
-En plus de ca, on doit parfois avoir un catheter dans le bras.
+J'ai souvent fait des IRMs dans ma vie à cause de mes problèmes de genou.
+Et une IRM c'est très désagréable : en plus de devoir rester allonge immobile avec un genou douloureux, il faut supporter un bruit métallique de sonnerie stridente.
+En plus de ça, on doit parfois avoir un cathéter dans le bras.
 Bref autant vous dire qu'une IRM, c'est pas le meilleur moment de sa vie.
-Et surtout, ca peut durer assez longtemps: 15 minutes environ, mais croyez-moi qu'on a plutot l'impression que c'est 2 heures.
-Pourtant personne ne rechigne a en faire, et pour cause: on sait que ca va nous permettre de connaitre les raisons de nos problemes.
+Et surtout, ça peut durer assez longtemps : 15 minutes environ, mais croyez-moi qu'on a plutôt l'impression que ça dure 2 heures.
+Pourtant, personne ne rechigne à en faire, et pour cause : on sait que ça va nous permettre de connaitre les raisons de nos problèmes.
 
 <!-- Content -->
-Moi, dans ma these, je me suis fixe l'objectif d'accelerer les scans d'Imagerie par Resonance Magnetique, c'est-a-dire les IRMs.
-Pour faire cela, je concois des algorithmes d'Intelligence Artificielle.
-Ensuite je code ces algorithmes a l'aide d'un langage informatique : Python, c'est ce qui occupe une bonne partie de mes journees.
-Une fois codes, j'entraine ces algorithmes a accelerer des IRMS sur l'ordinateur le plus puissant de France.
-Je m'assure ensuite qu'ils vont assez vite et que les images qu'ils generent sont de bonne qualite : il ne faut pas confondre vitesse et precipitation.
+Moi, dans ma thèse, je me suis fixe l'objectif d'accélérer les scans d'Imagerie par Résonance Magnétique, c'est-a-dire les IRMs.
+Non seulement ça permettra de rendre les IRMs plus supportables, mais ça va aussi permettre de les prescrire plus souvent.
+Pour faire cela, je conçois des algorithmes d'Intelligence Artificielle.
+La particularité des algorithmes que je développe, c'est qu'ils prennent en compte les particularités de l'IRM.
+Il faut donc que je comprenne a la fois bien la physique de l'IRM, mais aussi que je me tienne a jour sur ce qui se fait de mieux en Intelligence Artificielle.
+Ensuite je code ces algorithmes à l'aide d'un langage informatique : Python, c'est ce qui occupe une bonne partie de mes journées.
+Une fois codés, j'entraine ces algorithmes à accélérer des IRMs sur l'ordinateur le plus puissant de France.
+Je m'assure ensuite qu'ils vont assez vite et que les images qu'ils génèrent sont de bonne qualité : il ne faut pas confondre vitesse et précipitation.
 
 Parfois, ce sont d'autres personnes qui jugent mes algorithmes.
-J'ai par exemple participe a un concours organise par Facebook et l'universite de New-York, ou j'ai atteint la 2eme place grace a la qualite de mes images.
+J'ai par exemple participe à un concours organise par Facebook et l'université de New-York, ou j'ai atteint la 2ᵉ place grâce à la qualité de mes images.
 
 <!-- CCL et outro -->
-Si jamais l'un de vous a envie de voir a quoi ressemblent les codes de mes algorithmes et meme d'essayer de les faire fonctionner, c'est possible !
-Il vous suffit de vous rendre sur GitHub, le reseau social des codeurs, ou ils sont disponibles en Open Source.
-Qui sait, l'un de vous arrivera peut-etre meme a les ameliorer.
+Si jamais l'un de vous a envie de voir à quoi ressemblent les codes de mes algorithmes et même d'essayer de les faire fonctionner, c'est possible !
+Il vous suffit de vous rendre sur GitHub, le réseau social des codeurs, ou ils sont disponibles en Open Source.
+Qui sait, l'un de vous arrivera peut-être même à les améliorer.
