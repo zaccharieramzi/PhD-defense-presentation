@@ -3,12 +3,12 @@
 
 \begin{frame}[plain,c]
     %\frametitle{A first slide}
-    
+
     \begin{center}
         \color{DarkBlue}
     \Huge \thesection. \insertsection
     \end{center}
-    
+
 \end{frame}
 
 % XXX have visual aid in all equations
@@ -66,7 +66,7 @@
             \path (kspace.south) ++ (0,-4em) node[anchor=south east,color=amber!87] (exp_kspace){
                 \includegraphics[width=0.07\textwidth]{Figures/intro_figures/kspace_mri.png} \textbf{kspace}};
             \draw [color=amber!87](kspace.south) |- ([xshift=-0.3ex,color=amber]exp_kspace.south west);
-            
+
         }
         % For aliased image
         \onslide<2>{
@@ -75,7 +75,7 @@
         \draw [color=yellow!87](kspace.south) |- ([xshift=-0.3ex,color=yellow]exp_aliased_image.south west);
         }
     \end{tikzpicture}
-    
+
 \end{frame}
 
 \begin{frame}{Unrolled models - 1}
@@ -86,14 +86,14 @@
     \alt<5->{}{A graph representation of ISTA:}
     \begin{columns}[totalwidth=\textwidth]
         \begin{column}[]{0.3\textwidth}
-            
+
             \begin{equation*}
                 \begin{split}
                     \xb_{n+1} &= \highlight{yellow}{$\xb_n - \epsilon_n \mathcal{A}^H\left(\mathcal{A} \xb_n - \ybb\right)$}\\
                     \xb_{n+1} &= \alt<5->{\highlight{blue}{$f_{\thetab_n}\left(\xb_{n+1}\right)$}}{\highlight{blue}{$\operatorname{prox}_{\epsilon_n \mathcal{R}}\left(\xb_{n+1}\right)$}}
                 \end{split}
             \end{equation*}
-            
+
         \end{column}
         \begin{column}[]{0.6\textwidth}
             \only<2-3>{
@@ -168,8 +168,8 @@
     \pause
 
     \begin{overprint}
-        
-    
+
+
     \onslide<2>
         \vspace{-1em}
         \begin{table}[h]
@@ -186,15 +186,35 @@
 
         % XXX dk why I need to write the number manually but this needs to change
         % if the footnotes change
-        \footnotetext{$^7$\fullcite{Adler2018}}    
+        \footnotetext{$^8$\fullcite{Adler2018}}
 \end{overprint}
-   
+
 
 
 \end{frame}
 
 \begin{frame}
-    \% benchmark quali results
+    \def\thefigdim{.205}
+    \def\qualifigsep{-6mm}
+    \begin{figure}
+        \begin{center}\hspace*{-.3cm}
+        \begin{tabular}{@{\hspace*{\qualifigsep}}c@{\hspace*{\qualifigsep}}c@{\hspace*{\qualifigsep}}c@{\hspace*{\qualifigsep}}c@{\hspace*{\qualifigsep}}c@{\hspace*{\qualifigsep}}c@{\hspace*{\qualifigsep}}}
+        {\textbf{Reference}} & {\textbf{Zero-filled}} & {\textbf{KIKI-net}} & {\textbf{U-net}} & {\textbf{Cascade-net}} & {\textbf{PD-net}} \\
+        \includegraphics[width=\thefigdim\linewidth]{Figures/dl_mri_figures/bench_figs/image_gt.png}&
+        \includegraphics[width=\thefigdim\linewidth]{Figures/dl_mri_figures/bench_figs/zfilled_recon_af4.png}&
+        \includegraphics[width=\thefigdim\linewidth]{Figures/dl_mri_figures/bench_figs/kikinet-sep-16_recon_af4.png}&
+        \includegraphics[width=\thefigdim\linewidth]{Figures/dl_mri_figures/bench_figs/unet_recon_af4.png}&
+        \includegraphics[width=\thefigdim\linewidth]{Figures/dl_mri_figures/bench_figs/cascadenet_recon_af4.png}&
+        \includegraphics[width=\thefigdim\linewidth]{Figures/dl_mri_figures/bench_figs/pdnet_recon_af4.png}\\[-.70cm]
+        &
+        \includegraphics[width=\thefigdim\linewidth]{Figures/dl_mri_figures/bench_figs/zfilled_residu_af4.png}&
+        \includegraphics[width=\thefigdim\linewidth]{Figures/dl_mri_figures/bench_figs/kikinet-sep-16_residu_af4.png}&
+        \includegraphics[width=\thefigdim\linewidth]{Figures/dl_mri_figures/bench_figs/unet_residu_af4.png}&
+        \includegraphics[width=\thefigdim\linewidth]{Figures/dl_mri_figures/bench_figs/cascadenet_residu_af4.png}&
+        \includegraphics[width=\thefigdim\linewidth]{Figures/dl_mri_figures/bench_figs/pdnet_residu_af4.png}
+        \end{tabular}
+        \end{center}
+        \end{figure}
 \end{frame}
 
 
@@ -210,7 +230,7 @@
         \item choice of $f_{\thetab}$
         \item $N$
     \end{itemize}
-       
+
 
     \noindent\rule{\textwidth}{1pt}
 
@@ -218,13 +238,13 @@
             \item \faicon{github} Code available online: \texttt{github.com/zaccharieramzi/fastmri-reproducible-benchmark}
             \item\begin{tabular}{@{}c@{}}\includegraphics[width=3ex]{Figures/hf_logo.jpeg}\end{tabular}Model weights available online: \texttt{huggingface.co/zaccharieramzi}
         \end{itemize}
-   
+
 
 
 \end{frame}
 
 \begin{frame}{XPDNet}
-    
+
 \end{frame}
 
 \begin{frame}{XPDNet}
@@ -321,8 +341,8 @@
                 \draw<6-> [->] (smaps_refiner) -| (simple_backward_op);
                 \draw<6-> [line width=0.1em] (smaps_refiner.south) -- (smaps_exp.north);
             }
-            
-        \end{tikzpicture}    
+
+        \end{tikzpicture}
     \end{center}
 \end{frame}
 
@@ -336,7 +356,7 @@
     \end{exampleblock}
 
     \begin{overprint}
-    
+
         \onslide<2>
         \noindent\rule{\textwidth}{1pt}
 
@@ -398,7 +418,7 @@
     \begin{figure}
         \centering
         \begin{subfigure}{0.48\textwidth}
-            \includegraphics[height=0.48\textheight]{Figures/dl_mri_figures/radial_trajectory.png}    
+            \includegraphics[height=0.48\textheight]{Figures/dl_mri_figures/radial_trajectory.png}
         \end{subfigure}
         \begin{subfigure}{0.48\textwidth}
             \includegraphics[height=0.48\textheight]{Figures/dl_mri_figures/spiral_trajectory.png}
@@ -454,7 +474,7 @@
             \end{scope}
             %% smaps nodes
             \node (smaps_refiner) [opnode, below left=1.5em of forward_op] {Smaps refiner};
-            \node (smaps) [left=of smaps_refiner] {$\Sbb$};              
+            \node (smaps) [left=of smaps_refiner] {$\Sbb$};
             %% highlight nodes
             \node<2> (highlight_dcp) [highlight_node, fit=(dcp)] {};
             % arrows linking all nodes
@@ -479,8 +499,8 @@
             \draw [<-] (smaps_refiner) -- (smaps);
             \draw [->] (smaps_refiner) -| (forward_op);
             \draw [->] (smaps_refiner) -| (backward_op);
-            
-        \end{tikzpicture}    
+
+        \end{tikzpicture}
     \end{center}
 \end{frame}
 
@@ -490,7 +510,7 @@
         \fullcite{Ramzi2021_ncpdnet_journal}
     \end{exampleblock}
 
-    
+
 \end{frame}
 
 \begin{frame}
@@ -510,10 +530,10 @@
     % <otherwise>: ok we get good results, but we have sacrificed a bit of power in 3D, and multi-coil is not possible as is
     \begin{block}{Recap}
         MRI is slow because of \textbf{relaxation}.
-        
+
         \pause
         If we want to do fewer relaxations, we need to exploit some \textbf{redundancy} in MR images.
-        
+
         \pause
         \textbf{Deep Learning} allows us to learn more complex structures in MR images than Compressed Sensing.
         We showcased 2 instances of unrolled models, \textbf{XPDNet} and \textbf{NC-PDNet}, which can perform really well in challenging acquisition settings.
