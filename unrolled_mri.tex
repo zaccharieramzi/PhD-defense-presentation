@@ -70,9 +70,9 @@
         }
         % For aliased image
         \onslide<2>{
-        \path (kspace.south) ++ (0, -4em) node[anchor=south east,color=yellow!87] (exp_aliased_image){
+        \path (kspace.south) ++ (0, -4em) node[anchor=south east,color=amber!87] (exp_aliased_image){
             \includegraphics[width=0.1\textwidth,trim=0 3.3em 0 0,clip]{Figures/dl_mri_figures/zfilled_recon_af4.png}\textbf{aliased image}};
-        \draw [color=yellow!87](kspace.south) |- ([xshift=-0.3ex,color=yellow]exp_aliased_image.south west);
+        \draw [color=amber!87](kspace.south) |- ([xshift=-0.3ex,color=amber]exp_aliased_image.south west);
         }
     \end{tikzpicture}
 
