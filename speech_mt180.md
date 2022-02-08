@@ -38,20 +38,20 @@ Non seulement ça permettra de rendre les IRMs plus supportables, mais ça va au
 Pour y arriver, je conçois des algorithmes d'Intelligence Artificielle.
 Et, ce qui est nouveau dans les algorithmes que je développe, c'est qu'ils prennent en compte les particularités de l'IRM.
 Il faut donc que je comprenne à la fois bien la physique de l'IRM, mais aussi que je me tienne à jour sur ce qui se fait de mieux en Intelligence Artificielle.
-A l'aide de ces connaissances, je code mes algorithmes avec un langage informatique : Python, c'est ce qui occupe une bonne partie de mes journées.
+À l'aide de ces connaissances, je code mes algorithmes avec un langage informatique : Python, c'est ce qui occupe une bonne partie de mes journées.
 Une fois codés, j'entraine ces algorithmes à accélérer des IRMs sur l'ordinateur le plus puissant de France.
 L'entrainement se passe un peu comme pour un entrainement de foot (comme je vous ai dit je suis un sportif).
-Je joue le role du coach, et il faut deja que je commence par la préparation: je simule le processus d'acceleration et j'obtiens des images de mauvaise qualite.
-Ensuite vient le coeur de l'entrainement: je montre ces images à mes algorithmes, et leur but c'est des les corriger pour qu'on ne voit plus la difference avec une image classique.
-Je suis un coach dur mais juste.
+Je joue le rôle du coach, et il faut déjà que je commence par la préparation : je simule le processus d'accélération et j'obtiens des images de mauvaise qualité.
+Ensuite vient le cœur de l'entrainement : je montre ces images à mes algorithmes et leur but, c'est de les corriger pour qu'on ne voit plus la différence avec une image classique.
+Je suis un coach dur, mais juste.
 Si c'est du bon travail je félicite, sinon...
 Bien sûr, tout ça est fait de manière automatique, je suis pas sans arrêt derrière mon ordi, en plus il y en a souvent plusieurs qui s'entrainent en même temps.
 Une fois l'entrainement fini, je m'assure qu'ils vont assez vite et que les images qu'ils génèrent sont de bonne qualité : en effet, il ne faut pas confondre vitesse et précipitation.
 
-Parfois, ce sont d'autres personnes qui jugent mes algorithmes dans ce qui serait l'equivalent du match du dimanche.
+Parfois, ce sont d'autres personnes qui jugent mes algorithmes dans ce qui serait l'équivalent du match du dimanche.
 J'ai par exemple participé à un concours organisé par Facebook et l'université de New-York, où j'ai atteint la 2ᵉ place grâce à la qualité de mes images.
 
 <!-- CCL et outro -->
 Si jamais l'un de vous a envie de voir à quoi ressemblent les codes de mes algorithmes et même d'essayer de les entrainer, c'est possible !
 Il vous suffit de vous rendre sur GitHub, le réseau social des codeurs, où ils sont disponibles en Open Source.
-Qui sait, l'un de vous arrivera peut-être a les faire passer a la division superieure.
+Qui sait, l'un de vous arrivera peut-être à les faire passer a la division supérieure.
