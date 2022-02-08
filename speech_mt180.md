@@ -23,32 +23,35 @@ Avec un de mes méthode, j'ai atteint la 2eme place d'un concours fb
 Fin : mes méthodes sont disponibles en ligne sur GitHub, le Facebook des codeurs : si jamais l'un de vous a envie d'améliorer encore mes méthodes, libre à vous. -->
 
 <!-- Intro: -->
-J'ai souvent fait des IRMs dans ma vie à cause de mes problèmes de genou.
-Et une IRM c'est très désagréable : en plus de devoir rester allonge immobile avec un genou douloureux, il faut supporter un bruit métallique de sonnerie stridente.
+Le sport, c'est une part très importante de ma vie : foot, basket, arts martiaux, j'adore ça.
+Manque de chance, j'ai aussi des problèmes de genoux.
+Et à cause de ça, je me suis retrouvé pas mal de fois dans une IRM.
+Une IRM c'est très désagréable : en plus de devoir rester allongé immobile avec un genou douloureux, il faut supporter un bruit métallique de sonnerie stridente.
 En plus de ça, on doit parfois avoir un cathéter dans le bras.
 Bref autant vous dire qu'une IRM, c'est pas le meilleur moment de sa vie.
 Et surtout, ça peut durer assez longtemps : 15 minutes environ, mais croyez-moi qu'on a plutôt l'impression que ça dure 2 heures.
 Pourtant, personne ne rechigne à en faire, et pour cause : on sait que ça va nous permettre de connaitre les raisons de nos problèmes.
 
 <!-- Content -->
-Moi, dans ma thèse, je me suis fixe l'objectif d'accélérer les scans d'Imagerie par Résonance Magnétique, c'est-à-dire les IRMs.
+Moi, dans ma thèse, je me suis fixé l'objectif d'accélérer les scans d'Imagerie par Résonance Magnétique, c'est-à-dire les IRMs.
 Non seulement ça permettra de rendre les IRMs plus supportables, mais ça va aussi permettre de les prescrire plus souvent.
 Pour y arriver, je conçois des algorithmes d'Intelligence Artificielle.
-Ce qui est nouveau dans les algorithmes que je développe, c'est qu'ils prennent en compte les particularités de l'IRM.
+Et, ce qui est nouveau dans les algorithmes que je développe, c'est qu'ils prennent en compte les particularités de l'IRM.
 Il faut donc que je comprenne à la fois bien la physique de l'IRM, mais aussi que je me tienne à jour sur ce qui se fait de mieux en Intelligence Artificielle.
-Ensuite je code ces algorithmes à l'aide d'un langage informatique : Python, c'est ce qui occupe une bonne partie de mes journées.
+A l'aide de ces connaissances, je code mes algorithmes avec un langage informatique : Python, c'est ce qui occupe une bonne partie de mes journées.
 Une fois codés, j'entraine ces algorithmes à accélérer des IRMs sur l'ordinateur le plus puissant de France.
-<!-- L'entrainement pour un algorithme d'Intelligence Artificielle, ca consiste a simuler le processus  -->
-Dans mon cas, l'entrainement pour un de mes algos commence deja par de la preparation: je dois simuler des images accelerees qu'il va falloir corriger pour qu'on ne voit plus la difference avec une image normale.
-Une fois les simulations finies, je montre ces images a mon algorithme, et je regarde la maniere dont ils les a corrigees.
-Si c'est du bon travail je le felicite, sinon...
-Bien sur tout ca est fait de maniere automatique, je suis pas sans arret derriere mon ordi, en plus il y en a souvent plusieurs qui s'entrainent en meme temps.
+L'entrainement se passe un peu comme pour un entrainement de foot (comme je vous ai dit je suis un sportif).
+Je joue le role du coach, et il faut deja que je commence par la préparation: je simule le processus d'acceleration et j'obtiens des images de mauvaise qualite.
+Ensuite vient le coeur de l'entrainement: je montre ces images à mes algorithmes, et leur but c'est des les corriger pour qu'on ne voit plus la difference avec une image classique.
+Je suis un coach dur mais juste.
+Si c'est du bon travail je félicite, sinon...
+Bien sûr, tout ça est fait de manière automatique, je suis pas sans arrêt derrière mon ordi, en plus il y en a souvent plusieurs qui s'entrainent en même temps.
 Une fois l'entrainement fini, je m'assure qu'ils vont assez vite et que les images qu'ils génèrent sont de bonne qualité : en effet, il ne faut pas confondre vitesse et précipitation.
 
-Parfois, ce sont d'autres personnes qui jugent mes algorithmes.
+Parfois, ce sont d'autres personnes qui jugent mes algorithmes dans ce qui serait l'equivalent du match du dimanche.
 J'ai par exemple participé à un concours organisé par Facebook et l'université de New-York, où j'ai atteint la 2ᵉ place grâce à la qualité de mes images.
 
 <!-- CCL et outro -->
-Si jamais l'un de vous a envie de voir à quoi ressemblent les codes de mes algorithmes et même d'essayer de les faire fonctionner, c'est possible !
+Si jamais l'un de vous a envie de voir à quoi ressemblent les codes de mes algorithmes et même d'essayer de les entrainer, c'est possible !
 Il vous suffit de vous rendre sur GitHub, le réseau social des codeurs, où ils sont disponibles en Open Source.
-Qui sait, l'un de vous arrivera peut-être même à les améliorer.
+Qui sait, l'un de vous arrivera peut-être a les faire passer a la division superieure.
