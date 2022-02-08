@@ -27,13 +27,13 @@ Le sport, c'est une part très importante de ma vie : foot, basket, arts martiau
 Manque de chance, j'ai aussi des problèmes de genoux.
 Et à cause de ça, je me suis retrouvé pas mal de fois dans une IRM.
 Une IRM c'est très désagréable : en plus de devoir rester allongé immobile avec un genou douloureux, il faut supporter un bruit métallique et une sonnerie stridente.
-En plus de ça, on doit parfois avoir un cathéter dans le bras.
+<!-- En plus de ça, on doit parfois avoir un cathéter dans le bras. -->
 Bref autant vous dire qu'une IRM, c'est pas le meilleur moment de sa vie.
 Et surtout, ça peut durer assez longtemps : 15 minutes environ, mais croyez-moi qu'on a plutôt l'impression que ça dure 2 heures.
-Pourtant, personne ne rechigne à en faire, et pour cause : on sait que ça va nous permettre de connaitre les raisons de nos problèmes.
+<!-- Pourtant, personne ne rechigne à en faire, et pour cause : on sait que ça va nous permettre de connaitre les raisons de nos problèmes. -->
 
 <!-- Content -->
-Moi, dans ma thèse, je me suis fixé l'objectif d'accélérer les scans d'Imagerie par Résonance Magnétique, c'est-à-dire les IRMs.
+Du coup, dans ma thèse, je me suis fixé l'objectif d'accélérer les scans d'Imagerie par Résonance Magnétique, c'est-à-dire les IRMs.
 Non seulement ça permettra de rendre les IRMs plus supportables, mais ça va aussi permettre de les prescrire plus souvent.
 Pour y arriver, je conçois des algorithmes d'Intelligence Artificielle.
 Et, ce qui est nouveau dans les algorithmes que je développe, c'est qu'ils prennent en compte les particularités de l'IRM.
@@ -49,7 +49,7 @@ Bien sûr, tout ça est fait de manière automatique, je suis pas sans arrêt de
 Une fois l'entrainement fini, je m'assure qu'ils vont assez vite et que les images qu'ils génèrent sont de bonne qualité : en effet, il ne faut pas confondre vitesse et précipitation.
 
 Parfois, ce sont d'autres personnes qui jugent mes algorithmes dans ce qui serait l'équivalent du match du dimanche.
-J'ai par exemple participé à un concours organisé par Facebook et l'université de New-York, où j'ai atteint la 2ᵉ place grâce à la qualité de mes images.
+J'ai par exemple participé à un concours organisé par Facebook, où j'ai atteint la 2ᵉ place grâce à la qualité de mes images.
 
 <!-- CCL et outro -->
 Si jamais l'un de vous a envie de voir à quoi ressemblent les codes de mes algorithmes et même d'essayer de les entrainer, c'est possible !
