@@ -53,5 +53,5 @@ J'ai par exemple participé à un concours organisé par Facebook, où j'ai atte
 
 <!-- CCL et outro -->
 Si jamais l'un de vous a envie de voir à quoi ressemblent les codes de mes algorithmes et même d'essayer de les entrainer, c'est possible !
-Il vous suffit de vous rendre sur GitHub, le réseau social des codeurs.
-Qui sait, l'un de vous arrivera peut-être à les faire passer a la division supérieure.
+Ils sont disponibles sur GitHub, le réseau social des codeurs.
+Qui sait, l'un de vous arrivera peut-être à les faire passer en division supérieure.
