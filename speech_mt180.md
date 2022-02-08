@@ -26,7 +26,7 @@ Fin : mes méthodes sont disponibles en ligne sur GitHub, le Facebook des codeur
 Le sport, c'est une part très importante de ma vie : foot, basket, arts martiaux, j'adore ça.
 Manque de chance, j'ai aussi des problèmes de genoux.
 Et à cause de ça, je me suis retrouvé pas mal de fois dans une IRM.
-Une IRM c'est très désagréable : en plus de devoir rester allongé immobile avec un genou douloureux, il faut supporter un bruit métallique de sonnerie stridente.
+Une IRM c'est très désagréable : en plus de devoir rester allongé immobile avec un genou douloureux, il faut supporter un bruit métallique et une sonnerie stridente.
 En plus de ça, on doit parfois avoir un cathéter dans le bras.
 Bref autant vous dire qu'une IRM, c'est pas le meilleur moment de sa vie.
 Et surtout, ça peut durer assez longtemps : 15 minutes environ, mais croyez-moi qu'on a plutôt l'impression que ça dure 2 heures.
@@ -43,7 +43,7 @@ Une fois codés, j'entraine ces algorithmes à accélérer des IRMs sur l'ordina
 L'entrainement se passe un peu comme pour un entrainement de foot (comme je vous ai dit je suis un sportif).
 Je joue le rôle du coach, et il faut déjà que je commence par la préparation : je simule le processus d'accélération et j'obtiens des images de mauvaise qualité.
 Ensuite vient le cœur de l'entrainement : je montre ces images à mes algorithmes et leur but, c'est de les corriger pour qu'on ne voit plus la différence avec une image classique.
-Je suis un coach dur, mais juste.
+Bon, je suis un coach dur, mais juste.
 Si c'est du bon travail je félicite, sinon...
 Bien sûr, tout ça est fait de manière automatique, je suis pas sans arrêt derrière mon ordi, en plus il y en a souvent plusieurs qui s'entrainent en même temps.
 Une fois l'entrainement fini, je m'assure qu'ils vont assez vite et que les images qu'ils génèrent sont de bonne qualité : en effet, il ne faut pas confondre vitesse et précipitation.
