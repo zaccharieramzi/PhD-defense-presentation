@@ -3,24 +3,17 @@
 <!-- cSpell: disable -->
 <!-- MT180 draft
 
-S'imaginer dans une IRM
-C'est long, j'ai mal, c'est inconfortable
+General flow:
+sportif -> mal genou -> IRM - > IRM desagreable -> IRM long
 
-Pourtant je sais que ça va me guérir
+objectif these -> outcome these -> algo -> nouveaute algo -> connaissance
+code -> entrainement JZ -> prepa entrainement -> coeur entrainement -> correction -> fin entrainement
 
-Def acronyme
+autres personnes jugent -> concours FB
 
-Comment faire pour accélérer
+envie de voir -> Github -> division superieure
 
-Dev algo ML (IA)
-Code -> accès aux ordinateurs les plus puissants de France
-Je vérifie que les algos vont vite et font des images de bonne qualité
-
-Mais parfois ce sont d'autres personnes qui jugent a ma place dans des concours
-Avec un de mes méthode, j'ai atteint la 2eme place d'un concours fb
-
-
-Fin : mes méthodes sont disponibles en ligne sur GitHub, le Facebook des codeurs : si jamais l'un de vous a envie d'améliorer encore mes méthodes, libre à vous. -->
+-->
 
 <!-- Intro: -->
 Le sport, c'est une part très importante de ma vie : foot, basket, arts martiaux, j'adore ça.
