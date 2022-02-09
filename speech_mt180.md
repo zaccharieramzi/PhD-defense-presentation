@@ -42,7 +42,7 @@ Bien sûr, tout ça est fait de manière automatique, je suis pas sans arrêt de
 Une fois l'entrainement fini, je m'assure qu'ils vont assez vite et que les images qu'ils génèrent sont de bonne qualité : en effet, il ne faut pas confondre vitesse et précipitation.
 
 Parfois, ce sont d'autres personnes qui jugent mes algorithmes dans ce qui serait l'équivalent du match du dimanche.
-J'ai par exemple participé à un concours organisé par Facebook, où j'ai atteint la 2ᵉ place grâce à la qualité de mes images.
+J'ai par exemple participé à un concours organisé par Facebook, où j'ai atteint la 2eme place grâce à la qualité de mes images.
 
 <!-- CCL et outro -->
 Si jamais l'un de vous a envie de voir à quoi ressemblent les codes de mes algorithmes et même d'essayer de les entrainer, c'est possible !
