@@ -168,11 +168,11 @@ Not needed to be so low level
 
 Rm Il => operator per channel
 
-Say MRI registration is linear
+Say MRI reconstruction is linear
 
-Add ref for 1.5
+Add ref for 1.5 accel for CS
 
-L1 prior is not linear
+L1 prior is not linear: find better formulation
 
 Deep Learning a enlever
 
