@@ -166,7 +166,7 @@ Prior => régularisation ?
 
 Not needed to be so low level
 
-Rm Il => operator per channel
+Rm Il kroenecker => operator per channel
 
 Say MRI reconstruction is linear
 
