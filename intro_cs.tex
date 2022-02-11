@@ -82,7 +82,7 @@
                 \node(arrow) [right=of f_smiley.east, single arrow,bottom color=green,top color=red, minimum size=2cm,rotate=90, yshift=-1em, xshift=-1em] {};
                 \node(likely_smiley) [above=0.2em of arrow.east] {Not smiley-like};
                 \node(unlikely_smiley) [below=0.2em of arrow.west] {Smiley-like};
-                \node(f_exp) [below=of f, visible on=<3>] {Regularizer};
+                \node(f_exp) [below=of f] {Regularizer};
                 % arrow
                 \draw [line width=0.1em] ($(f.south)+(0,-0.1cm)$) -- (f_exp.north);
             \end{tikzpicture}
