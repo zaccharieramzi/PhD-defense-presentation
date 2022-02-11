@@ -84,7 +84,7 @@
     % show on second slice unrolled computation graph
     We can mix the 2 single domain approaches, using the principled \textbf{optimization algorithm unrolling} method.\footfullcite{Gregor2010}
 
-    \alt<5->{}{A graph representation of ISTA:}
+    \alt<5->{\vphantom{A graph representation of ISTA:}}{A graph representation of ISTA:}
     \begin{columns}[totalwidth=\textwidth]
         \begin{column}[]{0.3\textwidth}
 
@@ -97,6 +97,11 @@
 
         \end{column}
         \begin{column}[]{0.6\textwidth}
+            \only<1>{
+                \begin{equation*}
+                    \argmin_{\xb \in \mathbb{C}^n} \frac12 \|\mathcal{A} \xb - \yb \|_2^2  + \mathcal{R}(\xb)
+                \end{equation*}
+            }
             \only<2-3>{
                 \begin{tikzpicture}[font=\scriptsize, node distance=1em,>=stealth]
                     % nodes
