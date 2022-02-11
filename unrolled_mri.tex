@@ -315,19 +315,19 @@
                 \node (dc_res) [rounded rectangle, draw, fill=white, below right=of backward_op, visible on=<3>] {$-$};
                 \node (dc_concat) [rounded rectangle, draw, fill=white, below right=of backward_op, visible on=<4->] {$\operatorname{concat}$};
                 \node (prox) [image_node, right=of dc_concat] {$f_{\thetab_1}$};
-                \node (prox_exp_cnn) [below=2em of prox, visible on=<3-4>] {CNN};
-                \node (prox_exp_mwcnn) [below=2em of prox, visible on=<5->] {MWCNN\footfullcite{Liu2018}};
+                \node (prox_exp_cnn) [below=2em of prox, visible on=<3-5>] {CNN};
+                \node (prox_exp_mwcnn) [below=2em of prox, visible on=<6->] {MWCNN\footfullcite{Liu2018}};
                 \node (outpt_prox) [right=3em of prox] {$\xb_1$};
                 % smaps nodes
-                \node (smaps_refiner) [opnode, below left=of forward_op, visible on=<6->] {Smaps refiner\footfullcite{Sriram2020End-to-EndReconstruction}};
-                \node (smaps) [left=of smaps_refiner, visible on=<6->] {$\Sbb$};
-                \node (smaps_exp) [below=0.4em of smaps_refiner, visible on=<6->] {U-Net\footfullcite{ronneberger2015u}};
+                \node (smaps_refiner) [opnode, below left=of forward_op, visible on=<7->] {Smaps refiner\footfullcite{Sriram2020End-to-EndReconstruction}};
+                \node (smaps) [left=of smaps_refiner, visible on=<7->] {$\Sbb$};
+                \node (smaps_exp) [below=0.4em of smaps_refiner, visible on=<7->] {U-Net\footfullcite{ronneberger2015u}};
                 \begin{scope}[on background layer]
                     \node (encompassing_unit) [unitnode, fit=(forward_op)(dc)(simple_backward_op)(backward_op)(dc_concat)(dc_res)(prox), inner sep=0.9em] {};
                     %% highlighting nodes
-                    \node (highlight_concat) [highlight_node, fit=(backward_op) (dc_concat), visible on=<4>] {};
-                    \node (highlight_mwcnn) [highlight_node, fit=(prox_exp_mwcnn), visible on=<5>] {};
-                    \node (highlight_smaps) [highlight_node, fit=(smaps_refiner) (smaps) (smaps_exp), visible on=<6>] {};
+                    \node (highlight_concat) [highlight_node, fit=(backward_op) (dc_concat) (dc_res), visible on=<3-4>] {};
+                    \node (highlight_mwcnn) [highlight_node, fit=(prox_exp_mwcnn), visible on=<5-6>] {};
+                    \node (highlight_smaps) [highlight_node, fit=(smaps_refiner) (smaps) (smaps_exp), visible on=<7>] {};
                 \end{scope}
                 % arrows linking all nodes
                 %% main track
@@ -349,13 +349,13 @@
                 \draw<4-> [->] (dc_concat) -- (prox);
                 \draw [->] (prox) -- (outpt_prox);
                 \draw [line width=0.1em] (first_unit.south) -- (encompassing_unit.north west);
-                \draw<3-4> [line width=0.1em] (prox.south) -- (prox_exp_cnn.north);
-                \draw<5-> [line width=0.1em] (prox.south) -- (prox_exp_mwcnn.north);
+                \draw<3-5> [line width=0.1em] (prox.south) -- (prox_exp_cnn.north);
+                \draw<6-> [line width=0.1em] (prox.south) -- (prox_exp_mwcnn.north);
                 % smaps arrows
-                \draw<6-> [<-] (smaps_refiner) -- (smaps);
-                \draw<6-> [->] (smaps_refiner) -| (forward_op);
-                \draw<6-> [->] (smaps_refiner) -| (simple_backward_op);
-                \draw<6-> [line width=0.1em] (smaps_refiner.south) -- (smaps_exp.north);
+                \draw<7-> [<-] (smaps_refiner) -- (smaps);
+                \draw<7-> [->] (smaps_refiner) -| (forward_op);
+                \draw<7-> [->] (smaps_refiner) -| (simple_backward_op);
+                \draw<7-> [line width=0.1em] (smaps_refiner.south) -- (smaps_exp.north);
             }
 
         \end{tikzpicture}
