@@ -49,6 +49,7 @@
 \usetikzlibrary{overlay-beamer-styles}
 \usetikzlibrary{shapes.arrows}
 \usetikzlibrary{decorations.pathmorphing}
+\usetikzlibrary{matrix}
 
 
 % \includeonly{unrolled_mri}
@@ -166,10 +167,26 @@
 
 \begin{frame}{Our objective: accelerate MRI scans}
     % give TOC
-    \setlength{\parskip}{1ex}
-    \begin{multicols}{2}
-    \tableofcontents
-    \end{multicols}
+    % \setlength{\parskip}{1ex}
+    % \begin{multicols}{2}
+    % \tableofcontents
+    % \end{multicols}
+%     \begin{center}
+%         \begin{tikzpicture}[ampersand replacement=\&]
+%             \matrix [matrix of nodes,column sep=.5cm,row sep=.5cm,every node/.style=draw]
+% {
+%  |(ub)| Unrolled Benchmark \& |(x)|  XPDNet \& |(nc)| NC-PDNet \\
+%  |(sh)| SHINE \& |(le)|  Learnlets \& |(uq)| Uncertainty Quantification\\
+% };
+%         \node[] {};
+%         \end{tikzpicture}
+%     \end{center}
+    \begin{enumerate}
+        \item Study and extension the state-of-the-art: unrolled models.
+        \item Methods to build even deeper models.
+        \item Tools to tackle deep learning blind spots: robustness and uncertainty quantification.
+    \end{enumerate}
+
 \end{frame}
 
 
@@ -180,8 +197,8 @@
 
 % \include{deep_learning}
 \include{unrolled_mri}
-% \include{clinical_applic}
 \include{very_deep}
+\include{clinical_applic}
 
 
 \section{Conclusions \& Future works}
