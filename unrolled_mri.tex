@@ -94,14 +94,15 @@
                     \xb_{n+1} &= \alt<5->{\highlight{blue}{$f_{\thetab_n}\left(\xb_{n+1}\right)$}}{\highlight{blue}{$\tikzmarknode{prox}{\operatorname{prox}}_{\epsilon_n \mathcal{R}}\left(\xb_{n+1}\right)$}}
                 \end{split}
             \end{equation*}
-            \begin{tikzpicture}[overlay,remember picture,>=stealth,nodes={align=left,inner ysep=1pt},<-]
-                % For "prox"
-                \path (prox.south) ++ (0,-2.5em) node[anchor=south west,color=black!87] (exp_prox){
-                    Proximity operator
-                };
-                \draw [color=black!87](prox.south) |- ([xshift=-0.3ex,color=black]exp_prox.south east);
-                % For "reg
-            \end{tikzpicture}
+            \only<1>{
+                \begin{tikzpicture}[overlay,remember picture,>=stealth,nodes={align=left,inner ysep=1pt},<-]
+                    % For "prox"
+                    \path (prox.south) ++ (0,-2.5em) node[anchor=south west,color=black!87] (exp_prox){
+                        Proximity operator
+                    };
+                    \draw [color=black!87](prox.south) |- ([xshift=-0.3ex,color=black]exp_prox.south east);
+                \end{tikzpicture}
+            }
 
         \end{column}
         \begin{column}[]{0.6\textwidth}
