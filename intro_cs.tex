@@ -62,10 +62,9 @@
     }
 \end{frame}
 
-\begin{frame}{Another look at redundancy: the prior point of view}
+\begin{frame}{Another look at redundancy}
     % give a sense of what structure is and how it relates to redundancy
     % Redundancy is not always strict: we may only have a strong correlation between 2 structures of the image.
-    Redundancy is not always strict
     \only<1>{
         \begin{figure}
             \centering
@@ -80,12 +79,12 @@
             \begin{tikzpicture}[font=\large,>=stealth,node distance=1.5em, remember picture]
                 % node
                 \node(f_smiley) {$\tikzmarknode{f}{f}\left(\adjincludegraphics[valign=c,width=0.1\textwidth]{Figures/intro_figures/smiley_prior_x.pdf}\right) = $};
-                \node(arrow) [right=of f_smiley.east, single arrow,bottom color=red,top color=green, minimum size=2cm,rotate=90, yshift=-1em, xshift=-1em] {};
-                \node(likely_smiley) [above=0.2em of arrow.east] {Smiley-like};
-                \node(unlikely_smiley) [below=0.2em of arrow.west] {Not smiley-like};
-                \node(f_exp) [below=of f, visible on=<3>] {Prior};
+                \node(arrow) [right=of f_smiley.east, single arrow,bottom color=green,top color=red, minimum size=2cm,rotate=90, yshift=-1em, xshift=-1em] {};
+                \node(likely_smiley) [above=0.2em of arrow.east] {Not smiley-like};
+                \node(unlikely_smiley) [below=0.2em of arrow.west] {Smiley-like};
+                \node(f_exp) [below=of f, visible on=<3>] {Regularizer};
                 % arrow
-                \draw<3-> [line width=0.1em] ($(f.south)+(0,-0.1cm)$) -- (f_exp.north);
+                \draw [line width=0.1em] ($(f.south)+(0,-0.1cm)$) -- (f_exp.north);
             \end{tikzpicture}
         \end{center}
     }
