@@ -98,43 +98,35 @@
     % \citet{Lustig2007} did that by using the fact that MR images can be represented sparsely in a \textbf{wavelet} basis.
     % \citet{Lustig2007} expressed their sparsity in a \textbf{wavelet} basis.
 
-    \hfill \break
+    \vspace{8ex}\break
     The Inverse Problem becomes:
     \begin{equation*}
-        \tikzmarknode{FS}{\highlight{green}{$\left(\Ib_L\otimes {\mathcal{F}}_{\Omega}\right)\Sbb$}} \tikzmarknode{x}{\highlight{blue}{$\xb$}} = \tikzmarknode{y}{\highlight{yellow}{$\ybb$}}
+        \hspace{3cm} \tikzmarknode{FS}{\highlight{green}{$\mathcal{F}_{\Omega}\Sbb$}} \tikzmarknode{x}{\highlight{blue}{$\xb$}} = \tikzmarknode{y}{\highlight{yellow}{$\ybb$}}
     \end{equation*}
     \begin{tikzpicture}[overlay,remember picture,>=stealth,nodes={align=left,inner ysep=1pt},<-]
         % For "FS"
-        \onslide<4>{
-        \path (FS.south) ++ (0,-4em) node[anchor=south east,color=DarkGreen!77,align=right] (exp_FS){
-            \textbf{$\mathcal{F}_{\Omega}$ : FT on the $\Omega$ set;}\\
+        \onslide<4->{
+        \path (FS.south) ++ (0,-4em) node[anchor=south east,color=DarkGreen!77,align=right, rectangle split,rectangle split horizontal, rectangle split parts=2] (exp_FS){
+            \textbf{$\mathcal{F}_{\Omega}$ : per-coil FT on the $\Omega$ set;}\\
             \textbf{$\Sbb=[\Sb_1^H,\ldots, \Sb_L^H]^\top$: the sensitivity maps}\\
             \textbf{per coil}
-        };
-        \draw [color=DarkGreen!87](FS.south) |- ([xshift=-0.3ex,color=DarkGreen]exp_FS.south west);
-        }
-        \onslide<5>{
-        \path (FS.south) ++ (0,-4em) node[anchor=south east,color=DarkGreen!77] (exp_FS){
-            \includegraphics[width=0.1\textwidth]{Figures/intro_figures/mri.jpg}
+            \nodepart{two}
+            \includegraphics[width=0.08\textwidth]{Figures/intro_figures/mri.jpg}
         };
         \draw [color=DarkGreen!87](FS.south) |- ([xshift=-0.3ex,color=DarkGreen]exp_FS.south west);
         }
         % For "x"
-        \onslide<2-4>{
-        \path (x.south) ++ (0, -2em) node[anchor=south west,color=blue!67] (exp_x){\textbf{2D or 3D MR image $\in \mathbb{C}$}};
-        \draw [color=blue!87](x.south) |- ([xshift=-0.3ex,color=blue]exp_x.south east);
-        }
-        \onslide<5->{
-        \path (x.south) ++ (0, -4em) node[anchor=south west,color=blue!67] (exp_x){\includegraphics[width=0.1\textwidth]{Figures/intro_figures/brain_mri.png}};
+        \onslide<2->{
+        \path (x.south) ++ (0, -4em) node[anchor=south west,color=blue!67] (exp_x){\includegraphics[trim=3.3em 3.3em 3.3em 3.3em, clip,width=0.08\textwidth]{Figures/intro_figures/brain_mri.png} \textbf{2D or 3D MR image $\in \mathbb{C}$}};
         \draw [color=blue!87](x.south) |- ([xshift=-0.3ex,color=blue]exp_x.south east);
         }
         % For "y"
-        \onslide<3-4>{
-        \path (y.north) ++ (0, 1em) node[anchor=south west,color=amber!67] (exp_y){$\ybb=[\yb_1^H, \ldots, \yb_L^H]^\top$,\\ \textbf{k-space measurements} \\ \textbf{for each coil}};
-        \draw [color=amber!87](y.north) |- ([xshift=-0.3ex,color=amber]exp_y.south east);
-        }
-        \onslide<5->{
-        \path (y.north) ++ (0, 1em) node[anchor=south west,color=amber!67] (exp_y){\includegraphics[width=0.07\textwidth]{Figures/intro_figures/kspace_mri.png}};
+        \onslide<3->{
+        \path (y.north) ++ (0, 1em) node[anchor=south west,color=amber!67, rectangle split,rectangle split horizontal, rectangle split parts=2] (exp_y){
+
+            \includegraphics[width=0.06\textwidth]{Figures/intro_figures/kspace_mri.png}
+            \nodepart{two} $\ybb=[\yb_1^H, \ldots, \yb_L^H]^\top$,\\ \textbf{k-space measurements} \\ \textbf{for each coil}
+        };
         \draw [color=amber!87](y.north) |- ([xshift=-0.3ex,color=amber]exp_y.south east);
         }
     \end{tikzpicture}
@@ -171,7 +163,7 @@
     \begin{tikzpicture}[overlay,remember picture,>=stealth,nodes={align=left,inner ysep=1pt},<-]
         % For "calA"
         \path (calA.south) ++ (0,-2.5em) node[anchor=south east,color=DarkGreen!87] (exp_calA){
-            $= \left(\Ib_L\otimes {\mathcal{F}}_{\Omega}\right)\Sbb$
+            $= \mathcal{F}_{\Omega}\Sbb$
         };
         \draw [color=DarkGreen!87](calA.south) |- ([xshift=-0.3ex,color=DarkGreen]exp_calA.south west);
         % For psi
@@ -224,7 +216,7 @@
     Additional acceleration factor on top of PI: 1.5. % from https://www.philips.fr/healthcare/ressources/landing/the-next-mr-wave/compressed-sense
 
     \pause
-    The prior knowledge expressed by the wavelet basis (or other basis) is limited: handcrafted and linear.
+    The tool we used to express our prior knowledge, the wavelet basis, is limited: handcrafted and linear.
 \end{frame}
 
 \begin{frame}{Inverse Problems}
