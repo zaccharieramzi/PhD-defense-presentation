@@ -24,14 +24,14 @@
     \begin{tikzpicture}[overlay,remember picture,>=stealth,nodes={align=left,inner ysep=1pt},<-]
         % For "kspace"
         \onslide<2->{
-        \path (kspace.south) ++ (0,-4em) node[anchor=south east,color=amber!87] (exp_kspace){
-            \includegraphics[width=0.07\textwidth]{Figures/intro_figures/kspace_mri.png} \textbf{kspace}};
+        \path (kspace.south) ++ (0,-5em) node[anchor=south east,color=amber!87] (exp_kspace){
+            \textbf{kspace} \includegraphics[width=0.1\textwidth]{Figures/intro_figures/kspace_mri.png}};
         \draw [color=amber!87](kspace.south) |- ([xshift=-0.3ex,color=amber]exp_kspace.south west);
         }
         % For "image"
         \onslide<3->{
-        \path (image.south) ++ (0, -4em) node[anchor=south west,color=blue!87] (exp_image){
-            \includegraphics[width=0.1\textwidth,trim=0 3.3em 0 0,clip]{Figures/dl_mri_figures/gt_knee.png} \textbf{image}};
+        \path (image.south) ++ (0, -4.3em) node[anchor=south west,color=blue!87] (exp_image){
+            \includegraphics[width=0.1\textwidth,trim=3.3em 3.3em 3.3em 3.3em,clip]{Figures/dl_mri_figures/gt_knee.png} \textbf{image}};
         \draw [color=blue!87](image.south) |- ([xshift=-0.3ex,color=blue]exp_image.south east);
     }
     \end{tikzpicture}
@@ -59,20 +59,20 @@
 
     \begin{tikzpicture}[overlay,remember picture,>=stealth,nodes={align=left,inner ysep=1pt},<-]
         % For image
-        \path (image.south) ++ (0, -4em) node[anchor=south west,color=blue!87] (exp_image){
-            \includegraphics[width=0.1\textwidth,trim=0 3.3em 0 0,clip]{Figures/dl_mri_figures/gt_knee.png} \textbf{image}};
+        \path (image.south) ++ (0, -4.3em) node[anchor=south west,color=blue!87] (exp_image){
+            \includegraphics[width=0.1\textwidth,trim=3.3em 3.3em 3.3em 3.3em,clip]{Figures/dl_mri_figures/gt_knee.png} \textbf{image}};
         \draw [color=blue!87](image.south) |- ([xshift=-0.3ex,color=blue]exp_image.south east);
         % For kspace
         \onslide<1>{
-            \path (kspace.south) ++ (0,-4em) node[anchor=south east,color=amber!87] (exp_kspace){
-                \includegraphics[width=0.07\textwidth]{Figures/intro_figures/kspace_mri.png} \textbf{kspace}};
+            \path (kspace.south) ++ (0,-5em) node[anchor=south east,color=amber!87] (exp_kspace){
+                \textbf{kspace} \includegraphics[width=0.1\textwidth]{Figures/intro_figures/kspace_mri.png} };
             \draw [color=amber!87](kspace.south) |- ([xshift=-0.3ex,color=amber]exp_kspace.south west);
 
         }
         % For aliased image
         \onslide<2>{
-        \path (kspace.south) ++ (0, -4em) node[anchor=south east,color=amber!87] (exp_aliased_image){
-            \includegraphics[width=0.1\textwidth,trim=0 3.3em 0 0,clip]{Figures/dl_mri_figures/zfilled_recon_af4.png}\textbf{aliased image}};
+        \path (kspace.south) ++ (0, -4.3em) node[anchor=south east,color=amber!87] (exp_aliased_image){
+            \textbf{aliased image} \includegraphics[width=0.1\textwidth,trim=3.3em 3.3em 3.3em 3.3em,clip]{Figures/dl_mri_figures/zfilled_recon_af4.png}};
         \draw [color=amber!87](kspace.south) |- ([xshift=-0.3ex,color=amber]exp_aliased_image.south west);
         }
     \end{tikzpicture}
