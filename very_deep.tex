@@ -155,7 +155,7 @@ Let $\zb^\star \in  \mathbb{R}^d$ such that $g_{\thetab}(\zb^\star) = 0$ and $J_
     In practice this is done using an iterative algorithm.
 \end{frame}
 
-\begin{frame}{Can we avoid the Jacobian inversion?}
+\begin{frame}{Can we avoid the Jacobian inversion?~[Ramzi et al. 2022b]}
     % yes: reuse a by-product of the forward pass, share the inverse estimate
     \begin{exampleblock}{Contribution \#4}
         \fullcite{Ramzi2021_shine}
@@ -192,7 +192,7 @@ Let $\zb^\star \in  \mathbb{R}^d$ such that $g_{\thetab}(\zb^\star) = 0$ and $J_
     \end{itemize}
 \end{frame}
 
-\begin{frame}{Application to Hyperparameter optimization - 1}
+\begin{frame}{Application to Hyperparameter optimization - 1~[Ramzi et al. 2022b]}
     % it's also a bilevel prob
     % Interestingly, other problems can benefit from this idea, notably Hyperparameter optimization.
     Hyperparameter optimization can benefit from SHINE.
@@ -208,7 +208,7 @@ Let $\zb^\star \in  \mathbb{R}^d$ such that $g_{\thetab}(\zb^\star) = 0$ and $J_
     The IFT can also be applied, and when a quasi-Newton method is used to solve $\argmin_{\xb} \mathcal{L}_{\text{train}}(\xb) + \exp^{\lambda} \|\xb\|_2^2$, we may use SHINE.
 \end{frame}
 
-\begin{frame}{Application to Hyperparameter optimization - 2}
+\begin{frame}{Application to Hyperparameter optimization - 2~[Ramzi et al. 2022b]}
     \begin{figure}
         \centering
         \includegraphics[width=0.9\textwidth]{Figures/shine_figures/bilevel_test.pdf}
@@ -217,7 +217,7 @@ Let $\zb^\star \in  \mathbb{R}^d$ such that $g_{\thetab}(\zb^\star) = 0$ and $J_
 
 \end{frame}
 
-\begin{frame}{Results on DEQs}
+\begin{frame}{Results on DEQs~[Ramzi et al. 2022b]}
     \begin{figure}
         \centering
         \includegraphics[width=0.8\textwidth]{Figures/shine_figures/merged_results_latency_style.pdf}
