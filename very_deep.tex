@@ -38,41 +38,43 @@
     Why more memory? \textbf{Activations}!
     \pause
 
+    \tikzset{%
+        highlight_act/.style={rounded rectangle, draw=red!67, dashed, inner sep=0.03em, visible on=<5>},
+    }
+
+
     \begin{center}
         \begin{tikzpicture}[
-            font=\Large, node distance=5em,>=stealth,
-            highlight/.style={rounded rectangle, draw=red!67, dashed, inner sep=0.1em},
+            font=\Large, node distance=2.5em,>=stealth,
+            function/.style={circle,draw},
         ]
             % nodes
-            \node (input) {$\ldots$};
-            \node (op) [rounded rectangle, right=of input, draw=black!87] {$\exp^{\thetab^\top \cdot}$};
-            \node (output) [right=of op] {$\ldots$};
-            \node (op_params) [below=of op] {$\thetab$};
+            \begin{scope}[execute at begin node=$, execute at end node=$]
+                \node (input_node) {\xb};
+                \node (first_int_function) [right=of input_node, function] {f_{\thetab_1}};
+                \node (dots) [right=of first_int_function] {\ldots};
+                \node (last_int_function) [right=of dots, function] {f_{\thetab_n}};
+                \node (output_node) [right=of last_int_function] {\hat{\yb}};
+            \end{scope}
+
             % arrows
-            %% input to op
-            \draw[->] (input.east) -- node [midway,below] {$\xb$} node [midway,above, visible on=<5->] {
-                $\frac{\partial \mathcal{L}}{\partial \xb}$\alt<6->{\hspace{-0.5em}
-                    \alt<7->{
-                        $= \frac{\partial \mathcal{L}}{\partial \yb} \tikzmarknode[highlight]{y_x}{\yb} . \thetab $
-                    }{
-                        $= \frac{\partial \mathcal{L}}{\partial \yb} \frac{\partial \yb}{\partial \xb}$
-                    }
-                }{ ?}
-            } (op.west);
-            %% op to output
-            \draw[->] (op) -- node (y) [midway,below] {$\alt<7->{\tikzmarknode[highlight]{y}{\yb}}{\yb}$} node [midway,above, visible on=<4->] {$\hookleftarrow \frac{\partial \mathcal{L}}{\partial \yb}$}  (output);
-            %% op to op_params
-            \draw[line width=0.1em] (op.south) -- node [midway, right, visible on=<5->] {
-                $\frac{\partial \mathcal{L}}{\partial \thetab}$ \alt<6->{\hspace{-0.5em}
-                    \alt<7->{
-                        $= \frac{\partial \mathcal{L}}{\partial \yb} \tikzmarknode[highlight]{y_theta}{\yb} . \xb $
-                    }{
-                        $= \frac{\partial \mathcal{L}}{\partial \yb} \frac{\partial \yb}{\partial \thetab}$
-                    }
-                }{?}
-            } (op_params.north);
+            \draw[->] (input_node) -- (first_int_function);
+            \draw[->] (first_int_function) -- (dots) node (first_activation) [above,midway] {$\zb_1$};
+            \draw[->] (dots) -- (last_int_function) node (last_activation) [above,midway] {$\zb_{n-1}$};
+            \draw[->] (last_int_function) -- (output_node);
+
+            % highlights
+            \node (highlight_first_activation) [highlight_act, fit=(first_activation)] {};
+            \node (highlight_last_activation) [highlight_act, fit=(last_activation)] {};
+
+
         \end{tikzpicture}
     \end{center}
+
+    \pause
+    \begin{equation*}
+        \frac{\partial \mathcal{L}}{\partial \thetab_1} = \frac{\partial \mathcal{L}}{\partial \hat{\yb}}\Bigr|_{\hat{\yb}} \; \frac{\partial \hat{\yb}}{\partial \zb_{n-1}}\Bigr|_{\tikzmarknode[highlight_act]{last_eq_activation}{\zb_{n-1}}} \; \ldots \; \frac{\partial \zb_2}{\partial \zb_1}\Bigr|_{\tikzmarknode[highlight_act]{first_eq_activation}{\zb_1}} \; \frac{\partial \zb_1}{\partial \thetab_1}\Bigr|_{\thetab_1}
+    \end{equation*}
 
 \end{frame}
 
