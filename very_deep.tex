@@ -190,8 +190,16 @@ Let $\zb^\star \in  \mathbb{R}^d$ such that $g_{\thetab}(\zb^\star) = 0$ and $J_
     Properties of \highlight{blue}{$\Bb$}:
     \begin{itemize}
         \item<4-> It is computed when solving $g_\thetab(\zb^\star, \xb) = 0$ using a quasi-Newton method.
-        \item<5-> It is easily invertible using the Sherman-Morrison formula.
+        \item<5-> It is easily invertible using the Sherman-Morrison formula, because low-rank.
     \end{itemize}
+\end{frame}
+
+\begin{frame}{Computer vision results~[Ramzi et al. 2022b]}
+    \begin{figure}
+        \centering
+        \includegraphics[width=0.8\textwidth]{Figures/shine_figures/merged_results_latency_style.pdf}
+        \caption{\textbf{MDEQs~\citep{Bai2020MultiscaleModels} with SHINE.}}
+    \end{figure}
 \end{frame}
 
 \begin{frame}{Application to Hyperparameter optimization - 1~[Ramzi et al. 2022b]}
@@ -217,14 +225,6 @@ Let $\zb^\star \in  \mathbb{R}^d$ such that $g_{\thetab}(\zb^\star) = 0$ and $J_
         \caption{\textbf{Bilevel optimization~\citep{Pedregosa2016HyperparameterGradient} with SHINE:} convergence of held-out test loss.}
     \end{figure}
 
-\end{frame}
-
-\begin{frame}{Results on DEQs~[Ramzi et al. 2022b]}
-    \begin{figure}
-        \centering
-        \includegraphics[width=0.8\textwidth]{Figures/shine_figures/merged_results_latency_style.pdf}
-        \caption{\textbf{MDEQs~\citep{Bai2020MultiscaleModels} with SHINE.}}
-    \end{figure}
 \end{frame}
 
 % \begin{frame}{SHINE}
