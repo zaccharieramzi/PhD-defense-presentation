@@ -535,6 +535,16 @@
     Multiple solutions $\Rightarrow$ regularization with $\Bb_n = \argmin_{\Bb: \Bb \Delta x_n = \Delta f_n} \|\Bb - \Bb_{n-1}\|$
 \end{frame}
 
+\begin{frame}{SHINE direction convergence}
+    \begin{theorem}[Convergence of SHINE to the Hypergradient using ULI]
+        Let us denote $\pb_\thetab^{(n)}$, the SHINE direction for iterate $n$.
+        Under the Uniform Linear Independence~(ULI) assumption and some additional smoothness and convexity assumptions, for a given parameter $\thetab$, $(\zb_n)$ converges q-superlinearly to $\zb^\star$ and
+        \begin{equation*}
+            \lim_{n \to \infty} \pb_\thetab^{(n)} = \frac{\partial \mathcal{L}}{\partial \thetab}\Bigr|_{\zb^\star}.
+        \end{equation*}
+        \end{theorem}
+\end{frame}
+
 \begin{frame}{OPA - 1}
     Outer Problem Awareness: modify the inner problem resolution depending on the outer problem.\\
 
