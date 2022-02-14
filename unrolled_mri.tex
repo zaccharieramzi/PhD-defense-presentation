@@ -552,6 +552,11 @@
             \onslide<4>\centering\includegraphics[width=\textwidth]{Figures/dl_mri_figures/quali_no_err_3d_af4_radial.pdf}\caption{\textbf{3D single-coil reconstruction qualitative results on the OASIS dataset for a radial trajectory.}}
         \end{overprint}
     \end{figure}
+
+    \begin{tikzpicture}[overlay,remember picture,>=stealth,nodes={align=left,inner ysep=1pt},<-]
+        \draw[draw=red!47, dashed, visible on=<2>] (12.2cm,4.45cm) rectangle ++(2.3cm,4.5cm);
+        \draw[draw=red!47, dashed, visible on=<4>] (10.7cm,1.5cm) rectangle ++(3.8cm,7.5cm);
+    \end{tikzpicture}
 \end{frame}
 
 \begin{frame}{Unrolled models for MRI reconstruction}
