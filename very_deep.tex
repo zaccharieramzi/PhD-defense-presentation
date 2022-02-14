@@ -53,14 +53,14 @@
                 \node (input_node) {\xb};
                 \node (first_int_function) [right=of input_node, function] {f_{\thetab_1}};
                 \node (dots) [right=of first_int_function] {\ldots};
-                \node (last_int_function) [right=of dots, function] {f_{\thetab_n}};
+                \node (last_int_function) [right=of dots, function] {f_{\thetab_N}};
                 \node (output_node) [right=of last_int_function] {\hat{\yb}};
             \end{scope}
 
             % arrows
             \draw[->] (input_node) -- (first_int_function);
             \draw[->] (first_int_function) -- (dots) node (first_activation) [above,midway] {$\zb_1$};
-            \draw[->] (dots) -- (last_int_function) node (last_activation) [above,midway] {$\zb_{n-1}$};
+            \draw[->] (dots) -- (last_int_function) node (last_activation) [above,midway] {$\zb_{N-1}$};
             \draw[->] (last_int_function) -- (output_node);
 
             % highlights
@@ -73,7 +73,7 @@
 
     \pause
     \begin{equation*}
-        \frac{\partial \mathcal{L}}{\partial \thetab_1} = \frac{\partial \mathcal{L}}{\partial \hat{\yb}}\Bigr|_{\hat{\yb}} \; \frac{\partial \hat{\yb}}{\partial \zb_{n-1}}\Bigr|_{\tikzmarknode[highlight_act]{last_eq_activation}{\zb_{n-1}}} \; \ldots \; \frac{\partial \zb_2}{\partial \zb_1}\Bigr|_{\tikzmarknode[highlight_act]{first_eq_activation}{\zb_1}} \; \frac{\partial \zb_1}{\partial \thetab_1}\Bigr|_{\thetab_1}
+        \frac{\partial \mathcal{L}}{\partial \thetab_1} = \frac{\partial \mathcal{L}}{\partial \hat{\yb}}\Bigr|_{\hat{\yb}} \; \frac{\partial \hat{\yb}}{\partial \zb_{N-1}}\Bigr|_{\tikzmarknode[highlight_act]{last_eq_activation}{\zb_{N-1}}} \; \ldots \; \frac{\partial \zb_2}{\partial \zb_1}\Bigr|_{\tikzmarknode[highlight_act]{first_eq_activation}{\zb_1}} \; \frac{\partial \zb_1}{\partial \thetab_1}\Bigr|_{\thetab_1}
     \end{equation*}
 
 \end{frame}
@@ -89,6 +89,46 @@
         \item invertible networks~\citep{Gomez2017TheActivations,Sander2021MomentumNetworks}
         \item \highlight{blue}{implicit models~\citep{Chen2018NeuralEquations,Bai2019DeepModels}}
     \end{itemize}
+\end{frame}
+
+\begin{frame}{Infinite depth neural networks}
+    A recurrent expression of classical, explicit networks:
+    \only<1>{
+        \begin{center}
+            \begin{tikzpicture}[
+                font=\Large, node distance=2.5em,>=stealth,
+                function/.style={circle,draw},
+            ]
+                % nodes
+                \begin{scope}[execute at begin node=$, execute at end node=$]
+                    \node (input_node) {\xb};
+                    \node (first_int_function) [right=of input_node, function] {f_{\thetab_1}};
+                    \node (dots) [right=of first_int_function] {\ldots};
+                    \node (last_int_function) [right=of dots, function] {f_{\thetab_N}};
+                    \node (output_node) [right=of last_int_function] {\hat{\yb}};
+                \end{scope}
+
+                % arrows
+                \draw[->] (input_node) -- (first_int_function);
+                \draw[->] (first_int_function) -- (dots) node (first_activation) [above,midway] {$\zb_1$};
+                \draw[->] (dots) -- (last_int_function) node (last_activation) [above,midway] {$\zb_{N-1}$};
+                \draw[->] (last_int_function) -- (output_node);
+
+            \end{tikzpicture}
+        \end{center}
+
+    }
+    \only<2->{
+        \begin{equation*}
+            \zb_{n} = f_{\thetab_{n}}(\zb_{n-1}), \quad \forall n < N
+        \end{equation*}
+    }
+
+    \onslide<3->{
+        What if $N \to \infty$?
+    }
+
+
 \end{frame}
 
 \begin{frame}{Deep Equilibrium networks - 1}
