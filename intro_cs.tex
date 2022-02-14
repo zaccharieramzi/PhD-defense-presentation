@@ -117,7 +117,7 @@
         }
         % For "x"
         \onslide<2->{
-        \path (x.south) ++ (0, -4em) node[anchor=south west,color=blue!67] (exp_x){\includegraphics[trim=3.3em 3.3em 3.3em 3.3em, clip,width=0.08\textwidth,angle=180]{Figures/intro_figures/brain_mri.png} \textbf{2D or 3D MR image $\in \mathbb{C}$}};
+        \path (x.south) ++ (0, -4em) node[anchor=south west,color=blue!67, rectangle split,rectangle split horizontal, rectangle split parts=2] (exp_x){\includegraphics[trim=3.3em 3.3em 3.3em 3.3em, clip,width=0.08\textwidth,angle=180]{Figures/intro_figures/brain_mri.png} \nodepart{two} \textbf{2D or 3D MR image $\in \mathbb{C}$}};
         \draw [color=blue!87](x.south) |- ([xshift=-0.3ex,color=blue]exp_x.south east);
         }
         % For "y"
@@ -133,9 +133,34 @@
 
     \onslide<4>{
         \vspace{4em}
-        $\Omega$: Cartesian when on a uniform grid, non-Cartesian otherwise.
+        \begin{multicols}{2}
+            \begin{center}
+                $\Sbb$\\
+                \includegraphics[height=0.2\textheight]{Figures/cs_figures/smaps.png}
+            \end{center}
+            \newpage
+            \begin{center}
+                $\Omega$
+                \vspace{-2ex}
+            \begin{multicols}{2}
+                \begin{center}
+                    Cartesian
 
-        $\Sbb$: \includegraphics[height=0.2\textheight]{Figures/cs_figures/smaps.png}
+                    \includegraphics[height=0.2\textheight]{Figures/cs_figures/cartesian_traj.pdf}
+                \end{center}
+
+                \newpage
+                \begin{center}
+                    non-Cartesian
+
+                    \includegraphics[height=0.2\textheight]{Figures/dl_mri_figures/radial_trajectory.png}
+                \end{center}
+
+            \end{multicols}
+            \end{center}
+
+        \end{multicols}
+
     }
 \end{frame}
 
