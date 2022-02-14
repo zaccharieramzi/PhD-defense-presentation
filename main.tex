@@ -52,7 +52,7 @@
 \usetikzlibrary{matrix}
 
 
-\includeonly{intro_mri}
+% \includeonly{unrolled_mri}
 %----------------------------------------------------------------------------------------
 %	TITLE PAGE
 %----------------------------------------------------------------------------------------
@@ -216,7 +216,7 @@
     %     \item In order to prepare for even deeper networks, with the promise of even better results, we proposed \highlight{green}{SHINE}, a method to accelerate DEQs, which are memory-efficient models.
     % \end{enumerate}
     \begin{enumerate}[<+->]
-        \item In order to accelerate MRI, I show how to further adapt unrolled models to MRI reconstruction:
+        \item In order to accelerate MRI, I showed how to further adapt unrolled models to MRI reconstruction:
         \begin{enumerate}
             \item 2D multi-coil: \highlight{green}{XPDNet}
             \item non-Cartesian: \highlight{green}{NC-PDNet}
@@ -239,12 +239,12 @@
         \item Refine the measurement operator even more, for example with $\Bb_0$ inhomogeneity corrections.
         \item Learn better k-space acquisition trajectories.
         \item Extend the NC-PDNet to more dimensions, like in fMRI.
-        \item Understand better how far the subnetworks learn something far from the score of the prior distribution.
+        \item Understand better whether the subnetworks learn something far from the score of the prior distribution.
     \end{itemize}
 \end{frame}
 
 \begin{frame}{Additional contribution}
-    \begin{exampleblock}{Contribution}
+    \begin{exampleblock}{Contribution \#7}
         \begin{itemize}
             \item \fullcite{Farrens2020}
         \end{itemize}
