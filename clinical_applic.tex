@@ -1,36 +1,41 @@
 \section{Clinical applicability}
+
+\begin{frame}[plain,c]
+    %\frametitle{A first slide}
+
+    \begin{center}
+        \color{DarkBlue}
+    \Huge \thesection. \insertsection
+    \end{center}
+
+\end{frame}
+
+
 \begin{frame}{Learnlets - 1}
-    % explain that robustness is a key aspect that we have with wavelets
+    % show the generalization figure
+    \begin{figure}
+        \centering
+        \includegraphics[height=0.8\textheight]{Figures/clinic_applic/learnlets_tikz_reduced.pdf}
+    \end{figure}
 \end{frame}
 
 \begin{frame}{Learnlets - 2}
-    % show the Learnlets model
+    % show the generalization figure
+    \begin{figure}[ht]
+        \includegraphics[width=0.8\textwidth]{Figures/clinic_applic/model_comparison.pdf}
+        \caption{\textbf{Denoising performance.}}
+        \end{figure}
 \end{frame}
 
-\begin{frame}{Learnlets - 3}
-    % Learnlets results
-\end{frame}
-
-\begin{frame}{Denoising Score Matching - 1}
-    % explain what UQ might be used for
-\end{frame}
-
-\begin{frame}{Denoising Score Matching - 2}
-    % give method of DSM
-\end{frame}
-
-\begin{frame}{Denoising Score Matching - 3}
-    % give results
-\end{frame}
-
-\begin{frame}{Prospective comparison with GRAPPA}
-    % show big brain results
-    % explain why it's robustness test already
-\end{frame}
-
-\begin{frame}{Recap}
-    % we have seen how to adapt to clinical setting and answered the question of prospective reconstruction
-    % robust : learnlets
-    % UQ: DSM
-    % propsective: check
+\begin{frame}{Denoising Score Matching}
+    % show the samples
+    Optimal denoiser:\footfullcite{Vincent2011,Alain2013}
+    \begin{equation*}
+        \rb^\star(\xb', \sigma) = \xb' + \sigma^2 \nabla_{\xb} \log p_{\sigma^2}(\xb')
+    \end{equation*}
+    where $p_{\sigma^2} = p \ast \mathcal{N}(0, \sigma^2)$.
+    \begin{figure}
+        \centering
+        \includegraphics[width=\textwidth]{Figures/clinic_applic/dsm_main.pdf}
+    \end{figure}
 \end{frame}
