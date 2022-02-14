@@ -224,14 +224,22 @@ Let $\zb^\star \in  \mathbb{R}^d$ such that $g_{\thetab}(\zb^\star) = 0$ and $J_
     }
     \end{tikzpicture}
     \pause
-    \onslide<4->
 
     \hfill \break
-    Properties of \highlight{blue}{$\Bb$}:
+    \begin{overprint}
+        \onslide<4-5>
+        Properties of \highlight{blue}{$\Bb$}:
     \begin{itemize}
         \item<4-> It is computed when solving $g_\thetab(\zb^\star, \xb) = 0$ using a quasi-Newton method.
         \item<5-> It is easily invertible using the Sherman-Morrison formula, because low-rank.
     \end{itemize}
+
+
+    \onslide<6>
+        We have asymptotic correctness of the approximation!
+    \end{overprint}
+
+
 \end{frame}
 
 \begin{frame}{Computer vision results~[Ramzi et al. 2022b]}
