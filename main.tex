@@ -52,7 +52,7 @@
 \usetikzlibrary{matrix}
 
 
-% \includeonly{unrolled_mri}
+\includeonly{clinical_applic}
 %----------------------------------------------------------------------------------------
 %	TITLE PAGE
 %----------------------------------------------------------------------------------------
@@ -182,7 +182,7 @@
 %         \end{tikzpicture}
 %     \end{center}
     \begin{enumerate}
-        \item Study and extension the state-of-the-art: unrolled models.
+        \item Study and extension of the state-of-the-art: unrolled models.
         \item Methods to build even deeper models.
         \item Tools to tackle deep learning blind spots: robustness and uncertainty quantification.
     \end{enumerate}
@@ -205,15 +205,28 @@
 
 \begin{frame}{Conclusions}
     % what have we seen so far in the journey?
+    % \begin{enumerate}[<+->]
+    %     \item MRI is an important medical imaging modality, but it is inherently slow due to the Nuclear Magnetic Resonance phenomenon it relies on.
+    %     \item Using redundancy is our main tool to accelerate MRI scans, but exploiting redundancy is not always straightforward.
+    %     \item Deep Learning can allow us to express structure in a more principled way, and we saw two examples of this.
+    %     \begin{enumerate}[<+->]
+    %         \item The \highlight{green}{XPDNet}, a deep learning network that secured the 2nd spot of the 2020 fastMRI challenge.
+    %         \item The \highlight{green}{NC-PDNet}, a deep learning network that can reconstruct single-coil 3D non-Cartesian data.
+    %     \end{enumerate}
+    %     \item In order to prepare for even deeper networks, with the promise of even better results, we proposed \highlight{green}{SHINE}, a method to accelerate DEQs, which are memory-efficient models.
+    % \end{enumerate}
     \begin{enumerate}[<+->]
-        \item MRI is an important medical imaging modality, but it is inherently slow due to the Nuclear Magnetic Resonance phenomenon it relies on.
-        \item Using redundancy is our main tool to accelerate MRI scans, but exploiting redundancy is not always straightforward.
-        \item Deep Learning can allow us to express structure in a more principled way, and we saw two examples of this.
-        \begin{enumerate}[<+->]
-            \item The \highlight{green}{XPDNet}, a deep learning network that secured the 2nd spot of the 2020 fastMRI challenge.
-            \item The \highlight{green}{NC-PDNet}, a deep learning network that can reconstruct single-coil 3D non-Cartesian data.
+        \item In order to accelerate MRI, I show how to further adapt unrolled models to MRI reconstruction:
+        \begin{enumerate}
+            \item 2D multi-coil: \highlight{green}{XPDNet}
+            \item non-Cartesian: \highlight{green}{NC-PDNet}
         \end{enumerate}
-        \item In order to prepare for even deeper networks, with the promise of even better results, we proposed \highlight{green}{SHINE}, a method to accelerate DEQs, which are memory-efficient models.
+        \item I also tackled 3 challenges associated with the application of deep learning to MRI reconstruction:
+        \begin{enumerate}
+            \item generalization: \highlight{green}{Learnlets}
+            \item uncertainty quantification: \highlight{green}{Denoising Score Matching}
+            \item training memory and speed: \highlight{green}{SHINE}
+        \end{enumerate}
     \end{enumerate}
 \end{frame}
 
@@ -230,11 +243,9 @@
     \end{itemize}
 \end{frame}
 
-\begin{frame}{Additional contributions}
-    \begin{exampleblock}{Contributions}
+\begin{frame}{Additional contribution}
+    \begin{exampleblock}{Contribution}
         \begin{itemize}
-            \item \fullcite{Ramzi2021WaveletsEra}
-            \item \fullcite{Ramzi2020_dsm}
             \item \fullcite{Farrens2020}
         \end{itemize}
     \end{exampleblock}
