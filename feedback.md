@@ -258,3 +258,36 @@ Cheers
 
 ## PC feedback
 Il reste un passage confus dans la première partie c'est dans la façon tu introduits le k-space. Il faut que tu parles clairement de l'acquisition selon un schéma d'encodage spatial (ie à partir des gradients dans au moins deux directions de l'espace) pour qu'on comprenne mieux le lien entre acq et coef de Fourier. On en parle de vive voix plus tard. Tu peux mettre.
+
+young babies -> infants/neonates
+increased chance -> increased occurrence
+state-of-the-art -> state of the art
+
+slide 34:
+have 2 columns, with smaps and omega (2 examples for omega), rather than text
+
+slide 42: increase image size even more
+
+slide 77: SSIM scores to evoke
+
+slide 80: restate that X is for flexibility
+
+slide 83: explain why no network in the k-space
+
+slide 90: add dB for PSNR + recon time
+
+slide 100: recenter figures in the middle of the slide + say that we extended this to multicoil
+
+slide 110: underline blocks = iteration unit = unrolled iteration
+
+slide 134: add 2022 in ICLR title + for asymptotice analysis add bullet point
+
+slide 84 (new): add ST: soft thresholding
+
+slide 84 (new) and on: add Contrib blocks + citation in title
+
+slide 85 (new): performance -> performances
+
+slide 87 (new): titles DSM
+
+
