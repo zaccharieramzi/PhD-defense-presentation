@@ -22,20 +22,25 @@
 \begin{frame}{Learnlets - 2}
     % show the generalization figure
     \begin{figure}[ht]
-        \includegraphics[width=0.8\textwidth]{Figures/clinic_applic/model_comparison.pdf}
+        \includegraphics[height=0.78\textheight]{Figures/clinic_applic/model_comparison.pdf}
         \caption{\textbf{Denoising performance.}}
         \end{figure}
 \end{frame}
 
-\begin{frame}{Denoising Score Matching}
+\begin{frame}{Denoising Score Matching - 1}
     % show the samples
     Optimal denoiser:\footfullcite{Vincent2011,Alain2013}
     \begin{equation*}
         \rb^\star(\xb', \sigma) = \xb' + \sigma^2 \nabla_{\xb} \log p_{\sigma^2}(\xb')
     \end{equation*}
     where $p_{\sigma^2} = p \ast \mathcal{N}(0, \sigma^2)$.
+\end{frame}
+
+\begin{frame}{Denoising Score Matching - 2}
+    % show the samples
     \begin{figure}
         \centering
         \includegraphics[width=\textwidth]{Figures/clinic_applic/dsm_main.pdf}
     \end{figure}
+
 \end{frame}
