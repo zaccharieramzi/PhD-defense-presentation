@@ -73,8 +73,13 @@
 
     \pause
     \begin{equation*}
-        \frac{\partial \mathcal{L}}{\partial \thetab_1} = \frac{\partial \mathcal{L}}{\partial \hat{\yb}}\Bigr|_{\hat{\yb}} \; \frac{\partial \hat{\yb}}{\partial \zb_{N-1}}\Bigr|_{\tikzmarknode[highlight_act]{last_eq_activation}{\zb_{N-1}}} \; \ldots \; \frac{\partial \zb_2}{\partial \zb_1}\Bigr|_{\tikzmarknode[highlight_act]{first_eq_activation}{\zb_1}} \; \frac{\partial \zb_1}{\partial \thetab_1}\Bigr|_{\thetab_1}
+        \frac{\partial \mathcal{L}}{\partial \thetab_1} = \frac{\partial \mathcal{L}}{\partial \hat{\yb}}\Bigr|_{\hat{\yb}} \; \frac{\partial \hat{\yb}}{\partial \zb_{N-1}}\Bigr|_{\tikzmarknode{last_eq_activation}{\zb_{N-1}}} \; \ldots \; \frac{\partial \zb_2}{\partial \zb_1}\Bigr|_{\tikzmarknode{first_eq_activation}{\zb_1}} \; \frac{\partial \zb_1}{\partial \thetab_1}\Bigr|_{\thetab_1}
     \end{equation*}
+
+    \begin{tikzpicture}[overlay, remember picture]
+        \node [fit=(last_eq_activation), highlight_act] {};
+        \node [fit=(first_eq_activation), highlight_act] {};
+    \end{tikzpicture}
 
 \end{frame}
 
