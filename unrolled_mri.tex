@@ -250,7 +250,7 @@
     \noindent\rule{\textwidth}{1pt}
 
         \begin{itemize}
-            \item \faicon{github} Code available online: \texttt{github.com/zaccharieramzi/fastmri-reproducible-benchmark}
+            \item \faGithub \thickspace Code available online: \texttt{github.com/zaccharieramzi/fastmri-reproducible-benchmark}
             \item\begin{tabular}{@{}c@{}}\includegraphics[width=3ex]{Figures/hf_logo.jpeg}\end{tabular}Model weights available online: \texttt{huggingface.co/zaccharieramzi}
         \end{itemize}
     \end{overprint}
@@ -468,10 +468,10 @@
     \pause
 
     % The difficulty from a computational point of view is that we need to now use the \textbf{Nonuniform Fourier Transform (NDFT)}.
-    \textbf{Nonuniform Fourier Transform (NDFT)} too costly $\Rightarrow$ NUFFT, with the TensorFlow implementation:
+    \textbf{Nonuniform Fourier Transform (NDFT)} too costly $\Rightarrow$ NUFFT, with our TensorFlow implementation:
     % We resort to using its fast approximation, the NUFFT, which we implemented in TensorFlow, to enable gradient-based learning:
     \begin{itemize}
-        \item \faicon{github} Code available online: \texttt{github.com/zaccharieramzi/tfkbnufft}
+        \item \faPython \thickspace \highlight{black}{\texttt{pip install tfkbnufft}}
     \end{itemize}
 \end{frame}
 
