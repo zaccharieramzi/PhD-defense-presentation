@@ -291,3 +291,42 @@ slide 85 (new): performance -> performances
 slide 87 (new): titles DSM
 
 
+# Feedback 3
+
+introduction k-space : highlight trajectory, talk about spatial encoding
+
+Highlight that there is result selection
+
+Not increase the slide number for each transition
+
+
+Pysap logo and link to code + contributors images
+
+## Slide by slide
+7: say hydrogen atoms of water molecules
+10: k-space is approx of Fourier
+12: mention Nyquist criteria
+15: illustration of PI
+31: increase size of smaps + mention that acquisition can be directly in the 3D domain
+32: mention sparsity promotion for L1 norm + mention hyperparam
+42: say multi-coil -> data size is multiplied by n coils (increasing degree of complexity)
+48: big N -> capital N
+51: insist on open data sets
+58: have concat op in the add slides + have buffer in add slides
+61: maybe have MWCNN slide
+63: arrows to higlight
+67: give AF numbers
+71: nc traj more robust to motion thanks to repeated sampling of the center of k-space + replace with pip install
+73: talk about memory constraints for CNN
+75: make more connections to the figure (talk about different contrasts)
+76 + 78: highlight frame with darker red or larger line width
+78: just on top of the cerebellum
+83: say that it's spotlights
+84: mention analysis and synthesis
+85: point out where to look at
+86: add some annotations
+109: say transition from memory to computation
+111: remember that for backprop...
+118: spend more time on figure
+128: mention that some parts of applicative and others methodological, explain that some things are transferable (highlight complementarity of 3 labs)
+129: reorder this slide (add multiple contrasts)
