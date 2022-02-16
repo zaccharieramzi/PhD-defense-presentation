@@ -43,11 +43,23 @@
     \begin{exampleblock}{Contribution \#5}
         \fullcite{Ramzi2020_dsm}
     \end{exampleblock}
-    Optimal denoiser:\footfullcite{Vincent2011,Alain2013}
+    Optimal denoiser $\rb^\star$:\footfullcite{Vincent2011,Alain2013}
     \begin{equation*}
-        \rb^\star(\xb', \sigma) = \xb' + \sigma^2 \nabla_{\xb} \log p_{\sigma^2}(\xb')
+        \rb^\star(\tikzmarknode{image}{\highlight{yellow}{$\xb'$}}, \sigma) = \xb' + \sigma^2 \overbrace{\nabla_{\xb} \log \tikzmarknode{prior}{\highlight{blue}{$p_{\sigma^2}$}}(\xb')}^{Score}
     \end{equation*}
-    where $p_{\sigma^2} = p \ast \mathcal{N}(0, \sigma^2)$.
+    \begin{tikzpicture}[overlay,remember picture,>=stealth,nodes={align=left,inner ysep=1pt},<-]
+        % For "prior"
+        \path (prior.south) ++ (0,-2.7em) node[anchor=south west,color=blue!87] (exp_prior){
+            Convolved prior distribution\\
+            $p_{\sigma^2} = p \ast \mathcal{N}(0, \sigma^2)$
+        };
+        \draw [color=blue!87](prior.south) |- ([xshift=-0.3ex,color=blue]exp_prior.south east);
+        % For "image"
+        \path (image.north) ++ (0,0.7em) node[anchor=south east,color=amber!87] (exp_image){
+            Noisy image
+        };
+        \draw [color=amber!87](image.north) |- ([xshift=-0.3ex,color=amber]exp_image.south west);
+    \end{tikzpicture}
 \end{frame}
 
 \begin{frame}{Denoising Score Matching - 2~[Ramzi et al. 2020d]}
