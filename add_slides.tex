@@ -377,6 +377,7 @@
     \end{figure}
 \end{frame}
 
+
 \begin{frame}{XPDNet - ct'ed}
     \begin{center}
         \scalebox{0.85}{
@@ -399,6 +400,37 @@
         \end{algorithm}
     }
     \end{center}
+\end{frame}
+
+\begin{frame}{PDNet ops}
+    \begin{multicols}{2}
+        \begin{center}
+            \textbf{Concatenation}\\
+        \end{center}
+            We change from
+            \begin{equation*}
+                \xb_{n+1} = \prox{} (\xb_n - {\cal A}^H({\cal A}\, \xb_n - \ybb) )
+            \end{equation*}
+            to
+            \begin{equation*}
+                \xb_{n+1} = \prox{} ([\xb_n; {\cal A}^H({\cal A}\, \xb_n - \ybb)])
+            \end{equation*}
+
+        \newpage
+        \begin{center}
+            \textbf{Buffer}\\
+        \end{center}
+            We change from
+            \begin{equation*}
+                \xb_{n+1} = \nu \xb_{n+1} + (1-\nu) \xb_n
+            \end{equation*}
+            to
+            \begin{equation*}
+                \xb_b = [\xb, \xb, \xb, \xb, \xb]
+            \end{equation*}
+
+    \end{multicols}
+
 \end{frame}
 
 \begin{frame}{PDNet \& Recurrent Inference Machines~(RIMs)}
