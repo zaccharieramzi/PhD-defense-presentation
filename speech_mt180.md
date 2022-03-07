@@ -27,22 +27,22 @@ Et surtout, ça peut durer assez longtemps : 15 minutes environ, mais croyez-mo
 
 <!-- Content -->
 Du coup, dans ma thèse, je me suis fixé l'objectif d'accélérer les IRMs.
-Non seulement ça permettra de rendre les IRMs plus supportables, mais ça va aussi permettre de les prescrire plus souvent.
+Non seulement ça permettra de les rendre plus supportables, mais ça va aussi permettre de les prescrire plus souvent.
 Pour y arriver, je conçois des algorithmes d'Intelligence Artificielle.
-Et, ce qui est nouveau dans les algorithmes que je développe, c'est qu'ils prennent en compte les particularités de l'IRM.
-Il faut donc que je comprenne à la fois bien la physique de l'IRM, mais aussi que je me tienne à jour sur ce qui se fait de mieux en Intelligence Artificielle.
+Et, ce qui est nouveau avec mes algorithmes, c'est qu'ils prennent en compte les particularités de l'IRM.
+Il faut donc à la fois que je comprenne bien la physique de l'IRM, mais aussi que je me tienne à jour sur ce qui se fait de mieux en Intelligence Artificielle.
 À l'aide de ces connaissances, je code mes algorithmes avec un langage informatique : Python, c'est ce qui occupe une bonne partie de mes journées.
 Une fois codés, j'entraine ces algorithmes à accélérer des IRMs sur l'ordinateur le plus puissant de France.
-L'entrainement se passe un peu comme pour un entrainement de foot.
-Je suis un peu le Didier Deschamps de l'Imagerie par Résonance Magnétique.
-Je commence déjà par la préparation : je simule le processus d'accélération et j'obtiens des images de mauvaise qualité.
+Ca se passe un peu comme pour un entrainement de foot.
+Je suis un peu le Didier Deschamps de l'Imagerie par Résonance Magnétique, le DD de l'IRM.
+Je commence par la préparation : je simule le processus d'accélération et j'obtiens des images de mauvaise qualité.
 Ensuite vient le cœur de l'entrainement : je montre ces images à mes algorithmes et leur but, c'est de les corriger pour qu'on ne voit plus la différence avec une image classique.
 Bon, je suis un coach dur, mais juste.
 Si c'est du bon travail je félicite, sinon c'est carton jaune.
 Une fois l'entrainement fini, je m'assure qu'ils vont assez vite et que les images qu'ils génèrent sont de bonne qualité : en effet, il ne faut pas confondre vitesse et précipitation.
 
 <!-- Parfois, ce sont d'autres personnes qui jugent mes algorithmes dans ce qui serait l'équivalent du match du dimanche. -->
-Lors du match du dimanche, mes algorithmes sont en compétition avec les algorithmes des autres chercheurs et des radiologues jugent lesquels ont les images IRM de meilleure qualité.
+Lors du match du dimanche, mes algorithmes sont en compétition avec ceux d'autres chercheurs et des radiologues jugent lesquels ont les images IRM de meilleure qualité.
 Lors du dernier concours auquel j'ai participe, ils ont fait bonne figure et ont fini deuxièmes.
 
 <!-- CCL et outro -->
